@@ -1,115 +1,257 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-  <body style="margin:0;padding:24px;background-color:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;">
-    <div style="max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;">
-      <div style="padding:24px 24px 16px 24px;border-bottom:1px solid #e5e7eb;background-color:#f9fafb;">
-        <div style="font-size:13px;line-height:20px;color:#6b7280;">2026年06月06日 星期六</div>
-        <div style="margin-top:6px;font-size:28px;line-height:34px;font-weight:700;color:#111827;">摩根士丹利亞洲峰會首移台北，外資力挺台股</div>
-        <div style="margin-top:14px;">
-          
-          <span style="display:inline-block;margin:0 8px 8px 0;padding:4px 10px;border-radius:999px;background-color:#f3f4f6;font-size:12px;line-height:18px;color:#6b7280;">Ambarella</span>
-          
-          <span style="display:inline-block;margin:0 8px 8px 0;padding:4px 10px;border-radius:999px;background-color:#f3f4f6;font-size:12px;line-height:18px;color:#6b7280;">Physical AI</span>
-          
-          <span style="display:inline-block;margin:0 8px 8px 0;padding:4px 10px;border-radius:999px;background-color:#f3f4f6;font-size:12px;line-height:18px;color:#6b7280;">AI Agent安全</span>
-          
-          <span style="display:inline-block;margin:0 8px 8px 0;padding:4px 10px;border-radius:999px;background-color:#f3f4f6;font-size:12px;line-height:18px;color:#6b7280;">台股外資</span>
-          
-        </div>
-      </div>
-      <div style="padding:24px;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026年06月07日 星期日 早報</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 14px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #64748b;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 24px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .keyword {
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 3px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    /* ── Section cards ── */
+    .section {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--accent, #64748b);
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent, #64748b);
+      margin-bottom: 14px;
+    }
+
+    /* ── Entries ── */
+    .entry {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #cbd5e1;
+      padding: 10px 0;
+      border-bottom: 1px solid #253047;
+    }
+
+    .entry:first-of-type { padding-top: 0; }
+    .entry:last-of-type  { border-bottom: none; padding-bottom: 0; }
+
+    .entry strong { color: #f1f5f9; font-weight: 600; }
+
+    .entry a {
+      display: inline-block;
+      color: #64748b;
+      font-size: 11px;
+      text-decoration: none;
+      border: 1px solid #334155;
+      padding: 1px 7px;
+      border-radius: 4px;
+      margin-left: 5px;
+      vertical-align: middle;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .entry a:hover { color: #94a3b8; border-color: #475569; }
+
+    /* ── Per-category accent colours ── */
+    .section--watchlist {
+      --accent: #f59e0b;
+      background: #1c1a0f;
+      border-color: #44380a;
+    }
+    .section--watchlist .section-title::before { content: "📌 "; }
+    .section--geo      { --accent: #60a5fa; }
+    .section--finance  { --accent: #34d399; }
+    .section--tech     { --accent: #a78bfa; }
+    .section--ai_tech  { --accent: #fbbf24; }
+    .section--ai_tools { --accent: #f472b6; }
+    .section--social   { --accent: #2dd4bf; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      color: #334155;
+      font-size: 11px;
+      padding-top: 20px;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="date">2026年06月07日 星期日</div>
+      <div class="headline">習近平罕見訪北韓、台海軍售受關注</div>
+      <div class="keywords">
         
-        <div style="margin-bottom:24px;">
-          <div style="margin-bottom:10px;font-size:18px;line-height:24px;font-weight:700;color:#111827;">地緣政治</div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>習近平</strong>宣布訪問<strong>北韓</strong>，與<strong>金正恩</strong>舉行峰會，時間點緊接美俄領袖會談之後，外界解讀為強化軸心外交布局，對台海情勢具指標意義。<a href="https://www.bbc.com/news/articles/clypym3q7p1o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>台灣海巡署（CGA）</strong>在<strong>東沙島</strong>附近攔截中國漁船，顯示中方持續試探台灣離島周邊海域管控能力。<a href="https://www.taipeitimes.com/News/front/archives/2026/06/06/2003858612" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Quad</strong>（美日印澳）推動在<strong>斐濟</strong>建設港口計畫，目標制衡中國在太平洋的供應鏈主導地位，分析師認為此舉具有戰略訊號意義。<a href="https://rfa.org/english/pacific/2026/05/29/quad-port-fiji-supply-chain-us-japan-india/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>台灣立法院</strong>通過決議譴責中國阻撓，同日總統公布國家科技發展計畫，顯示台灣同步在外交與科技戰略上強化姿態。<a href="https://www.taipeitimes.com/News/front/archives/2026/06/06/2003858611" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>香港維多利亞公園</strong>六四35周年完全沉默，《國安法》實施後昔日18萬人燭光悼念已成歷史，國際人權組織強烈批評。<a href="https://rfa.org/english/china/2026/06/03/hong-kong-victoria-park-tiananmen-square-china/" target="_blank" rel="noopener">來源</a></div>
-          
-        </div>
+        <span class="keyword">Physical AI</span>
         
-        <div style="margin-bottom:24px;">
-          <div style="margin-bottom:10px;font-size:18px;line-height:24px;font-weight:700;color:#111827;">金融市場</div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>摩根士丹利</strong>亞洲投資高峰會史上首次移師<strong>台北</strong>，逾600名外資法人出席，聚焦AI供應鏈，被解讀為國際資本「用腳投票」支持台股。<a href="https://finance.technews.tw/2026/06/06/beyond-tsmc-ai-supply-chain-in-demand-cross-strait-risks-morgan-stanley-optimistic-taiwan-stocks/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>華爾街</strong>因半導體族群大跌與就業數據強勁引發升息疑慮，<strong>Nasdaq</strong>領跌收黑，<strong>Ambarella</strong>等AI晶片股同步承壓。<a href="https://www.investing.com/news/stock-market-news/nasdaq-sp-futures-slip-as-semiconductors-drag-payrolls-in-focus-4728127" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• 標普500財報季回顧：整體表現具韌性，但分析師警告關稅與AI資本支出壓力可能在下半年侵蝕利潤。<a href="https://www.investing.com/news/stock-market-news/earnings-season-takeaways-resilient-but-for-how-long-4729544" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Meta</strong>股價持續承壓，儘管廣告營收強勁，但龐大AI基礎建設支出計畫讓投資人對長期獲利路徑感到不確定。<a href="https://www.fool.com/investing/2026/06/05/meta-stock-is-getting-hit-hard-but-where-will-it-b/?.tsrc=rss" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• 市場出現二戰後第4次罕見技術形態，歷史上前三次均發生於衰退後，唯一例外為市場崩盤前夕，引發市場警覺。<a href="https://www.fool.com/investing/2026/06/06/the-market-has-only-done-this-4-times-since-world/?.tsrc=rss" target="_blank" rel="noopener">來源</a></div>
-          
-        </div>
+        <span class="keyword">CPU缺貨</span>
         
-        <div style="margin-bottom:24px;">
-          <div style="margin-bottom:10px;font-size:18px;line-height:24px;font-weight:700;color:#111827;">科技產業（安防 / 半導體）</div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>台達電</strong>董事長<strong>鄭平</strong>親坐鎮<strong>COMPUTEX 2026</strong>，主打「從電網到晶片」一站式AI電力解決方案，直接回應AI資料中心電力痛點。<a href="https://technews.tw/2026/06/06/computex-ping-cheng-power-shortage-ai-biggest-challenge-delta-electronics-one-stop-vertical-integration-grid-chip/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• 台灣影像模組廠<strong>Altek</strong>宣布轉型，從消費電子鏡頭模組轉向<strong>Physical AI</strong>，主攻機器人、無人機與自主機械視覺感測應用。<a href="https://www.digitimes.com/news/a20260604PD230/altek-electronics-camera-growth-technology.html" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>群電（Phison）</strong> CEO 警告2027年<strong>記憶體短缺</strong>即將來臨，公司提前轉型為系統AI解決方案商，擺脫純IC元件供應商定位。<a href="https://www.digitimes.com/news/a20260603PD206/phison-2027-ceo-demand-market.html" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• 逾半標普500企業以<strong>AI降本</strong>為由裁員後股價反跌平均25%，投資人對「AI取代人力即等於獲利」的邏輯明顯不買單。<a href="https://finance.technews.tw/2026/06/06/investors-call-bluff-ai-driven-layoffs/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>研華（Advantech）</strong>強化<strong>Edge AI</strong>生態系布局，整合工廠、醫院、倉儲場域解決方案，對安防與醫療影像應用有直接拉力。<a href="https://www.digitimes.com/news/a20260604PD235/advantech-industrial-technology-software-infrastructure.html" target="_blank" rel="noopener">來源</a></div>
-          
-        </div>
+        <span class="keyword">SpaceX IPO</span>
         
-        <div style="margin-bottom:24px;">
-          <div style="margin-bottom:10px;font-size:18px;line-height:24px;font-weight:700;color:#111827;">AI 技術趨勢</div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>OpenAI</strong>推出<strong>ChatGPT Dreaming</strong>記憶系統，可跨對話保留用戶偏好與上下文，大幅提升個人化助理的連貫性體驗。<a href="https://openai.com/index/chatgpt-memory-dreaming" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• OpenAI發布<strong>GPT-Rosalind</strong>新功能，強化生物推理、藥物化學與基因組學分析能力，直接瞄準生命科學與醫療研究市場。<a href="https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>NVIDIA</strong>發布<strong>Nemotron 3.5 Content Safety</strong>多模態安全模型，支援企業級客製化內容審核，適用全球多語言部署場景。<a href="https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• Berkeley <strong>BAIR</strong>提出<strong>自適應平行推理（Adaptive Parallel Reasoning）</strong>框架，讓模型自行決定何時分解並行子任務，大幅提升推理效率。<a href="http://bair.berkeley.edu/blog/2026/05/08/adaptive-parallel-reasoning/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>imec</strong>與<strong>KU Leuven</strong>發表IGZO FeFET 3D異構AI記憶體研究，以讀取為中心的DTCO設計為次世代AI晶片記憶架構提供新路徑。<a href="https://semiengineering.com/read-centric-dtco-for-igzo-fefets-3d-heterogeneous-ai-memories-imec-ku-leuven/" target="_blank" rel="noopener">來源</a></div>
-          
-        </div>
-        
-        <div style="margin-bottom:24px;">
-          <div style="margin-bottom:10px;font-size:18px;line-height:24px;font-weight:700;color:#111827;">AI 應用實踐</div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Anthropic</strong>疑似洩露新模型<strong>Oceanus</strong>，同期<strong>ChatGPT Dreaming</strong>記憶功能上線，AI助理記憶競賽進入新階段。<a href="https://tldr.tech/ai/2026-06-05" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Meta</strong>客服AI Agent遭攻擊者利用，誘導其連結並竊取Instagram帳號，揭示AI Agent在實際部署中的安全設計缺口。<a href="https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Google AI Agent</strong>宣稱以不到<strong>$916美元</strong>自動建構作業系統，獨立評估機構指出實驗條件存在限制，強調需審慎驗證此類宣稱。<a href="https://www.normaltech.ai/p/did-googles-ai-agents-really-build" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• 研究報告指出AI能力與可靠性之間存在<strong>「能力-可靠性落差（capability-reliability gap）」</strong>，對企業大規模部署AI Agent具重要警示意義。<a href="https://www.normaltech.ai/p/new-paper-towards-a-science-of-ai" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>DeepSeek</strong>傳出新一輪融資，<strong>Meta</strong>旗艦模型延遲發布，<strong>Gemma 4 12B</strong>開源模型持續搶佔邊緣推理市場份額。<a href="https://tldr.tech/ai/2026-06-04" target="_blank" rel="noopener">來源</a></div>
-          
-        </div>
-        
-        <div style="margin-bottom:24px;">
-          <div style="margin-bottom:10px;font-size:18px;line-height:24px;font-weight:700;color:#111827;">X / Threads 熱議</div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Anthropic IPO</strong>話題持續延燒，同期<strong>NVIDIA</strong>宣布AI PC佈局，科技圈熱議AI基礎設施投資下一個超級週期何時到來。<a href="https://tldr.tech/tech/2026-06-02" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>SpaceX</strong> IPO定價引爆熱議，<strong>Meta</strong>同步推出企業級AI Agent服務，多家機構預測B2B AI應用市場進入加速滲透期。<a href="https://tldr.tech/tech/2026-06-04" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• <strong>Apple</strong>智慧眼鏡與<strong>NVIDIA</strong> Windows AI PC相繼曝光，<strong>AR/AI穿戴裝置</strong>成為科技社群本週最熱討論話題。<a href="https://tldr.tech/tech/2026-06-01" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• AI chatbot對大腦認知控制的影響研究引發SXSW London廣泛討論，心理學家警告長期依賴可能削弱注意力自我調節能力。<a href="https://www.technologyreview.com/2026/06/05/1138427/are-ai-chatbots-making-us-lose-control-of-our-brains/" target="_blank" rel="noopener">來源</a></div>
-          
-          <div style="margin-bottom:8px;font-size:15px;line-height:24px;color:#374151;">• Reddit熱議：LLM推理研究出現弔詭趨勢——原本費力強化的<strong>Chain-of-Thought</strong>，現在研究者反而試圖將其移除以提升效率。<a href="https://www.reddit.com/r/artificial/comments/1txp7ah/the_strange_thing_about_llm_reasoning_research/" target="_blank" rel="noopener">來源</a></div>
-          
-        </div>
+        <span class="keyword">AI Agent安全</span>
         
       </div>
     </div>
-  </body>
+
+    
+    <div class="section section--watchlist">
+      <div class="section-title">追蹤議題更新</div>
+      
+      <div class="entry">• <strong>韓國政局</strong>：今日抓取文章中無韓國政局相關新資訊，略過。</div>
+      
+      <div class="entry">• <strong>Ambarella</strong>：今日抓取文章中無 Ambarella 相關新資訊，略過。</div>
+      
+      <div class="entry">• <strong>NVIDIA Blackwell</strong>：Computex 後市場焦點轉向 <strong>CPU</strong> 缺貨潮，AI 伺服器格局大翻轉；CPU 躍升主角搶佔千億美元商機，<strong>Blackwell</strong> GPU 主導地位受到基礎設施層重新洗牌挑戰。 <a href="https://finance.technews.tw/2026/06/07/cpu-powerful-comeback-multi-hundred-billion-dollar-boom-ai-server-landscape-investment-opportunities/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>台海局勢</strong>：美方官員讚揚台灣投資貢獻，<strong>副總統蕭美琴</strong>出訪帛琉強化邦交；同期報導指美對台軍售延遲案持續受關注，台美不對稱安全關係再度引發討論。 <a href="https://www.taipeitimes.com/News/front/archives/2026/06/07/2003858654" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>AI視覺監控</strong>：台灣相機模組商 <strong>Altek</strong> 宣布押注 <strong>Physical AI</strong>，轉型供應機器人、無人機及自主系統視覺模組，為安防 IP Camera ODM 供應鏈帶來新競合態勢。 <a href="https://www.digitimes.com/news/a20260604PD230/altek-electronics-camera-growth-technology.html" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+    <div class="section section--geo">
+      <div class="section-title">地緣政治</div>
+      
+      <div class="entry">• <strong>習近平</strong>將罕見訪問<strong>北韓</strong>會見金正恩，此行緊接習近平分別與美、俄領導人會面之後，外界高度關注北韓外交走向及東北亞戰略重組。 <a href="https://www.bbc.com/news/articles/clypym3q7p1o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>天安門事件</strong>37週年，<strong>香港</strong>維多利亞公園在《國家安全法》實施後持續噤聲，昔日吸引18萬人的悼念活動已徹底消失，公民社會空間遭進一步壓縮。 <a href="https://rfa.org/english/china/2026/06/03/hong-kong-victoria-park-tiananmen-square-china/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Quad</strong>四方聯盟推動<strong>斐濟港口</strong>建設計畫，專家指此舉直接挑戰中國在太平洋的供應鏈主導地位，美日印澳展示替代北京的基礎建設實力。 <a href="https://rfa.org/english/pacific/2026/05/29/quad-port-fiji-supply-chain-us-japan-india/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• 美國軍事擴建導致<strong>關島</strong>出現嚴重住房危機，大批撤離日本的海軍陸戰隊員及承包商湧入，當地居民被高租金排擠，社區矛盾升溫。 <a href="https://rfa.org/english/pacific/2026/05/28/guam-housing-military-navy-buildup/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• 美國特使公開讚揚<strong>台灣</strong>對美投資貢獻；<strong>副總統蕭美琴</strong>出訪<strong>帛琉</strong>鞏固邦交，台灣對外關係在地緣博弈中持續積極布局。 <a href="https://www.taipeitimes.com/News/front/archives/2026/06/07/2003858653" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+    <div class="section section--finance">
+      <div class="section-title">金融市場</div>
+      
+      <div class="entry">• <strong>SpaceX IPO</strong> 訂於6月12日登場，市場預期將引爆「Risk-On」情緒，分析師點名兩檔高成長股料受惠，科技股估值面臨重新評價契機。 <a href="https://www.fool.com/investing/2026/06/06/the-spacex-ipo-could-spark-a-risk-on-rally-here-ar/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• 法國 <strong>Bouygues</strong> 領銜財團以 <strong>234億美元</strong>收購 <strong>Altice France</strong> 旗下電信商 SFR，為歐洲近年最大電信整併案，歐洲通訊市場格局將大幅重組。 <a href="https://www.investing.com/news/stock-market-news/bouyguesled-consortium-signs-2344-billion-deal-to-buy-sfr-from-altice-france-4729630" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>巴菲特</strong>改變對科技股看法獲市場熱議，分析認為關鍵在於科技企業商業模式已根本轉變，護城河顯著加深，長期持股邏輯成立。 <a href="https://www.fool.com/investing/2026/06/06/heres-why-warren-buffett-changed-his-mind-about-te/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• 台灣股市面臨創歷史紀錄跌幅後的後市壓力，市場正評估外部地緣風險與半導體供應鏈能見度，投資人情緒趨於謹慎。 <a href="https://www.taipeitimes.com/News/front/archives/2026/06/07/2003858655" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+    <div class="section section--tech">
+      <div class="section-title">科技產業（安防 / 半導體）</div>
+      
+      <div class="entry">• 台灣相機模組商 <strong>Altek</strong> 宣布轉型押注 <strong>Physical AI</strong>，供應機器人、無人機及自主系統視覺模組，從消費電子跨入工業與 AI 視覺新市場。 <a href="https://www.digitimes.com/news/a20260604PD230/altek-electronics-camera-growth-technology.html" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Qisda</strong> 總裁柯淑娟宣布加速轉型為 <strong>AI Solutions</strong> 供應商，重新調整 AI 路線圖，聚焦醫療照護與基礎設施 AI 應用，脫離傳統 ODM 定位。 <a href="https://www.digitimes.com/news/a20260605PD224/qisda-ai-solutions-business-infrastructure-healthcare.html" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Advantech</strong> 以生態系策略卡位 <strong>Edge AI</strong> 商機，將工業電腦平台延伸至工廠、醫院及倉儲場域，搶攻 AI 推理運算從雲端下沉至邊緣的關鍵基礎設施市場。 <a href="https://www.digitimes.com/news/a20260604PD235/advantech-industrial-technology-software-infrastructure.html" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Phison</strong> 執行長潘健成警告 2027 年記憶體供應將出現緊缺，宣布公司從 IC 零件供應商轉型為 <strong>System AI Solutions</strong> 提供者，布局次世代 AI 儲存架構。 <a href="https://www.digitimes.com/news/a20260603PD206/phison-2027-ceo-demand-market.html" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• Computex 後焦點轉向 <strong>CPU</strong> 缺貨，AI 伺服器架構重組使 CPU 從配角躍升主角，千億美元商機點火，台灣伺服器供應鏈面臨新一輪備料壓力。 <a href="https://finance.technews.tw/2026/06/07/cpu-powerful-comeback-multi-hundred-billion-dollar-boom-ai-server-landscape-investment-opportunities/" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+    <div class="section section--ai_tech">
+      <div class="section-title">AI 技術趨勢</div>
+      
+      <div class="entry">• <strong>OpenAI</strong> 推出 <strong>ChatGPT Dreaming</strong> 新記憶系統，可跨對話持續保留用戶偏好與情境，大幅提升個人化助理能力，為企業與消費端應用帶來新價值。 <a href="https://openai.com/index/chatgpt-memory-dreaming" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>OpenAI</strong> 發布 <strong>GPT-Rosalind</strong>，專為生命科學研究強化生物推理、藥物化學及基因組分析能力，瞄準新藥研發與精準醫療市場。 <a href="https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• 多倫多大學聯合劍橋大學研究團隊示範利用<strong>開源 LLM</strong> 打造自我複製<strong>AI蠕蟲</strong>，可針對任何連網裝置攻擊，研究員稱此為「根本性新威脅」，安防業者需高度警覺。 <a href="https://infosecu.technews.tw/2026/06/07/u-of-t-researchers-demonstrate-ai-worm-could-target-any-online-device/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>NVIDIA</strong> 發布 <strong>Nemotron 3.5 Content Safety</strong> 多模態安全框架，支援企業客製化全球 AI 內容審核，為安防與醫療影像等敏感場域提供合規基礎。 <a href="https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• Berkeley AI Research 提出 <strong>Adaptive Parallel Reasoning</strong> 新範式，讓推理模型自主決定何時拆解並行子任務，有望大幅提升推理效率與長程規劃能力。 <a href="http://bair.berkeley.edu/blog/2026/05/08/adaptive-parallel-reasoning/" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+    <div class="section section--ai_tools">
+      <div class="section-title">AI 應用實踐</div>
+      
+      <div class="entry">• <strong>Google AI agents</strong> 以約 916 美元建構作業系統的說法引發獨立評測熱議，分析指出成本計算方式存在爭議，AI 代理自動化落地仍需嚴謹驗證。 <a href="https://www.normaltech.ai/p/did-googles-ai-agents-really-build" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Anthropic</strong> 疑似洩露新模型 <strong>Oceanus</strong>，同期 ChatGPT Dreaming 上線、遞迴自我改進研究進展，AI 模型能力競賽持續加速，PM 選型壓力上升。 <a href="https://tldr.tech/ai/2026-06-05" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Meta AI</strong> 客服代理遭攻擊者利用社交工程竊取 Instagram 帳號，暴露 <strong>AI Agent</strong> 在身份驗證與權限邊界上的安全漏洞，企業導入需強化 guardrail 設計。 <a href="https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>DeepSeek</strong> 傳出新一輪募資動向，<strong>Meta</strong> 旗艦模型發布再度延遲，<strong>Gemma 4 12B</strong> 同步推出，開源模型生態競爭格局持續演變。 <a href="https://tldr.tech/ai/2026-06-04" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+    <div class="section section--social">
+      <div class="section-title">X / Threads 熱議</div>
+      
+      <div class="entry">• <strong>SpaceX IPO</strong> 定價消息與 <strong>Meta AI Agents</strong> 商業化方案成為本週科技社群最熱議話題，創業者與投資人積極討論 AI Agent 商業模式的可行路徑。 <a href="https://tldr.tech/tech/2026-06-04" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• <strong>Anthropic IPO</strong> 傳言、<strong>NVIDIA AI PC</strong> 佈局及以 AI 取代技術面試三大議題在 X / Threads 引爆討論，AI 對就業市場衝擊的焦慮持續升溫。 <a href="https://tldr.tech/tech/2026-06-02" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• MIT Technology Review 報導 AI 聊天機器人對人類大腦認知控制的潛在影響，心理學家 Gloria Mark 警告長期依賴 AI 可能削弱自主思考能力。 <a href="https://www.technologyreview.com/2026/06/05/1138427/are-ai-chatbots-making-us-lose-control-of-our-brains/" target="_blank" rel="noopener">來源</a></div>
+      
+      <div class="entry">• Reddit 熱議一封 AI 生成的超詳細求職拒絕信，引發職場社群對企業使用 <strong>AI HR 工具</strong>的強烈反彈，人機互動邊界成為新一輪社會討論焦點。 <a href="https://www.reddit.com/r/artificial/comments/1tyimc0/a_company_just_sent_me_the_most_detailed/" target="_blank" rel="noopener">來源</a></div>
+      
+    </div>
+    
+
+    <div class="footer">Daily Briefing · Powered by Claude</div>
+
+  </div>
+</body>
 </html>
