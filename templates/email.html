@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ briefing.date }} 早報</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 28px 20px 56px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 16px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #64748b;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 28px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .keyword {
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 3px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    /* ── Watchlist (full width) ── */
+    .watchlist-row {
+      margin-bottom: 16px;
+    }
+
+    /* ── Two-column grid (desktop) ── */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 860px) {
+      .sections-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ── Section cards ── */
+    .section {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px 24px;
+      border-left: 4px solid var(--accent, #64748b);
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent, #64748b);
+      margin-bottom: 14px;
+    }
+
+    /* ── Entries ── */
+    .entry {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #cbd5e1;
+      padding: 10px 0;
+      border-bottom: 1px solid #253047;
+    }
+
+    .entry:first-of-type { padding-top: 0; }
+    .entry:last-of-type  { border-bottom: none; padding-bottom: 0; }
+
+    .entry strong { color: #f1f5f9; font-weight: 600; }
+
+    .entry a {
+      display: inline-block;
+      color: #64748b;
+      font-size: 11px;
+      text-decoration: none;
+      border: 1px solid #334155;
+      padding: 1px 7px;
+      border-radius: 4px;
+      margin-left: 5px;
+      vertical-align: middle;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .entry a:hover { color: #94a3b8; border-color: #475569; }
+
+    /* ── Per-category accent colours ── */
+    .section--watchlist {
+      --accent: #f59e0b;
+      background: #1c1a0f;
+      border-color: #44380a;
+    }
+    .section--watchlist .section-title::before { content: "📌 "; }
+    .section--geo      { --accent: #60a5fa; }
+    .section--finance  { --accent: #34d399; }
+    .section--tech     { --accent: #a78bfa; }
+    .section--ai_tech  { --accent: #fbbf24; }
+    .section--ai_tools { --accent: #f472b6; }
+    .section--social   { --accent: #2dd4bf; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      color: #334155;
+      font-size: 11px;
+      padding-top: 24px;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="date">{{ briefing.date }}</div>
+      <div class="headline">{{ briefing.headline }}</div>
+      <div class="keywords">
+        {% for keyword in briefing.keywords %}
+        <span class="keyword">{{ keyword }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% for section in sections %}
+      {% if section.key == "watchlist" %}
+      <div class="watchlist-row">
+        <div class="section section--watchlist">
+          <div class="section-title">{{ section.label }}</div>
+          {% for item in section.entries %}
+          <div class="entry">{{ item | safe }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+
+    <div class="sections-grid">
+      {% for section in sections %}
+        {% if section.key != "watchlist" %}
+        <div class="section section--{{ section.key }}">
+          <div class="section-title">{{ section.label }}</div>
+          {% for item in section.entries %}
+          <div class="entry">{{ item | safe }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="footer">Daily Briefing · Powered by Claude</div>
+
+  </div>
+</body>
+</html>
