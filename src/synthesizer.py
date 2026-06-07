@@ -31,6 +31,47 @@ def load_context_md() -> str:
 
 SYSTEM_PROMPT = load_context_md()
 
+BRIEFING_TOOL: dict[str, Any] = {
+    "name": "produce_briefing",
+    "description": "產出今日早報結構化資料",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "date": {
+                "type": "string",
+                "description": "日期，格式 YYYY年MM月DD日 星期X",
+            },
+            "headline": {
+                "type": "string",
+                "description": "今日最重要一件事，15字內",
+            },
+            "watchlist": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "追蹤議題更新，每條「• **議題**：動向 [來源](URL)」",
+            },
+            "sections": {
+                "type": "object",
+                "properties": {
+                    "geo":      {"type": "array", "items": {"type": "string"}},
+                    "finance":  {"type": "array", "items": {"type": "string"}},
+                    "tech":     {"type": "array", "items": {"type": "string"}},
+                    "ai_tech":  {"type": "array", "items": {"type": "string"}},
+                    "ai_tools": {"type": "array", "items": {"type": "string"}},
+                    "social":   {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["geo", "finance", "tech", "ai_tech", "ai_tools", "social"],
+            },
+            "keywords": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "4個關鍵字",
+            },
+        },
+        "required": ["date", "headline", "watchlist", "sections", "keywords"],
+    },
+}
+
 WEEKDAYS = "一二三四五六日"
 
 
@@ -57,7 +98,7 @@ def synthesize(
         try:
             message = client.messages.create(
                 model="claude-sonnet-4-6",
-                max_tokens=4096,
+                max_tokens=8192,
                 system=[
                     {
                         "type": "text",
@@ -65,16 +106,23 @@ def synthesize(
                         "cache_control": {"type": "ephemeral"},
                     }
                 ],
+                tools=[BRIEFING_TOOL],
+                tool_choice={"type": "tool", "name": "produce_briefing"},
                 messages=[{"role": "user", "content": prompt}],
             )
+            tool_block = next(
+                (b for b in message.content if hasattr(b, "type") and b.type == "tool_use"),
+                None,
+            )
+            if tool_block is not None:
+                return tool_block.input
+            # fallback: parse text if tool block absent
             raw_text = next(
-                (block.text for block in message.content if hasattr(block, "text")),
-                "",
+                (b.text for b in message.content if hasattr(b, "text")), ""
             )
             if not raw_text.strip():
                 raise ValueError(
-                    f"Empty response from API (stop_reason={message.stop_reason}, "
-                    f"content_types={[type(b).__name__ for b in message.content]})"
+                    f"Empty response from API (stop_reason={message.stop_reason})"
                 )
             return extract_json(raw_text)
         except Exception as exc:  # pragma: no cover
