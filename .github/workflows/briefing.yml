@@ -2,7 +2,7 @@ name: Daily Briefing
 
 on:
   schedule:
-    - cron: "0 1 * * 1-5"
+    - cron: "0 1 * * *"
   workflow_dispatch:
 
 jobs:
@@ -36,10 +36,14 @@ jobs:
         run: python main.py
 
       - name: Prepare deploy directory
-        run: mkdir -p _site && cp preview.html _site/index.html
+        run: |
+          mkdir -p _site
+          cp preview.html _site/index.html
+          cp preview.html _site/$(date -u +%Y-%m-%d).html
 
       - name: Publish preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
+          keep_files: true
