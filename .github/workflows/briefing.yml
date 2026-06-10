@@ -2,7 +2,8 @@ name: Daily Briefing
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "30 23 * * *"  # 07:30 Taipei → target 08:00
+    - cron: "0 11 * * *"   # 19:00 Taipei → target 20:00
   workflow_dispatch:
 
 jobs:
