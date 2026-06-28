@@ -22,7 +22,7 @@ COMPETITOR_SLUGS = {
     "Dahua Technology": "dahua-technology",
     "Axis Communications": "axis-communications",
     "Hanwha Vision": "hanwha-vision",
-    "Uniview": "uniview",
+    # Uniview removed until a working LinkedIn company slug can be confirmed.
 }
 
 INDUSTRY_TOPICS = [
