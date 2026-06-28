@@ -54,6 +54,15 @@ def build_sections_for_view(briefing: dict[str, Any]) -> list[dict[str, Any]]:
         }
         for key, config in SOURCES.items()
     ])
+
+    competitors_entries = section_payload.get("competitors", [])
+    if competitors_entries:
+        sections.append({
+            "key": "competitors",
+            "label": "競品 / 安防產業動態 (LinkedIn)",
+            "entries": [format_entry_html(item) for item in competitors_entries],
+        })
+
     return sections
 
 
