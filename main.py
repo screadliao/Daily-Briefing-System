@@ -13,6 +13,7 @@ from src.delivery import deliver
 from src.fetcher import fetch_all
 from src.formatter import to_html_email
 from src.synthesizer import synthesize
+from src.unifapi_social import search_linkedin
 from src.watchlist import WATCHLIST
 
 
@@ -38,7 +39,8 @@ def main() -> int:
     raw_articles = fetch_all()
     raw_articles = filter_articles(raw_articles, BLOCKLIST)
     brave_articles = search_watchlist(WATCHLIST)
-    briefing = synthesize(raw_articles, brave_articles)
+    linkedin_articles = search_linkedin()
+    briefing = synthesize(raw_articles, brave_articles, linkedin_articles)
 
     args.save_html.write_text(to_html_email(briefing), encoding="utf-8")
 
