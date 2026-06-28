@@ -82,12 +82,16 @@
     "scrape": []
   },
   "social": {
-    "label": "X / Threads 熱議",
+    "label": "X / Reddit 熱議（科技 / 政治 / 世界）",
     "feeds": [
       "https://trends24.in/rss/taiwan/",
       "https://trends24.in/rss/united-states/",
       "https://tldr.tech/api/rss/tech",
       "https://www.technologyreview.com/feed/",
+      "https://www.reddit.com/r/worldnews/top/.rss?t=day",
+      "https://www.reddit.com/r/geopolitics/top/.rss?t=day",
+      "https://www.reddit.com/r/news/top/.rss?t=day",
+      "https://www.reddit.com/r/technology/top/.rss?t=day",
       "https://www.reddit.com/r/artificial/top/.rss?t=day",
       "https://www.reddit.com/r/MachineLearning/top/.rss?t=day",
       "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day",

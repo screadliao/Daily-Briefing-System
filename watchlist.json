@@ -1,9 +1,14 @@
 {
   "topics": [
-    "韓國政局 / 韓國選舉 / 韓國抗議 / South Korea",
-    "Ambarella",
-    "NVIDIA Blackwell",
     "台海局勢",
-    "AI視覺監控"
+    "AI視覺監控",
+    "Ambarella chip CV7",
+    "NVIDIA Jetson edge AI",
+    "Qualcomm vision AI chip",
+    "Hailo AI chip",
+    "MediaTek security camera SoC",
+    "Hikvision new product",
+    "Dahua Technology",
+    "Axis Communications OR Hanwha Vision OR Uniview camera"
   ]
 }

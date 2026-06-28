@@ -53,14 +53,19 @@ BRIEFING_TOOL: dict[str, Any] = {
             "sections": {
                 "type": "object",
                 "properties": {
-                    "geo":      {"type": "array", "items": {"type": "string"}},
-                    "finance":  {"type": "array", "items": {"type": "string"}},
-                    "tech":     {"type": "array", "items": {"type": "string"}},
-                    "ai_tech":  {"type": "array", "items": {"type": "string"}},
-                    "ai_tools": {"type": "array", "items": {"type": "string"}},
-                    "social":   {"type": "array", "items": {"type": "string"}},
+                    "geo":         {"type": "array", "items": {"type": "string"}},
+                    "finance":     {"type": "array", "items": {"type": "string"}},
+                    "tech":        {"type": "array", "items": {"type": "string"}},
+                    "ai_tech":     {"type": "array", "items": {"type": "string"}},
+                    "ai_tools":    {"type": "array", "items": {"type": "string"}},
+                    "social":      {"type": "array", "items": {"type": "string"}},
+                    "competitors": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "競品與安防產業動態（來自 LinkedIn），每條「• **公司/話題**：動向 [來源](URL)」，無資料則輸出空陣列",
+                    },
                 },
-                "required": ["geo", "finance", "tech", "ai_tech", "ai_tools", "social"],
+                "required": ["geo", "finance", "tech", "ai_tech", "ai_tools", "social", "competitors"],
             },
             "keywords": {
                 "type": "array",
@@ -78,6 +83,7 @@ WEEKDAYS = "一二三四五六日"
 def synthesize(
     raw_articles: dict[str, list[dict[str, str]]],
     brave_articles: list[dict[str, str]] | None = None,
+    linkedin_articles: list[dict[str, str]] | None = None,
     today: datetime | None = None,
 ) -> dict[str, Any]:
     today = today or datetime.now()
@@ -91,7 +97,8 @@ def synthesize(
     client = anthropic.Anthropic(api_key=api_key)
     watchlist_line = f"追蹤議題：{' / '.join(WATCHLIST)}\n\n" if WATCHLIST else ""
     brave_section = _format_brave_for_prompt(brave_articles) if brave_articles else ""
-    prompt = f"今天是 {today_str}。{watchlist_line}{brave_section}以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
+    linkedin_section = _format_linkedin_for_prompt(linkedin_articles) if linkedin_articles else ""
+    prompt = f"今天是 {today_str}。{watchlist_line}{brave_section}{linkedin_section}以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
 
     last_error: Exception | None = None
     for attempt in range(3):
@@ -133,6 +140,23 @@ def synthesize(
     if last_error is not None and os.getenv("DRY_RUN", "").lower() == "true":
         return build_fallback_briefing(raw_articles, today_str)
     raise RuntimeError(f"Claude API failed after retries: {last_error}") from last_error
+
+
+def _format_linkedin_for_prompt(linkedin_articles: list[dict[str, str]]) -> str:
+    if not linkedin_articles:
+        return ""
+    lines = ["【LinkedIn 競品 / 安防產業動態】"]
+    for item in linkedin_articles:
+        source = item.get("source", "").replace("linkedin:", "").replace("linkedin_topic:", "")
+        title = item.get("title", "").strip()
+        url = item.get("url", "").strip()
+        summary = item.get("summary", "").strip()
+        line = f"- [{source}] {title} | {url}"
+        if summary and summary != title:
+            line += f" | {summary[:200]}"
+        lines.append(line)
+    lines.append("")
+    return "\n".join(lines) + "\n"
 
 
 def _format_brave_for_prompt(brave_articles: list[dict[str, str]]) -> str:
