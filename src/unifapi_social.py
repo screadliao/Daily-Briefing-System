@@ -18,11 +18,11 @@ RESULTS_PER_QUERY = 5
 
 # LinkedIn URL slugs for competitor company pages
 COMPETITOR_SLUGS = {
-    "Hikvision": "hikvision",
+    # removed: Hikvision slug returns HTTP 400 upstream_error — correct slug TBD
     "Dahua Technology": "dahua-technology",
     "Axis Communications": "axis-communications",
     "Hanwha Vision": "hanwha-vision",
-    "Uniview": "uniview",
+    # removed: Uniview slug returns HTTP 400 upstream_error — correct slug TBD
 }
 
 INDUSTRY_TOPICS = [
