@@ -37,10 +37,6 @@
       "seen_at": "2026-07-12"
     },
     {
-      "url": "https://androidcentral.com/phones/bigmes-hibreak-dual-2-looks-like-a-better-step-in-the-right-direction-will-launch-soon",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://androidguys.com/news/xgimi-expands-elfin-flip-lineup-with-premium-4k-and-laser-smart-projectors",
       "seen_at": "2026-07-16"
     },
@@ -49,16 +45,16 @@
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://arabnews.com/node/2650285",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://arenaev.com/ds_n7_arrives_with_up_to_740_km_range_focuses_on_a_luxury_driving_experience-news-6055.php",
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://arstechnica.com/information-technology/2026/07/allstate-accuses-broadcom-of-auditing-it-because-it-quit-vmware-ca/",
-      "seen_at": "2026-07-10"
+      "url": "https://arstechnica.com/gadgets/2026/07/hp-fined-1-4-billion-rupees-for-cartelization-of-ink-cartridges-toner-pcs/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arstechnica.com/information-technology/2026/07/energy-ipos-surge-as-investors-hunt-for-ways-to-play-ai-boom/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://arstechnica.com/information-technology/2026/07/sheetz-moves-838-stores-off-vmware-broadcom-created-too-much-uncertainty/",
@@ -73,8 +69,8 @@
       "seen_at": "2026-07-14"
     },
     {
-      "url": "https://arstechnica.com/security/2026/07/patch-for-windows-defender-0-day-could-allow-attackers-to-fill-hard-disk/",
-      "seen_at": "2026-07-10"
+      "url": "https://arstechnica.com/security/2026/07/now-even-russias-most-elite-hackers-are-using-clickfix-to-infect-devices/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://arstechnica.com/security/2026/07/the-us-government-warns-that-russia-state-hackers-are-coming-after-your-router/",
@@ -83,46 +79,6 @@
     {
       "url": "https://arstechnica.com/security/2026/07/windows-0-day-drops-the-same-day-microsoft-releases-record-number-of-patches/",
       "seen_at": "2026-07-16"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06601",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06605",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06607",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06609",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06610",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06624",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06720",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06757",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06760",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.06764",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://arxiv.org/abs/2607.07716",
@@ -261,8 +217,44 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://audioholics.com/news/dynaudio-pulls-out-of-north-america",
-      "seen_at": "2026-07-10"
+      "url": "https://arxiv.org/abs/2607.13037",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13042",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13043",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13045",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13046",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13047",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13049",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13069",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13073",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.13104",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://bbc.com/japanese/articles/cdxdx6r3geqo",
@@ -321,6 +313,10 @@
       "seen_at": "2026-07-12"
     },
     {
+      "url": "https://cnbc.com/2026/07/16/nvidia-reveals-new-ai-model-and-expands-japans-physical-ai-ecosystem.html",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://cnet.com/tech/mobile/e-ink-new-phone-hisense-a10-detachable-screen",
       "seen_at": "2026-07-15"
     },
@@ -331,6 +327,10 @@
     {
       "url": "https://deccanchronicle.com/entertainment/dhamaal-4-review-bigger-wilder-packed-with-treasure-hunting-madness-1970148",
       "seen_at": "2026-07-12"
+    },
+    {
+      "url": "https://digitalsecuritymagazine.com/2026/07/16/hanwha-vision-adapta-serie-x-entornos-extremos",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://digitaltrends.com/computing/apples-m7-ultra-could-take-on-nvidia-blackwell-with-a-staggering-1-5tb-of-memory",
@@ -385,22 +385,6 @@
       "seen_at": "2026-07-14"
     },
     {
-      "url": "https://es.motor1.com/reviews/800981/comprar-suv-barato-precio-barato-omoda7-superhibrido-32990euros",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://ettoday.net/news/20260709/3198278.htm",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://finance.biggo.com/news/3f4078d1-eb6a-4838-be9b-fd3c19e15146",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://finance.technews.tw/2026/07/10/tripod-3044-202606-financial-report/",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://finance.technews.tw/2026/07/11/spacex-joins-nasdaq-100-index/",
       "seen_at": "2026-07-11"
     },
@@ -437,12 +421,12 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://finance.yahoo.com/m/082a233e-c56a-3b99-a968-08ce2bfc43f7/dow-jones-futures-fall%2C-oil.html?.tsrc=rss",
-      "seen_at": "2026-07-13"
+      "url": "https://finance.technews.tw/2026/07/17/short-form-video-rise-competition-intensifies-netflix-q3-growth-slowdown/",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://finance.yahoo.com/m/6e8baca0-b324-3166-b745-36b306c19567/dow-jones-futures%3A-micron%2C.html?.tsrc=rss",
-      "seen_at": "2026-07-10"
+      "url": "https://finance.yahoo.com/m/082a233e-c56a-3b99-a968-08ce2bfc43f7/dow-jones-futures-fall%2C-oil.html?.tsrc=rss",
+      "seen_at": "2026-07-13"
     },
     {
       "url": "https://finance.yahoo.com/m/9b2a3551-5bcd-34f5-9f61-00ac74d553c1/dow-jones-futures%3A-apple%2C.html?.tsrc=rss",
@@ -453,16 +437,16 @@
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://finance.yahoo.com/technology/ai/articles/exclusive-meta-put-ai-chip-112222555.html",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://finance.yahoo.com/technology/ai/articles/hidden-ai-chip-supplier-poised-011600877.html",
       "seen_at": "2026-07-13"
     },
     {
       "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-starts-h200-ai-chip-100704048.html",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://finimize.com/content/klas-earnings-could-show-ai-chip-gear-still-tight",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://fool.com/investing/2026/07/10/amd-vs-qualcomm-which-ai-pc-stock-has-the-better-l",
@@ -475,22 +459,6 @@
     {
       "url": "https://fool.com/investing/2026/07/15/qualcomm-might-be-a-hot-ai-stock-next-year",
       "seen_at": "2026-07-16"
-    },
-    {
-      "url": "https://foreignpolicy.com/2026/07/09/iraq-prime-minister-iran-oil-militias-corruption/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://foreignpolicy.com/2026/07/09/nato-summit-ankara-trump-europe-rutte-erdogan/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://foreignpolicy.com/2026/07/09/ukraine-russia-war-theory-victory-putin-zelensky-crimea-missiles-deep-strikes-oil-refinieries/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://foreignpolicy.com/2026/07/09/us-iran-war-strikes-intensify-cease-fire-over-trump-strait-hormuz/",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://foreignpolicy.com/2026/07/10/cia-history-communist-albania-cold-war-kim-philby-review/",
@@ -573,8 +541,24 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://foreignpolicyjournal.com/2026/07/09/qualcomm-nasdaq-qcom-stock-price-could-double-to-370-as-edge-ai-reshapes-the-chip-landscape",
-      "seen_at": "2026-07-10"
+      "url": "https://foreignpolicy.com/2026/07/16/elbridge-colby-middle-powers-america-first-trump/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://foreignpolicy.com/2026/07/16/germany-military-power-bundeswehr-nato-europe-russia/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://foreignpolicy.com/2026/07/16/nigeria-diplomacy-west-africa-bola-tinubu-doctrine/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://foreignpolicy.com/2026/07/16/north-korea-sanctions-nuclear-weapons-united-states-russia-china-united-nations-security-council/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://foreignpolicy.com/2026/07/16/ukraine-zelensky-cabinet-reshuffle-protests-fedorov-russia-war-drones/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://gadgetbridge.com/redmi-turbo-5-review-the-best-deal-in-the-midrange-segment-right-now",
@@ -589,12 +573,16 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://hk01.com/%E5%8F%B0%E7%81%A3%E6%96%B0%E8%81%9E/60368158/%E8%B6%85%E5%BC%B7%E9%A2%B1%E9%A2%A8%E5%B7%B4%E5%A8%81%E9%80%B2%E8%A1%8C-%E9%9B%99%E7%9C%BC%E7%89%86%E7%BD%AE%E6%8F%9B-%E5%8F%B0%E7%81%A3%E9%A0%9014%E6%99%8230%E5%88%86%E7%99%BC%E6%B5%B7%E4%B8%8A%E9%A2%B1%E9%A2%A8%E8%AD%A6%E5%A0%B1",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://hothardware.com/news/samsung-gaia-ai-npu-rumor",
       "seen_at": "2026-07-12"
+    },
+    {
+      "url": "https://howdoiuseai.com/blog/2026-07-16-qualcomm-wants-ai-to-run-everywhere-not-just-in-th",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://huggingface.co/blog/Dharma-AI/newer-models-same-advantages",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://huggingface.co/blog/allenai/shippy-tech-blog",
@@ -613,8 +601,16 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://huggingface.co/blog/nvidia/nemotron-3-embed-wins-rteb",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://huggingface.co/blog/real-world-voiceeq",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://huggingface.co/blog/thinkingmachines-inkling",
@@ -657,6 +653,10 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://japan.focustaiwan.tw/society/202607160002",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://koc.com.tw/archives/649008",
       "seen_at": "2026-07-14"
     },
@@ -681,12 +681,20 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://macaubusiness.com/geniatech-expands-xpi-industrial-sbc-series-a-raspberry-pi-alternative-for-edge-ai-deployments",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://macdailynews.com/2026/07/13/apple-skips-m6-pro-max-fast-tracks-ai-focused-m7-chips-touchscreen-macbook-pro-looms",
       "seen_at": "2026-07-14"
     },
     {
       "url": "https://mainichi.jp/articles/20260714/k00/00m/030/277000c",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://markets.financialcontent.com/stocks/article/stockstory-2026-7-16-lattice-semiconductor-amd-and-qualcomm-shares-are-falling-what-you-need-to-know",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://mdpi.com/2504-4990/8/7/204",
@@ -697,20 +705,12 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://mezha.net/eng/bukvy/e3c532f4_anthropic_launches_reflect/",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://minimax.io/news/minimax-hailuo-23",
       "seen_at": "2026-07-12"
     },
     {
       "url": "https://moneycheck.com/market-roundup-sk-hynix-launches-on-wall-street-as-ai-chip-stocks-rebound-and-spacex-enters-nasdaq-100/",
       "seen_at": "2026-07-12"
-    },
-    {
-      "url": "https://motor16.com/comerciales/farizon-v7e-ultima-milla",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://mundodeportivo.com/ocio/coches/20260712/1004205114/nuevo-ds-no7-tecnologico-confortable.html",
@@ -725,8 +725,8 @@
       "seen_at": "2026-07-13"
     },
     {
-      "url": "https://news.sina.com.cn/c/2026-07-09/doc-inihenca8283359.shtml",
-      "seen_at": "2026-07-10"
+      "url": "https://news.mynavi.jp/techplus/article/20260716-4707482",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://news.sky.com/story/australian-police-release-unseen-photos-25-years-after-british-backpacker-peter-falconios-murder-13563240",
@@ -741,6 +741,10 @@
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://news.sky.com/story/eleven-killed-as-fire-breaks-out-at-algerian-orphanage-13563931",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://news.sky.com/story/europes-first-total-solar-eclipse-in-almost-30-years-what-you-need-to-know-13560160",
       "seen_at": "2026-07-11"
     },
@@ -753,6 +757,10 @@
       "seen_at": "2026-07-14"
     },
     {
+      "url": "https://news.sky.com/story/former-italian-motorway-boss-sentenced-over-genoa-bridge-tragedy-13564047",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://news.sky.com/story/gibraltar-ushers-in-new-era-as-british-territorys-border-fence-with-spain-removed-13563633",
       "seen_at": "2026-07-16"
     },
@@ -763,6 +771,10 @@
     {
       "url": "https://news.sky.com/story/gus-the-50m-t-rex-breaks-dinosaur-fossil-sale-record-at-new-york-auction-13563667",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://news.sky.com/story/hundreds-of-rohingya-feared-dead-after-boats-carrying-refugees-capsize-in-bay-of-bengal-13563927",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://news.sky.com/story/if-we-die-we-die-together-wife-of-passenger-sucked-out-of-plane-window-describes-ordeal-13563378",
@@ -785,10 +797,6 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://news.sky.com/story/protests-threaten-to-spiral-out-of-control-in-india-after-rape-and-murder-of-12-year-old-girl-saw-innocent-man-killed-13562029",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://news.sky.com/story/rescuers-search-for-spanish-wildfire-survivors-as-woman-issues-plea-for-help-over-missing-parents-13562489",
       "seen_at": "2026-07-12"
     },
@@ -799,6 +807,10 @@
     {
       "url": "https://news.sky.com/story/senators-demand-pentagon-reveals-outcome-of-minab-school-strike-probe-13563191",
       "seen_at": "2026-07-14"
+    },
+    {
+      "url": "https://news.sky.com/story/tiktok-being-investigated-by-ofcom-over-child-safety-measures-13563884",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://news.sky.com/story/two-dead-and-four-injured-in-shooting-at-toronto-festival-police-say-13562675",
@@ -833,8 +845,8 @@
       "seen_at": "2026-07-14"
     },
     {
-      "url": "https://news.sky.com/story/woman-forced-to-bury-husband-in-cape-verde-after-he-fell-ill-and-died-while-on-holiday-13562053",
-      "seen_at": "2026-07-10"
+      "url": "https://news.sky.com/story/wildfires-force-thousands-to-evacuate-as-skies-darken-over-us-and-canadian-cities-13563962",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://news.sky.com/story/world-cup-ex-spanish-pm-under-fire-for-saying-france-has-no-french-players-13563099",
@@ -877,24 +889,12 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://openai.com/index/bio-bug-bounty",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work",
-      "seen_at": "2026-07-10"
+      "url": "https://openai.com/index/cars24",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://openai.com/index/deutsche-telekom",
       "seen_at": "2026-07-11"
-    },
-    {
-      "url": "https://openai.com/index/gpt-5-6",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://openai.com/index/managing-ai-investments-in-agentic-era",
@@ -903,6 +903,10 @@
     {
       "url": "https://openai.com/index/unlocking-self-improvement-gpt-red",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://openai.com/index/why-teens-deserve-access-safe-ai",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://openpr.com/news/4575165/low-altitude-integrated-sensing-and-communication-isac",
@@ -929,10 +933,6 @@
       "seen_at": "2026-07-13"
     },
     {
-      "url": "https://prnewswire.com/news-releases/bringing-fans-closer-to-the-game-hisense-enhances-fifa-world-cup-2026-viewing-through-display-innovation-302821566.html",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://prnewswire.com/news-releases/now-is-your-moment-huawei-unlocks-new-possibilities-for-every-moment-through-all-scenario-innovation-302825082.html",
       "seen_at": "2026-07-15"
     },
@@ -947,6 +947,10 @@
     {
       "url": "https://rfa.org/english/china/2026/07/07/china-missile-test-pacific-fiji-australia/",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://rfa.org/english/korea/2026/07/16/north-korea-rocket-shelter-buildings/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://rfa.org/english/myanmar/2026/07/10/aung-san-statue-removed-burma-suu-kyi-father/",
@@ -979,34 +983,6 @@
     {
       "url": "https://securityboulevard.com/2026/07/the-most-dangerous-answer-in-the-soc-is-a-confident-one",
       "seen_at": "2026-07-14"
-    },
-    {
-      "url": "https://securityinformed.com/news/secure-entrance-control-automatic-systems-co-1929-ga.1783599676.html",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://securityinformed.com/news/zimperium-leads-mobile-threat-defense-ai-co-1641807473-ga.1783596623.html",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://seekingalpha.com/article/4921040-aritzia-inc-atz-ca-q1-2027-earnings-call-transcript?source=feed_all_articles",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://seekingalpha.com/article/4921051-rackspace-stock-worth-buying-dip-ai-partnerships-turn-growth-trajectory-around?source=feed_all_articles",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://seekingalpha.com/article/4921052-huntington-bancshares-financials-have-improving-technicals-and-fundamentals?source=feed_all_articles",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://seekingalpha.com/article/4921055-initial-unemployment-claims-down-2k-lower-than-expected?source=feed_all_articles",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://seekingalpha.com/article/4921057-selling-winners-buying-losers?source=feed_all_articles",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://seekingalpha.com/article/4921260-sk-hynix-is-surging-3-ai-chip-stocks-still-poised-to-run",
@@ -1113,6 +1089,26 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://seekingalpha.com/article/4922713-ocado-group-plc-ocddy-q2-2026-earnings-call-transcript?source=feed_all_articles",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4922765-nephros-inc-neph-discusses-evolving-water-safety-strategies-and-expansion-beyond-filtration?source=feed_all_articles",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4922801-intuitive-surgical-inc-isrg-q2-2026-earnings-call-transcript?source=feed_all_articles",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4922813-retail-sales-rise-for-fifth-straight-month?source=feed_all_articles",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4922814-nahb-housing-market-index-affordability-challenges-pull-down-builder-sentiment?source=feed_all_articles",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://semiengineering.com/3nm-gaa-fet-sram-review-evaluates-self-heating-and-radiation-hardness-sjsu-sandia/",
       "seen_at": "2026-07-13"
     },
@@ -1121,16 +1117,16 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://semiengineering.com/ai-is-rewriting-the-ip-playbook/",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://semiengineering.com/ai-models-on-the-edge/",
       "seen_at": "2026-07-15"
     },
     {
       "url": "https://semiengineering.com/blog-review-july-15-3/",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://semiengineering.com/can-fine-pitch-hybrid-bonding-go-high-volume/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://semiengineering.com/change-is-tough/",
@@ -1143,6 +1139,10 @@
     {
       "url": "https://semiengineering.com/eda-revenue-up-12-7-apac-roars-back/",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://semiengineering.com/from-feature-scale-simulation-to-digital-twins-helping-process-engineers-tackle-growing-complexity/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://semiengineering.com/hardware-abstraction-layer-study-targets-software-defined-vehicles-u-of-stuttgart/",
@@ -1161,8 +1161,16 @@
       "seen_at": "2026-07-14"
     },
     {
+      "url": "https://semiengineering.com/new-nonvolatile-memory-winners-emerge/",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://semiengineering.com/open-dram-model-for-pim-analysis-in-3d-dram-georgia-tech/",
       "seen_at": "2026-07-13"
+    },
+    {
+      "url": "https://semiengineering.com/optimizing-the-nano-tsv-to-bpr-connection-in-backside-power-networks/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://semiengineering.com/research-bits-july-14/",
@@ -1181,28 +1189,12 @@
       "seen_at": "2026-07-14"
     },
     {
-      "url": "https://semiengineering.com/the-architecture-decisions-behind-a-production-ready-eda-ai-agent/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://semiengineering.com/the-expansion-of-lpddr-into-edge-ai-platforms/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://semiengineering.com/ualink-under-the-hood-why-full-stack-verification-wins/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://semiengineering.com/where-does-quantum-computing-stand/",
-      "seen_at": "2026-07-10"
+      "url": "https://semiengineering.com/why-metal-tim-warpage-simulations-fail-and-how-to-fix-them/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://setn.com/news/1871605",
       "seen_at": "2026-07-14"
-    },
-    {
-      "url": "https://shacknews.com/article/149955/samsung-ai-pc-chip-arm-gaia",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://simonwillison.net/2026/Jul/10/nilay-patel/#atom-everything",
@@ -1269,24 +1261,28 @@
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://simonwillison.net/2026/Jul/16/bad-codex-bug/#atom-everything",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jul/16/firefox-in-webassembly/#atom-everything",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://simonwillison.net/2026/Jul/16/grok-mermaid/#atom-everything",
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://simonwillison.net/2026/Jul/9/gpt-5-6/#atom-everything",
-      "seen_at": "2026-07-10"
+      "url": "https://simonwillison.net/2026/Jul/16/inkling/#atom-everything",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://simonwillison.net/2026/Jul/9/llm-meta-ai/#atom-everything",
-      "seen_at": "2026-07-10"
+      "url": "https://simonwillison.net/2026/Jul/16/kimi-k3/#atom-everything",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://simonwillison.net/2026/Jul/9/llm/#atom-everything",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://simonwillison.net/2026/Jul/9/muse-spark-1-1/#atom-everything",
-      "seen_at": "2026-07-10"
+      "url": "https://simonwillison.net/2026/Jul/16/mermaid-ascii/#atom-everything",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://simplywall.st/stocks/us/semiconductors/nasdaq-ceva/ceva/news/ceva-ceva-stock-looks-fairly-priced-despite-a-landmark-ai-de",
@@ -1297,28 +1293,20 @@
       "seen_at": "2026-07-11"
     },
     {
+      "url": "https://stockcast.tw/en",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://stocktitan.net/news/NVDA/japan-s-enterprises-and-startups-build-industry-specialized-ai-with-zk7kvtmri2zp.html",
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://stocktwits.com/news-articles/markets/equity/mu-amd-mrvl-qcom-stocks-surge-bernstein-analyst-ai-memory-demand/cZmYPqGR7nm",
-      "seen_at": "2026-07-10"
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-chip-stocks-slide-on-tsmc-capex-concerns-tsm-mu-nvda-unh-googl-in-focus/cZZEFzQR7s6",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://technews.tw/2026/07/10/a-mini-robot-may-simplify-dental-treatment-suggests-research/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://technews.tw/2026/07/10/ai-era-teams-need-pizzas/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://technews.tw/2026/07/10/china-weighs-limits-on-the-ai-models-american-companies-love/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://technews.tw/2026/07/10/even-at-90-the-brain-can-still-keep-improving/",
-      "seen_at": "2026-07-10"
+      "url": "https://techcrunch.com/2026/07/16/sheryl-sandberg-leads-10-million-investment-in-ai-powered-vehicle-inspection-service/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://technews.tw/2026/07/11/fidji-simo-announces-transition-from-full-time-openai-role-to-part-time-advisor/",
@@ -1397,6 +1385,22 @@
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://technews.tw/2026/07/17/australia-blocks-chinese-investment-rare-earth-industry-testing-balance-freedom-security/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://technews.tw/2026/07/17/former-openai-engineer-survival-strategies-ai-era/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://technews.tw/2026/07/17/jensen-huang-backs-japan-noetra-building-domestic-ai-platform/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://technews.tw/2026/07/17/tsmc-boosts-us-investment-commerce-dept-tens-thousands-jobs/",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://techradar.com/pro/hix-ai-review",
       "seen_at": "2026-07-11"
     },
@@ -1425,10 +1429,6 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://tldr.tech/ai/2026-07-09",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://tldr.tech/ai/2026-07-10",
       "seen_at": "2026-07-11"
     },
@@ -1445,8 +1445,8 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://tldr.tech/tech/2026-07-09",
-      "seen_at": "2026-07-10"
+      "url": "https://tldr.tech/ai/2026-07-16",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://tldr.tech/tech/2026-07-10",
@@ -1465,16 +1465,16 @@
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://tldr.tech/tech/2026-07-16",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://tomshardware.com/tech-industry/artificial-intelligence/samsung-readies-gaia-ai-accelerator-for-client-devices-hp-and-lenovo-are-reportedly-validating-the-npu",
       "seen_at": "2026-07-11"
     },
     {
       "url": "https://tomshardware.com/tech-industry/semiconductors/apples-rumored-m7-ultra-targets-1-5tb-of-memory-and-blackwell-class-ai",
       "seen_at": "2026-07-14"
-    },
-    {
-      "url": "https://tvtechnology.com/production/chyrons-prime-5-4-brings-template-experience-to-more-newsrooms",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://udn.com/news/story/124945/9620788",
@@ -1489,14 +1489,6 @@
       "seen_at": "2026-07-13"
     },
     {
-      "url": "https://udn.com/news/story/6656/9618944",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://udn.com/news/story/6928/9616883",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://udn.com/news/story/7239/9627840",
       "seen_at": "2026-07-15"
     },
@@ -1505,8 +1497,8 @@
       "seen_at": "2026-07-12"
     },
     {
-      "url": "https://videocardz.com/newz/youtuber-turns-4000-amd-ryzen-ai-halo-into-the-steamos-gaming-system",
-      "seen_at": "2026-07-10"
+      "url": "https://videocardz.com/newz/nvidia-launches-blackwell-based-jetson-thor-t3000-and-t2000-for-robots",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://washingtontimes.com/news/2026/jul/10/dhs-granted-20m-body-cameras-ice-agents-fatal-houston-shooting-none",
@@ -1521,20 +1513,12 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://windowsnews.ai/article/nvidia-hugging-face-drop-open-source-gr00t-robot-ai-models-now-run-on-windows-pcs-with-jetson-deploy.436318",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://wired.com/story/the-apple-faceid-veteran-building-a-frontier-ai-model-for-the-human-brain",
       "seen_at": "2026-07-16"
     },
     {
       "url": "https://wired.com/story/thinking-machines-lab-releases-its-first-model-inkling",
       "seen_at": "2026-07-16"
-    },
-    {
-      "url": "https://world-today-news.com/ai-enabled-robotics-and-automation-in-modern-manufacturing",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://worldjournal.com/wj/story/121208/9621065",
@@ -1551,14 +1535,6 @@
     {
       "url": "https://www.aljazeera.com/economy/2026/7/10/apple-files-lawsuit-accusing-chatgpt-maker-openai-of-stealing-trade-secrets?traffic_source=rss",
       "seen_at": "2026-07-11"
-    },
-    {
-      "url": "https://www.aljazeera.com/economy/2026/7/10/how-world-bank-and-imf-loans-are-reshaping-policymaking-in-africa?traffic_source=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.aljazeera.com/news/2026/7/10/china-expands-anti-sanctions-toolkit-raising-risks-for-foreign-firms?traffic_source=rss",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.aljazeera.com/news/2026/7/10/cuba-suffers-second-island-wide-blackout-in-a-week-amid-trump-fuel-blockade?traffic_source=rss",
@@ -1605,12 +1581,16 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://www.aljazeera.com/news/2026/7/9/venezuela-earthquakes-toll-rises-to-3889-as-risk-of-disease-grows?traffic_source=rss",
-      "seen_at": "2026-07-10"
+      "url": "https://www.aljazeera.com/news/2026/7/16/sadiq-khan-joins-house-of-lords-as-outgoing-uk-pm-names-26-new-peers?traffic_source=rss",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.aljazeera.com/news/liveblog/2026/7/10/iran-war-live-fresh-attacks-on-iran-as-us-says-talks-still-on?traffic_source=rss",
-      "seen_at": "2026-07-10"
+      "url": "https://www.aljazeera.com/news/2026/7/16/venezuela-earthquake-number-of-known-dead-rises-to-nearly-5000-victims?traffic_source=rss",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.aljazeera.com/news/2026/7/16/vietnamese-activist-places-rare-national-spotlight-on-gazas-suffering?traffic_source=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.aljazeera.com/news/liveblog/2026/7/11/iran-war-live-us-demands-iran-publicly-state-strait-of-hormuz-open-for-all?traffic_source=rss",
@@ -1631,6 +1611,10 @@
     {
       "url": "https://www.aljazeera.com/news/liveblog/2026/7/16/iran-war-live-sirens-in-bahrain-kuwait-us-disables-iranian-oil-tanker?traffic_source=rss",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://www.aljazeera.com/news/liveblog/2026/7/16/iran-war-live-us-carries-out-strikes-on-civilian-infrastructure-in-south?traffic_source=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.aljazeera.com/sports/2026/7/12/bellingham-scores-twice-as-england-beat-norway-2-1-to-reach-world-cup-semis?traffic_source=rss",
@@ -1661,10 +1645,6 @@
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/7/10/britains-likely-pm-says-will-work-to-stop-the-suffering-in-gaza?traffic_source=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.aljazeera.com/video/newsfeed/2026/7/11/indian-tourists-killed-after-speedboat-capsizes-in-vietnam?traffic_source=rss",
       "seen_at": "2026-07-12"
     },
@@ -1689,6 +1669,10 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/7/16/qatar-rejects-israeli-reports-of-military-action-against-iran?traffic_source=rss",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.analyticsinsight.net/tech-news/top-tech-news-meta-ai-chip-cursor-at-50b-valuation-more",
       "seen_at": "2026-07-14"
     },
@@ -1705,6 +1689,10 @@
       "seen_at": "2026-07-11"
     },
     {
+      "url": "https://www.bbc.co.uk/news/articles/c1k13zj914mo?at_medium=RSS&at_campaign=rss",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.bbc.co.uk/news/articles/c24yev53q06o?at_medium=RSS&at_campaign=rss",
       "seen_at": "2026-07-13"
     },
@@ -1713,20 +1701,28 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://www.bbc.co.uk/news/articles/c5yze1vvlzgo?at_medium=RSS&at_campaign=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.bbc.co.uk/news/articles/c5yzy0lpello?at_medium=RSS&at_campaign=rss",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://www.bbc.co.uk/news/articles/c86262j7j75o?at_medium=RSS&at_campaign=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.bbc.co.uk/news/articles/cd6e68n3jz5o?at_medium=RSS&at_campaign=rss",
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://www.bbc.co.uk/news/articles/cd959q11g54o?at_medium=RSS&at_campaign=rss",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.bbc.co.uk/news/articles/cd959x4edy8o?at_medium=RSS&at_campaign=rss",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://www.bbc.co.uk/news/articles/cddj7e8v767o?at_medium=RSS&at_campaign=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
@@ -1769,6 +1765,10 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://www.bbc.co.uk/news/articles/crm0mg4z7edo?at_medium=RSS&at_campaign=rss",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.bbc.co.uk/news/articles/crr8gnx01d7o?at_medium=RSS&at_campaign=rss",
       "seen_at": "2026-07-15"
     },
@@ -1781,24 +1781,8 @@
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://www.bbc.co.uk/news/articles/cx2vz51v2pjo?at_medium=RSS&at_campaign=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.bbc.co.uk/news/articles/cze9zd8drzro?at_medium=RSS&at_campaign=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.bbc.co.uk/news/articles/czxq4ge246wo?at_medium=RSS&at_campaign=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.bbc.co.uk/news/videos/c0myengg8nzo?at_medium=RSS&at_campaign=rss",
       "seen_at": "2026-07-11"
-    },
-    {
-      "url": "https://www.bbc.co.uk/news/videos/c2dyw4zygrko?at_medium=RSS&at_campaign=rss",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.bbc.co.uk/news/videos/c9v2w1eg4jpo?at_medium=RSS&at_campaign=rss",
@@ -1817,28 +1801,24 @@
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://www.digitimes.com/news/a20260709PD226/bellwether-connector-design-patent-licensing.html",
-      "seen_at": "2026-07-12"
+      "url": "https://www.cnbc.com/2026/07/16/fireworks-nvidia-cloud-ai-startup-value.html",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.digitimes.com/news/a20260709PD232/arbor-revenue-industrial-demand-pc.html",
-      "seen_at": "2026-07-10"
+      "url": "https://www.cnx-software.com/2026/07/16/nvidia-jetson-t2000-and-t3000-modules-for-edge-ai-and-robotics-applications/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.digitimes.com/news/a20260709PD226/bellwether-connector-design-patent-licensing.html",
+      "seen_at": "2026-07-12"
     },
     {
       "url": "https://www.digitimes.com/news/a20260709PD235/revenue-2026-flytech-demand-pc.html",
       "seen_at": "2026-07-12"
     },
     {
-      "url": "https://www.digitimes.com/news/a20260709PD236/hushan-demand-north-america-revenue-2026.html",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.digitimes.com/news/a20260709PD237/revenue-demand-supplier-2026-acquisition.html",
       "seen_at": "2026-07-12"
-    },
-    {
-      "url": "https://www.digitimes.com/news/a20260709PD239/revenue-demand-management-growth-ddr5.html",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.digitimes.com/news/a20260709PD240/revenue-plant-demand-growth-production.html",
@@ -1847,14 +1827,6 @@
     {
       "url": "https://www.digitimes.com/news/a20260709PD241/wistron-revenue-growth-finance-semiconductors.html",
       "seen_at": "2026-07-12"
-    },
-    {
-      "url": "https://www.digitimes.com/news/a20260710PD202/revenue-demand-ai-server-2026-high-end.html",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.digitimes.com/news/a20260710PD214/solar-2026-renewable-energy-market-data-center.html",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.digitimes.com/news/a20260710PD225/revenue-superalloy-aluminum-certification-2026.html",
@@ -1925,12 +1897,20 @@
       "seen_at": "2026-07-14"
     },
     {
+      "url": "https://www.digitimes.com/news/a20260713PD236/volkswagen-automakers-production-layoffs-europe.html",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.digitimes.com/news/a20260713VL214/launch-jaxa-cost-spacex-commercial.html",
       "seen_at": "2026-07-15"
     },
     {
       "url": "https://www.digitimes.com/news/a20260714PD215/ai-automation-growth-labor-robotics-2026.html",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://www.digitimes.com/news/a20260714PD225/fuel-cell-demand-energy-storage-capacity-taiwan-technology.html",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.digitimes.com/news/a20260714PD226/policy-data-manufacturing-investment-packaging.html",
@@ -1953,48 +1933,48 @@
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://www.digitimes.com/news/a20260715VL210/3d-chips-technology-ai-chip-performance.html",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.digitimes.com/news/a20260715VL223/beijing-capacity-infrastructure-hardware.html",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://www.digitimes.com/news/a20260716PD211/investment-infrastructure-price-passive-power-semiconductors.html",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.digitimes.com/news/a20260716PD214/electronics-dram-capacity-ddr4-nand.html",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.edge-ai-vision.com/2026/07/beyond-tops-the-first-full-pipeline-ai-vision-benchmark/",
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://www.electronicdesign.com/markets/automotive/article/55389232/new-coherent-lidar-expands-3d-sensing",
-      "seen_at": "2026-07-10"
+      "url": "https://www.electronicdesign.com/markets/automotive/article/55391032/electronic-design-panasonic-and-ti-team-up-to-develop-48-v-car-audio-system",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.electronicdesign.com/technologies/communications/article/55389609/ensilica-why-communications-systems-are-migrating-to-asic-architectures",
-      "seen_at": "2026-07-10"
+      "url": "https://www.electronicdesign.com/technologies/embedded/machine-learning/video/55391077/electronic-design-the-many-faces-of-spiking-neural-networks",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.electronicdesign.com/technologies/embedded/product/55389460/electronic-design-asrock-edge-aiot-platforms-bring-intel-bartlett-lake-to-rugged-industrial-ai",
-      "seen_at": "2026-07-10"
+      "url": "https://www.electronicdesign.com/technologies/embedded/software/article/55391249/neuronicworks-building-trusted-firmware-for-ev-and-connected-mobility-applications",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.electronicdesign.com/technologies/embedded/video/55389524/electronic-design-microchip-facial-recognition-demo-highlights-liveness-detection",
-      "seen_at": "2026-07-10"
+      "url": "https://www.electronicdesign.com/technologies/power/article/55390947/integra-sources-basics-of-esd-and-eos-protection-in-electronics-development",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.electronicdesign.com/technologies/power/product/55389392/electronic-design-low-side-automotive-gate-driver-delivers-9-a-has-separate-source-and-sink-outputs",
-      "seen_at": "2026-07-10"
+      "url": "https://www.electronicdesign.com/technologies/power/product/55391117/electronic-design-vishay-mosfets-suppress-noise-in-motor-control-circuits",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.fool.com/investing/2026/07/09/is-xrp-priced-too-high-for-what-it-actually-delive/?.tsrc=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.fool.com/investing/2026/07/09/why-cohu-stock-raced-nearly-6-higher-today/?.tsrc=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.fool.com/investing/2026/07/09/why-servicenow-stock-crushed-it-on-thursday/?.tsrc=rss",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.fool.com/investing/2026/07/09/why-the-bancorp-stock-surged-today/?.tsrc=rss",
-      "seen_at": "2026-07-10"
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/07/16/tsm-tsm-q2-2026-earnings-call-transcript/?.tsrc=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.fool.com/investing/2026/07/10/circle-just-won-a-us-national-bank-charter-heres-w/?.tsrc=rss",
@@ -2089,16 +2069,24 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://www.gadgetbridge.com/oppo-reno-16-reno-16c-sale-begins-pricing-and-availability-details/",
-      "seen_at": "2026-07-10"
+      "url": "https://www.fool.com/investing/2026/07/16/tsmc-just-announced-fantastic-news-for-nvidia-shar/?.tsrc=rss",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.gadgets360.com/mobiles/news/oppo-reno-16-16c-bubble-price-in-india-sale-offers-availability-specifications-features-11748197",
-      "seen_at": "2026-07-10"
+      "url": "https://www.fool.com/investing/2026/07/16/warren-buffett-just-revealed-he-not-greg-abel-made/?.tsrc=rss",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.fool.com/investing/2026/07/16/why-union-pacific-stock-chugged-almost-4-higher-on/?.tsrc=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.gadgets360.com/mobiles/news/redmi-17c-5g-geekbench-listing-soc-ram-os-features-expected-launch-11768673",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://www.gizbot.com/mobile/news/vivo-t5-lite-5g-launched-india-mediatek-dimensity-6300-soc-120hz-display-price-specs-offers-127377.html",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.investing.com/news/coronavirus/covid-variants-bq1bq11-make-up-44-of-us-cases-2942046",
@@ -2157,10 +2145,6 @@
       "seen_at": "2026-07-13"
     },
     {
-      "url": "https://www.investing.com/news/stock-market-news/coinbase-legal-chief-paul-grewal-resigns-after-regulatory-wins-4784943",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.investing.com/news/stock-market-news/corporate-america-offers-stronger-proof-ai-is-boosting-profits-productivity-ms-4787269",
       "seen_at": "2026-07-12"
     },
@@ -2171,10 +2155,6 @@
     {
       "url": "https://www.investing.com/news/stock-market-news/exclusiveai-cloud-company-coreweave-explores-wall-street-playbook-to-hedge-memorychip-price-risk-4792033",
       "seen_at": "2026-07-15"
-    },
-    {
-      "url": "https://www.investing.com/news/stock-market-news/fubotv-names-disneys-bowen-ceo-removes-veteran-gandler-4785084",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.investing.com/news/stock-market-news/jones-ventures-intl-acquisition1-prices-200m-ipo-on-nasdaq-432SI-4789571",
@@ -2213,16 +2193,20 @@
       "seen_at": "2026-07-12"
     },
     {
-      "url": "https://www.investing.com/news/stock-market-news/sk-hynix-us-listing-more-than-seven-times-oversubscribed-source-says-4782931",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.investing.com/news/stock-market-news/software-provider-ccc-intelligent-solutions-weighs-sale-reuters-reports-4785135",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.investing.com/news/stock-market-news/sp-500-nasdaq-futures-slip-as-investors-eye-sk-hynix-listing-middle-east-risks-4785654",
       "seen_at": "2026-07-11"
+    },
+    {
+      "url": "https://www.investing.com/news/stock-market-news/spacex-aborts-starship-rocket-test-flight-just-minutes-before-liftoff-4797277",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.investing.com/news/stock-market-news/taco-bell-removes-lettuce-in-some-states-over-cyclosporiasis-link-4797302",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.investing.com/news/stock-market-news/trump-media-unveils-data-feed-for-businesses-tracking-truth-social-posts-4796147",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.investing.com/news/stock-market-news/tsmcs-secondquarter-profit-seen-hitting-record-on-ai-boom-4794514",
@@ -2231,6 +2215,10 @@
     {
       "url": "https://www.investing.com/news/stock-market-news/us-aviation-industry-urges-congress-to-provide-20-billion-for-air-traffic-control-upgrades-4794309",
       "seen_at": "2026-07-16"
+    },
+    {
+      "url": "https://www.investing.com/news/stock-market-news/us-networks-face-dilemma-over-whether-to-air-trumps-election-security-speech-4796501",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.investing.com/news/stock-market-news/us-states-tap-private-law-firm-milbank-to-fight-paramountwarner-bros-deal-4789583",
@@ -2249,6 +2237,10 @@
       "seen_at": "2026-07-13"
     },
     {
+      "url": "https://www.investing.com/news/stock-market-news/why-is-spacex-stock-sliding-afterhours-93CH-4797275",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.investing.com/news/stock-market-news/why-tech-investors-are-reevaluating-ai-investments-4787169",
       "seen_at": "2026-07-11"
     },
@@ -2259,10 +2251,6 @@
     {
       "url": "https://www.investing.com/news/world-news/global-covid-cases-will-increase-in-coming-months-but-at-a-slower-pace-report-2942181",
       "seen_at": "2026-07-14"
-    },
-    {
-      "url": "https://www.kedglobal.com/korean-chipmakers/newsView/ked202607090013",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.latent.space/p/aiewf26trends",
@@ -2285,12 +2273,24 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://www.latent.space/p/ainews-spacexai-launches-grok-45",
-      "seen_at": "2026-07-10"
+      "url": "https://www.latent.space/p/ainews-thinkys-inkling-975b-a41b",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.latent.space/p/the-lab-of-the-future-should-feel",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.marketbeat.com/instant-alerts/filing-granite-investment-partners-llc-has-228-million-stake-in-ambarella-inc-amba-2026-07-10/",
       "seen_at": "2026-07-11"
+    },
+    {
+      "url": "https://www.marketwatch.com/story/10-u-s-metro-areas-where-builders-are-slashing-prices-on-new-homes-1eb19355?mod=mw_rss_topstories",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.marketwatch.com/story/americans-say-they-need-1-2-million-to-retire-most-are-too-deep-in-debt-to-get-there-689c683b?mod=mw_rss_topstories",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.marketwatch.com/story/apple-sues-openai-for-institutional-misconduct-and-alleges-thats-just-the-tip-of-the-iceberg-6e803c4d?mod=mw_rss_topstories",
@@ -2303,10 +2303,6 @@
     {
       "url": "https://www.marketwatch.com/story/beyond-to-buy-rights-to-buy-buy-baby-brand-and-reunite-it-with-bed-bath-beyond-4383c6be?mod=mw_rss_marketpulse",
       "seen_at": "2026-07-14"
-    },
-    {
-      "url": "https://www.marketwatch.com/story/can-walmart-help-the-fed-harness-real-time-u-s-economic-data-were-about-to-find-out-e625925a?mod=mw_rss_topstories",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.marketwatch.com/story/consumer-credit-growth-soars-in-december-d405d18e?mod=mw_rss_marketpulse",
@@ -2337,10 +2333,6 @@
       "seen_at": "2026-07-12"
     },
     {
-      "url": "https://www.marketwatch.com/story/ive-no-idea-how-they-got-her-number-my-student-loan-servicer-called-a-friend-after-i-missed-a-payment-is-that-legal-28ef698e?mod=mw_rss_topstories",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.marketwatch.com/story/jobless-claims-fall-to-lowest-level-since-mid-may-bda58e3b?mod=mw_rss_marketpulse",
       "seen_at": "2026-07-14"
     },
@@ -2361,24 +2353,28 @@
       "seen_at": "2026-07-12"
     },
     {
+      "url": "https://www.marketwatch.com/story/netflix-is-getting-stingier-about-its-viewing-data-and-wall-street-isnt-happy-15033db1?mod=mw_rss_topstories",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.marketwatch.com/story/oil-prices-rise-stock-futures-dip-after-latest-flare-up-of-strikes-between-u-s-and-iran-fef7f856?mod=mw_rss_topstories",
       "seen_at": "2026-07-13"
     },
     {
-      "url": "https://www.marketwatch.com/story/sk-hynix-is-about-to-hit-the-u-s-market-heres-what-to-know-about-the-deal-1c873fa4?mod=mw_rss_topstories",
-      "seen_at": "2026-07-10"
+      "url": "https://www.marketwatch.com/story/palo-alto-networks-stock-has-been-on-a-tear-and-it-could-go-even-higher-according-to-these-bulls-1ddde6f4?mod=mw_rss_topstories",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.marketwatch.com/story/sk-hynixs-stock-looks-primed-for-a-pop-in-its-nasdaq-debut-38054370?mod=mw_rss_topstories",
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://www.marketwatch.com/story/spacexs-stock-threatens-to-fall-below-the-ipo-price-do-investors-face-a-crisis-if-it-does-2f330b09?mod=mw_rss_topstories",
-      "seen_at": "2026-07-14"
+      "url": "https://www.marketwatch.com/story/spacexs-starship-is-set-for-takeoff-and-its-floundering-stock-could-use-the-lift-ec5629d5?mod=mw_rss_topstories",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.marketwatch.com/story/taco-bell-is-reportedly-pulling-produce-from-some-stores-heres-what-to-know-a3569cd8?mod=mw_rss_topstories",
-      "seen_at": "2026-07-10"
+      "url": "https://www.marketwatch.com/story/spacexs-stock-threatens-to-fall-below-the-ipo-price-do-investors-face-a-crisis-if-it-does-2f330b09?mod=mw_rss_topstories",
+      "seen_at": "2026-07-14"
     },
     {
       "url": "https://www.marketwatch.com/story/the-great-wealth-transfer-is-real-but-the-irs-or-a-nursing-home-might-get-your-money-first-d0c46676?mod=mw_rss_topstories",
@@ -2421,10 +2417,6 @@
       "seen_at": "2026-07-14"
     },
     {
-      "url": "https://www.marketwatch.com/story/why-a-hidden-divergence-between-the-vix-and-nasdaq-volatility-has-the-smart-money-on-edge-cda23cc0?mod=mw_rss_topstories",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.marketwatch.com/story/you-dont-have-to-be-rich-to-be-financially-independent-heres-how-to-take-control-of-your-money-5345f146?mod=mw_rss_topstories",
       "seen_at": "2026-07-13"
     },
@@ -2446,7 +2438,7 @@
     },
     {
       "url": "https://www.normaltech.ai/p/up-the-stack-how-ais-escape-from",
-      "seen_at": "2026-07-10"
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.normaltech.ai/p/what-will-be-left-for-us-to-work",
@@ -2467,6 +2459,14 @@
     {
       "url": "https://www.nytimes.com/2026/07/13/business/economists-ai-threat-jobs.html",
       "seen_at": "2026-07-14"
+    },
+    {
+      "url": "https://www.nytimes.com/2026/07/16/technology/ai-slop-books-biography-amazon.html",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.omnilert.com/blog/security-camera-monitoring",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.parking.net/parking-news/dahua-technology/launches-huabot-to-deliver-247-ai-powered-technical-support",
@@ -2511,26 +2511,6 @@
     {
       "url": "https://www.reddit.com/r/geopolitics/comments/1uxe9r2/the_world_is_giving_up_on_america_this_time/",
       "seen_at": "2026-07-16"
-    },
-    {
-      "url": "https://www.reddit.com/r/worldnews/comments/1uriak8/russia_has_found_way_to_jam_starlink_and_take/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.reddit.com/r/worldnews/comments/1urjh27/white_house_preparing_for_prolonged_iran_conflict/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.reddit.com/r/worldnews/comments/1uro1ct/trump_ties_us_troop_presence_in_europe_to/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.reddit.com/r/worldnews/comments/1urt6be/putin_likely_to_escalate_ukraine_war_rejecting/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.reddit.com/r/worldnews/comments/1urwsaq/mexico_to_file_criminal_complaints_in_us_over/",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.reddit.com/r/worldnews/comments/1usaotx/ukrainian_drones_batter_russian_oil_facilities/",
@@ -2613,16 +2593,28 @@
       "seen_at": "2026-07-15"
     },
     {
+      "url": "https://www.reddit.com/r/worldnews/comments/1uxw30y/utterly_baffling_ukrainians_outraged_call_for/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.reddit.com/r/worldnews/comments/1uy1fwd/ukraines_air_force_deputy_commander_announces/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.reddit.com/r/worldnews/comments/1uy4ux3/germany_warns_against_interfering_in_german/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.reddit.com/r/worldnews/comments/1uy7wze/uk_says_falkland_islands_definitely_ours_after/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.reddit.com/r/worldnews/comments/1uyaxwe/billionaire_elon_musk_has_thrown_his_support/",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.sammobile.com/news/heres-the-first-look-at-galaxy-tab-s12",
       "seen_at": "2026-07-11"
-    },
-    {
-      "url": "https://www.securityweek.com/12-million-impacted-by-data-breach-at-japanese-telco-kddi/",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.securityweek.com/15-year-old-linux-vulnerability-ghostlock-earns-researchers-92k-from-google/",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.securityweek.com/7-severe-vulnerabilities-patched-in-vmware-avi-load-balancer/",
@@ -2631,6 +2623,10 @@
     {
       "url": "https://www.securityweek.com/adobe-patches-critical-coldfusion-vulnerabilities/",
       "seen_at": "2026-07-15"
+    },
+    {
+      "url": "https://www.securityweek.com/ai-data-centers-are-being-built-faster-than-they-can-be-secured/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.securityweek.com/china-india-linked-hackers-both-targeted-same-pakistani-police-force/",
@@ -2665,16 +2661,20 @@
       "seen_at": "2026-07-11"
     },
     {
+      "url": "https://www.securityweek.com/legacy-systems-real-world-impacts-the-reality-of-ot-security/",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.securityweek.com/microsoft-patches-record-622-vulnerabilities-including-two-exploited-zero-days/",
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://www.securityweek.com/okta-warns-of-vishing-attacks-targeting-microsoft-365-customers/",
-      "seen_at": "2026-07-11"
+      "url": "https://www.securityweek.com/oak-emerges-from-stealth-mode-with-60-million-in-funding/",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.securityweek.com/palo-alto-networks-patches-13-vulnerabilities/",
-      "seen_at": "2026-07-10"
+      "url": "https://www.securityweek.com/okta-warns-of-vishing-attacks-targeting-microsoft-365-customers/",
+      "seen_at": "2026-07-11"
     },
     {
       "url": "https://www.securityweek.com/rabbitmq-vulnerability-threatens-enterprise-systems/",
@@ -2689,8 +2689,8 @@
       "seen_at": "2026-07-11"
     },
     {
-      "url": "https://www.securityweek.com/uk-government-rolls-out-agentic-ai-defense-plan-alongside-industry-pledge/",
-      "seen_at": "2026-07-10"
+      "url": "https://www.securityweek.com/two-scattered-spider-hackers-sentenced-to-jail-in-uk/",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.securityweek.com/unpatched-claude-for-chrome-flaw-lets-extensions-read-gmail-calendar/",
@@ -2715,26 +2715,6 @@
     {
       "url": "https://www.securityweek.com/zimbra-patches-critical-code-execution-vulnerability/",
       "seen_at": "2026-07-14"
-    },
-    {
-      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/10/2003860507",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/10/2003860508",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/10/2003860509",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/10/2003860510",
-      "seen_at": "2026-07-10"
-    },
-    {
-      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/10/2003860511",
-      "seen_at": "2026-07-10"
     },
     {
       "url": "https://www.taipeitimes.com/News/front/archives/2026/07/11/2003860563",
@@ -2857,16 +2837,24 @@
       "seen_at": "2026-07-16"
     },
     {
-      "url": "https://www.technologyreview.com/2026/07/09/1140235/nuclear-reactor-milestone-criticality/",
-      "seen_at": "2026-07-10"
+      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/17/2003860880",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.technologyreview.com/2026/07/09/1140283/the-download-nuclear-power-milestone-nvidia-china-ai-chips/",
-      "seen_at": "2026-07-10"
+      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/17/2003860881",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.technologyreview.com/2026/07/09/1140293/anthropic-found-a-hidden-space-where-claude-puzzles-over-concepts/",
-      "seen_at": "2026-07-10"
+      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/17/2003860882",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/17/2003860883",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.taipeitimes.com/News/front/archives/2026/07/17/2003860884",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.technologyreview.com/2026/07/10/1140289/sperm-donors-need-limits-says-a-european-fertility-group/",
@@ -2901,6 +2889,14 @@
       "seen_at": "2026-07-16"
     },
     {
+      "url": "https://www.technologyreview.com/2026/07/16/1140505/heat-pump-sales-us/",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.technologyreview.com/2026/07/16/1140600/the-download-openai-unveils-gpt-red-heat-pumps-rise-us/",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.techspot.com/news/113074-samsung-building-dedicated-ai-chip-pcs-hp-lenovo.html",
       "seen_at": "2026-07-13"
     },
@@ -2917,10 +2913,6 @@
       "seen_at": "2026-07-15"
     },
     {
-      "url": "https://www.theguardian.com/environment/2026/jul/09/species-ingenious-survival-strategies-no-match-human-destruction-red-list",
-      "seen_at": "2026-07-10"
-    },
-    {
       "url": "https://www.theguardian.com/global-development/2026/jul/10/developing-countries-spend-more-foreign-debt-education-aid-cuts-unesco",
       "seen_at": "2026-07-11"
     },
@@ -2929,12 +2921,16 @@
       "seen_at": "2026-07-13"
     },
     {
-      "url": "https://www.theguardian.com/world/2026/jul/09/bola-tinubu-under-pressure-fake-nigerian-government-agency-political-storm",
-      "seen_at": "2026-07-10"
+      "url": "https://www.theguardian.com/global-development/2026/jul/16/uganda-travel-restrictions-last-ebola-patient-discharged",
+      "seen_at": "2026-07-17"
     },
     {
-      "url": "https://www.theguardian.com/world/2026/jul/09/lgbtq-cruise-ship-refused-entry-egypt-turkey",
-      "seen_at": "2026-07-10"
+      "url": "https://www.theguardian.com/news/2026/jul/16/morocco-intelligence-insider-reveals-widespread-use-hacking-software-pegasus",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.theguardian.com/politics/2026/jul/16/uk-aid-cuts-bilateral-support-african-countries",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.theguardian.com/world/2026/jul/11/nigeria-army-kills-bandits-north-western-state-zamfara",
@@ -2969,6 +2965,18 @@
       "seen_at": "2026-07-14"
     },
     {
+      "url": "https://www.theregister.com/ai-and-ml/2026/07/16/amsterdam-activists-throw-acid-at-microsoft-datacenter-project/5273943",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.theregister.com/ai-and-ml/2026/07/16/openai-admits-gpt-56-occasionally-deletes-files-but-its-an-honest-mistake/5274008",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.theregister.com/ai-and-ml/2026/07/16/researcher-poisons-open-weight-ai-model-for-under-100/5273880",
+      "seen_at": "2026-07-17"
+    },
+    {
       "url": "https://www.theregister.com/columnists/2026/07/12/its-an-ai-web-and-were-just-rats-in-the-walls/5269760",
       "seen_at": "2026-07-13"
     },
@@ -2999,6 +3007,18 @@
     {
       "url": "https://www.theregister.com/security/2026/07/10/destructive-windows-backdoor-stuffs-multiple-wipers-and-ransomware-code-into-a-single-package/5270053",
       "seen_at": "2026-07-12"
+    },
+    {
+      "url": "https://www.theregister.com/systems/2026/07/16/tsmcs-265b-us-fab-pledge-is-the-outline-of-a-concept-of-a-plan/5273903",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.theregister.com/systems/2026/07/17/chinese-memory-ban-would-cut-off-rampocalypse-relief/5273993",
+      "seen_at": "2026-07-17"
+    },
+    {
+      "url": "https://www.thestreet.com/investing/stocks/nebius-lands-1-billion-ai-deal-as-one-major-risk-looms?.tsrc=rss",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.tipranks.com/news/amd-or-intel-buy-one-ai-chip-stock-ahead-of-earnings-avoid-the-other-says-top-analyst",
@@ -3047,6 +3067,10 @@
     {
       "url": "https://www.youtube.com/watch?v=Ae9q7KsRbuI",
       "seen_at": "2026-07-13"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=axOcn--n_lM",
+      "seen_at": "2026-07-17"
     },
     {
       "url": "https://www.youtube.com/watch?v=blxQIbLeSus",
