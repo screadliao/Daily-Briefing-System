@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import re
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 from typing import Any
 from urllib.parse import urljoin, urlparse
 import urllib.request
@@ -17,6 +19,7 @@ MAX_TOTAL_ITEMS = 200
 DEFAULT_TIMEOUT = 15.0
 USER_AGENT = "DailyBriefingBot/1.0 (+https://github.com/screadliao)"
 MAX_WORKERS = 10
+TITLE_DEDUPE_THRESHOLD = 0.82
 
 
 @dataclass
@@ -47,6 +50,7 @@ def fetch_all(
     own_client = client is None
     client = client or build_http_client()
     seen_urls: set[str] = set()
+    seen_titles: dict[str, list[str]] = {category: [] for category in sources}
     total = 0
     result: dict[str, list[dict[str, str]]] = {category: [] for category in sources}
 
@@ -73,7 +77,10 @@ def fetch_all(
                         break
                     if article.url in seen_urls:
                         continue
+                    if is_duplicate_title(article.title, seen_titles[category]):
+                        continue
                     seen_urls.add(article.url)
+                    seen_titles[category].append(normalize_title(article.title))
                     result[category].append(article.to_dict())
                     total += 1
         return result
@@ -174,6 +181,21 @@ def clean_text(value: str) -> str:
     if not value:
         return ""
     return " ".join(BeautifulSoup(value, "lxml").get_text(" ", strip=True).split())
+
+
+def normalize_title(title: str) -> str:
+    lowered = title.lower()
+    return re.sub(r"[^0-9a-z一-鿿]+", "", lowered)
+
+
+def is_duplicate_title(title: str, seen_normalized_titles: list[str]) -> bool:
+    normalized = normalize_title(title)
+    if not normalized:
+        return False
+    for existing in seen_normalized_titles:
+        if SequenceMatcher(None, normalized, existing).ratio() >= TITLE_DEDUPE_THRESHOLD:
+            return True
+    return False
 
 
 def is_probably_article(url: str, domain: str) -> bool:

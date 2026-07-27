@@ -45,6 +45,22 @@ def build_sections_for_view(briefing: dict[str, Any]) -> list[dict[str, Any]]:
             "entries": [format_entry_html(item) for item in watchlist_entries],
         })
 
+    industry_trends_entries = briefing.get("industry_trends", [])
+    if industry_trends_entries:
+        sections.append({
+            "key": "industry_trends",
+            "label": "AI 零售 / 餐飲 / Hotel 應用趨勢",
+            "entries": [format_entry_html(item) for item in industry_trends_entries],
+        })
+
+    pos_competitors_entries = briefing.get("pos_competitors", [])
+    if pos_competitors_entries:
+        sections.append({
+            "key": "pos_competitors",
+            "label": "POS / Kiosk / Self-checkout 競品動態",
+            "entries": [format_entry_html(item) for item in pos_competitors_entries],
+        })
+
     section_payload = briefing.get("sections", {})
     sections.extend([
         {

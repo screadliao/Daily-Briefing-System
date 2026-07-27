@@ -50,12 +50,23 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "items": {"type": "string"},
                 "description": "追蹤議題更新，每條「• **議題**：動向 [來源](URL)」",
             },
+            "industry_trends": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "AI 在零售 / 餐飲 / Hotel 應用趨勢分析，獨立版面，每條「• **主題**：趨勢說明 [來源](URL)」，無資料則輸出空陣列",
+            },
+            "pos_competitors": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "POS / Kiosk / Self-checkout 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec 在 AI 應用上的更新），獨立版面，每條「• **公司**：動向 [來源](URL)」，無資料則輸出空陣列",
+            },
             "sections": {
                 "type": "object",
                 "properties": {
                     "geo":         {"type": "array", "items": {"type": "string"}},
                     "finance":     {"type": "array", "items": {"type": "string"}},
                     "tech":        {"type": "array", "items": {"type": "string"}},
+                    "medical_imaging": {"type": "array", "items": {"type": "string"}},
                     "ai_tech":     {"type": "array", "items": {"type": "string"}},
                     "ai_tools":    {"type": "array", "items": {"type": "string"}},
                     "social":      {"type": "array", "items": {"type": "string"}},
@@ -65,7 +76,7 @@ BRIEFING_TOOL: dict[str, Any] = {
                         "description": "競品與安防產業動態（來自 LinkedIn），每條「• **公司/話題**：動向 [來源](URL)」，無資料則輸出空陣列",
                     },
                 },
-                "required": ["geo", "finance", "tech", "ai_tech", "ai_tools", "social", "competitors"],
+                "required": ["geo", "finance", "tech", "medical_imaging", "ai_tech", "ai_tools", "social", "competitors"],
             },
             "keywords": {
                 "type": "array",
@@ -73,7 +84,7 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "description": "4個關鍵字",
             },
         },
-        "required": ["date", "headline", "watchlist", "sections", "keywords"],
+        "required": ["date", "headline", "watchlist", "industry_trends", "pos_competitors", "sections", "keywords"],
     },
 }
 
@@ -85,6 +96,8 @@ def synthesize(
     brave_articles: list[dict[str, str]] | None = None,
     linkedin_articles: list[dict[str, str]] | None = None,
     today: datetime | None = None,
+    retail_hospitality_articles: list[dict[str, str]] | None = None,
+    pos_competitor_articles: list[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     today = today or datetime.now()
     today_str = format_tw_date(today)
@@ -98,7 +111,27 @@ def synthesize(
     watchlist_line = f"追蹤議題：{' / '.join(WATCHLIST)}\n\n" if WATCHLIST else ""
     brave_section = _format_brave_for_prompt(brave_articles) if brave_articles else ""
     linkedin_section = _format_linkedin_for_prompt(linkedin_articles) if linkedin_articles else ""
-    prompt = f"今天是 {today_str}。{watchlist_line}{brave_section}{linkedin_section}以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
+    retail_hospitality_section = (
+        _format_topic_search_for_prompt(
+            retail_hospitality_articles,
+            "【AI 零售 / 餐飲 / Hotel 應用趨勢 - 獨立版面】",
+        )
+        if retail_hospitality_articles
+        else ""
+    )
+    pos_competitor_section = (
+        _format_topic_search_for_prompt(
+            pos_competitor_articles,
+            "【POS / Kiosk / Self-checkout 競品動態 - 獨立版面】",
+        )
+        if pos_competitor_articles
+        else ""
+    )
+    prompt = (
+        f"今天是 {today_str}。{watchlist_line}{brave_section}{linkedin_section}"
+        f"{retail_hospitality_section}{pos_competitor_section}"
+        f"以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
+    )
 
     last_error: Exception | None = None
     for attempt in range(3):
@@ -137,9 +170,8 @@ def synthesize(
             if attempt < 2:
                 time.sleep(2**attempt)
 
-    if last_error is not None and os.getenv("DRY_RUN", "").lower() == "true":
-        return build_fallback_briefing(raw_articles, today_str)
-    raise RuntimeError(f"Claude API failed after retries: {last_error}") from last_error
+    print(f"[synthesizer] Claude API failed after retries, falling back: {last_error}")
+    return build_fallback_briefing(raw_articles, today_str)
 
 
 def _format_linkedin_for_prompt(linkedin_articles: list[dict[str, str]]) -> str:
@@ -154,6 +186,21 @@ def _format_linkedin_for_prompt(linkedin_articles: list[dict[str, str]]) -> str:
         line = f"- [{source}] {title} | {url}"
         if summary and summary != title:
             line += f" | {summary[:200]}"
+        lines.append(line)
+    lines.append("")
+    return "\n".join(lines) + "\n"
+
+
+def _format_topic_search_for_prompt(articles: list[dict[str, str]], header: str) -> str:
+    lines = [header]
+    for item in articles:
+        topic = item.get("source", "").replace("brave:", "")
+        title = item.get("title", "").strip()
+        url = item.get("url", "").strip()
+        summary = item.get("summary", "").strip()
+        line = f"- [{topic}] {title} | {url}"
+        if summary:
+            line += f" | {summary[:180]}"
         lines.append(line)
     lines.append("")
     return "\n".join(lines) + "\n"
@@ -236,6 +283,9 @@ def build_fallback_briefing(
     return {
         "date": today_str,
         "headline": headline,
+        "watchlist": [],
+        "industry_trends": [],
+        "pos_competitors": [],
         "sections": sections,
         "keywords": keywords,
     }

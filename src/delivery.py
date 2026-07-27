@@ -14,17 +14,29 @@ from src.formatter import render_plain_text, to_html_email
 
 def deliver(briefing: dict[str, Any]) -> list[str]:
     results: list[str] = []
+    errors: list[str] = []
     mode = os.getenv("DELIVERY_MODE", "").lower()
 
     if mode:
         if mode != "email":
             raise RuntimeError("DELIVERY_MODE only supports 'email'.")
-        send_email(briefing)
-        results.append("email")
+        try:
+            send_email(briefing)
+            results.append("email")
+        except Exception as exc:
+            errors.append(f"email failed: {exc}")
+            print(f"[delivery] email delivery failed: {exc}")
 
     if os.getenv("TELEGRAM_BOT_TOKEN"):
-        send_telegram(briefing, os.getenv("GITHUB_PAGES_URL", ""))
-        results.append("telegram")
+        try:
+            send_telegram(briefing, os.getenv("GITHUB_PAGES_URL", ""))
+            results.append("telegram")
+        except Exception as exc:
+            errors.append(f"telegram failed: {exc}")
+            print(f"[delivery] telegram delivery failed: {exc}")
+
+    if errors and not results:
+        raise RuntimeError("; ".join(errors))
 
     return results
 

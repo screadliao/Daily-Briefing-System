@@ -15,7 +15,7 @@ from src.fetcher import fetch_all
 from src.formatter import to_html_email
 from src.synthesizer import synthesize
 from src.unifapi_social import search_linkedin
-from src.watchlist import WATCHLIST
+from src.watchlist import WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, POS_COMPETITOR_WATCHLIST
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -40,22 +40,42 @@ def main() -> int:
     raw_articles = fetch_all()
     raw_articles = filter_articles(raw_articles, BLOCKLIST)
     brave_articles = search_watchlist(WATCHLIST)
+    retail_hospitality_articles = search_watchlist(RETAIL_HOSPITALITY_WATCHLIST)
+    pos_competitor_articles = search_watchlist(POS_COMPETITOR_WATCHLIST)
     linkedin_articles = search_linkedin()
     seen_urls = load_seen_urls()
     raw_articles, raw_filtered, raw_total = _filter_article_groups(raw_articles, seen_urls)
     brave_articles, brave_filtered, brave_total = _filter_article_list(brave_articles, seen_urls)
+    retail_hospitality_articles, retail_filtered, retail_total = _filter_article_list(
+        retail_hospitality_articles, seen_urls
+    )
+    pos_competitor_articles, pos_filtered, pos_total = _filter_article_list(
+        pos_competitor_articles, seen_urls
+    )
     linkedin_articles, linkedin_filtered, linkedin_total = _filter_article_list(linkedin_articles, seen_urls)
-    filtered_total = raw_filtered + brave_filtered + linkedin_filtered
-    article_total = raw_total + brave_total + linkedin_total
+    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered + linkedin_filtered
+    article_total = raw_total + brave_total + retail_total + pos_total + linkedin_total
     print(f"[dedup] filtered {filtered_total}/{article_total} articles already seen")
-    briefing = synthesize(raw_articles, brave_articles, linkedin_articles)
+    briefing = synthesize(
+        raw_articles,
+        brave_articles,
+        linkedin_articles,
+        retail_hospitality_articles=retail_hospitality_articles,
+        pos_competitor_articles=pos_competitor_articles,
+    )
 
     args.save_html.write_text(to_html_email(briefing), encoding="utf-8")
     site_dir = Path("_site")
     site_dir.mkdir(exist_ok=True)
     save_seen_urls(
         seen_urls,
-        _collect_articles(raw_articles, brave_articles, linkedin_articles),
+        _collect_articles(
+            raw_articles,
+            brave_articles,
+            linkedin_articles,
+            retail_hospitality_articles,
+            pos_competitor_articles,
+        ),
         site_dir,
     )
 
@@ -103,12 +123,16 @@ def _collect_articles(
     raw_articles: dict[str, list[dict]],
     brave_articles: list[dict],
     linkedin_articles: list[dict],
+    retail_hospitality_articles: list[dict] | None = None,
+    pos_competitor_articles: list[dict] | None = None,
 ) -> list[dict]:
     combined: list[dict] = []
     for articles in raw_articles.values():
         combined.extend(articles)
     combined.extend(brave_articles)
     combined.extend(linkedin_articles)
+    combined.extend(retail_hospitality_articles or [])
+    combined.extend(pos_competitor_articles or [])
     return combined
 
 

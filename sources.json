@@ -52,6 +52,17 @@
     ],
     "scrape": []
   },
+  "medical_imaging": {
+    "label": "醫療影像（ICG 螢光導引手術）",
+    "feeds": [
+      "https://www.massdevice.com/feed/",
+      "https://medtechdive.com/feeds/news/",
+      "https://www.medicaldesignandoutsourcing.com/feed/",
+      "https://www.mobihealthnews.com/feed",
+      "https://www.medgadget.com/feed"
+    ],
+    "scrape": []
+  },
   "ai_tech": {
     "label": "AI 技術趨勢",
     "feeds": [

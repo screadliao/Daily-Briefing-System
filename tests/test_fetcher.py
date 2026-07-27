@@ -1,6 +1,13 @@
 import urllib.error
 
-from src.fetcher import RawArticle, clean_text, fetch_all, fetch_feed, is_probably_article
+from src.fetcher import (
+    RawArticle,
+    clean_text,
+    fetch_all,
+    fetch_feed,
+    is_duplicate_title,
+    is_probably_article,
+)
 
 
 def test_clean_text_removes_html_noise() -> None:
@@ -25,10 +32,15 @@ def test_fetch_all_deduplicates(monkeypatch) -> None:
         }
     }
 
+    unique_titles = {
+        "https://feed-one.example/rss": "Central bank holds interest rates steady",
+        "https://feed-two.example/rss": "Local election results announced overnight",
+    }
+
     def fake_fetch_feed(feed_url: str, category: str, limit: int = 5) -> list[RawArticle]:
         return [
             RawArticle(category=category, source=feed_url, title="One", url="https://same.example/item"),
-            RawArticle(category=category, source=feed_url, title="Two", url=f"{feed_url}/unique"),
+            RawArticle(category=category, source=feed_url, title=unique_titles[feed_url], url=f"{feed_url}/unique"),
         ]
 
     monkeypatch.setattr("src.fetcher.fetch_feed", fake_fetch_feed)
@@ -38,6 +50,43 @@ def test_fetch_all_deduplicates(monkeypatch) -> None:
     urls = [item["url"] for item in result["geo"]]
     assert urls.count("https://same.example/item") == 1
     assert len(urls) == 3
+
+
+def test_fetch_all_deduplicates_similar_titles_across_sources(monkeypatch) -> None:
+    sources = {
+        "geo": {
+            "label": "Geo",
+            "feeds": ["https://feed-one.example/rss", "https://feed-two.example/rss"],
+            "scrape": [],
+        }
+    }
+
+    def fake_fetch_feed(feed_url: str, category: str, limit: int = 5) -> list[RawArticle]:
+        return [
+            RawArticle(
+                category=category,
+                source=feed_url,
+                title="Taiwan announces new chip export rules",
+                url=f"{feed_url}/story",
+            ),
+        ]
+
+    monkeypatch.setattr("src.fetcher.fetch_feed", fake_fetch_feed)
+
+    result = fetch_all(sources=sources, client=object())
+
+    assert len(result["geo"]) == 1
+
+
+def test_is_duplicate_title_matches_near_identical_titles() -> None:
+    seen = ["taiwan宣布新晶片出口規則"]
+    assert is_duplicate_title("台灣宣布新晶片出口規則", seen) is False  # different characters, not fuzzy across languages
+    assert is_duplicate_title("Taiwan announces new chip export rules!", ["taiwanannouncesnewchipexportrules"]) is True
+
+
+def test_is_duplicate_title_ignores_unrelated_titles() -> None:
+    seen = ["applereleasesnewiphone"]
+    assert is_duplicate_title("Fed raises interest rates again", seen) is False
 
 
 def test_fetch_feed_timeout_returns_empty(monkeypatch) -> None:

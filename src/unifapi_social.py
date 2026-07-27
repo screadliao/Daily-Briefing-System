@@ -16,19 +16,43 @@ UNIFAPI_BASE = "https://api.unifapi.com"
 DEFAULT_TIMEOUT = 15.0
 RESULTS_PER_QUERY = 5
 
-# LinkedIn URL slugs for competitor company pages
+# LinkedIn URL slugs for competitor company pages (安防 / IP camera).
+# Hikvision and Uniview were removed after repeated HTTP 400 upstream_error
+# responses; see DEPRECATED_COMPETITOR_SLUGS below for the standing decision.
 COMPETITOR_SLUGS = {
-    # removed: Hikvision slug returns HTTP 400 upstream_error — correct slug TBD
     "Dahua Technology": "dahua-technology",
     "Axis Communications": "axis-communications",
     "Hanwha Vision": "hanwha-vision",
-    # removed: Uniview slug returns HTTP 400 upstream_error — correct slug TBD
+}
+
+# Slugs deprecated long-term: the Unif API has returned HTTP 400 upstream_error
+# for these companies across multiple runs with no fix from the vendor side.
+# Decision (2026-07-05): stop retrying until Unif API confirms new slugs;
+# do not re-add without verifying the slug resolves via a manual API call first.
+DEPRECATED_COMPETITOR_SLUGS = {
+    "Hikvision": "hikvision",
+    "Uniview": "uniview",
+}
+
+# LinkedIn URL slugs for ICG / fluorescence-guided surgery competitors.
+# Best-effort slugs — verify against a manual Unif API call before relying on them;
+# unresolvable slugs degrade silently (see _get) so wrong values are low-risk.
+ICG_COMPETITOR_SLUGS = {
+    "Stryker": "stryker",
+    "Karl Storz": "karl-storz",
+    "Olympus Corporation": "olympus-corporation",
 }
 
 INDUSTRY_TOPICS = [
     "video surveillance AI",
     "IP camera industry",
     "AI vision security",
+]
+
+ICG_INDUSTRY_TOPICS = [
+    "ICG fluorescence guided surgery",
+    "near-infrared fluorescence imaging device",
+    "indocyanine green surgical imaging",
 ]
 
 
@@ -97,7 +121,8 @@ def search_linkedin(api_key: str | None = None) -> list[dict]:
 
     with httpx.Client(timeout=DEFAULT_TIMEOUT) as client:
         # Layer 1: competitor company pages via /linkedin/companies/{slug}/posts
-        for name, slug in COMPETITOR_SLUGS.items():
+        all_slugs = {**COMPETITOR_SLUGS, **ICG_COMPETITOR_SLUGS}
+        for name, slug in all_slugs.items():
             items = _get(client, api_key, f"/linkedin/companies/{slug}/posts")
             for item in items[:RESULTS_PER_QUERY]:
                 article = _item_to_article(item, f"linkedin:{name}", "_competitor")
@@ -105,7 +130,7 @@ def search_linkedin(api_key: str | None = None) -> list[dict]:
                     results.append(article)
 
         # Layer 2: industry topics via /linkedin/search/posts
-        for topic in INDUSTRY_TOPICS:
+        for topic in INDUSTRY_TOPICS + ICG_INDUSTRY_TOPICS:
             items = _get(
                 client, api_key,
                 "/linkedin/search/posts",
