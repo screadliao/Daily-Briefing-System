@@ -32,7 +32,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     )
     monkeypatch.setattr(
         "main.synthesize",
-        lambda raw, brave, linkedin: {
+        lambda raw, brave, linkedin, retail_hospitality_articles=None, pos_competitor_articles=None: {
             "date": "2026年06月30日 星期二",
             "headline": "Test",
             "sections": {"geo": [], "finance": [], "tech": [], "ai_tech": [], "ai_tools": [], "social": []},
@@ -55,7 +55,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     assert Path("preview.html").read_text(encoding="utf-8") == "<html>ok</html>"
 
     captured = capsys.readouterr()
-    assert "[dedup] filtered 2/6 articles already seen" in captured.out
+    assert "[dedup] filtered 4/10 articles already seen" in captured.out
     assert save_calls == [
         (
             {"https://seen.example/raw", "https://seen.example/brave"},
@@ -64,6 +64,8 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
                 {"title": "No url raw"},
                 {"title": "Fresh brave", "url": "https://fresh.example/brave"},
                 {"title": "Fresh linkedin", "url": "https://fresh.example/linkedin"},
+                {"title": "Fresh brave", "url": "https://fresh.example/brave"},
+                {"title": "Fresh brave", "url": "https://fresh.example/brave"},
             ],
             Path("_site"),
         )
