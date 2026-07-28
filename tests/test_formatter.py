@@ -1,4 +1,4 @@
-from src.formatter import to_html_email
+from src.formatter import render_plain_text, to_html_email
 
 
 def test_bold_converted() -> None:
@@ -77,3 +77,33 @@ def test_javascript_url_not_linked() -> None:
     html = to_html_email(briefing)
     assert 'href="javascript:alert(1)"' not in html
     assert "<a " not in html
+
+
+def test_plain_text_keeps_markdown_bold_and_uses_bare_urls() -> None:
+    briefing = {
+        "date": "2026年06月06日 星期六",
+        "headline": "Test",
+        "watchlist": ["• **Watchlist** [來源](https://example.com/watchlist)"],
+        "industry_trends": ["• **Industry** [來源](https://example.com/industry)"],
+        "pos_competitors": ["• **POS** [來源](https://example.com/pos)"],
+        "sections": {
+            "geo": ["• **Geo** [來源](https://example.com/geo)"],
+            "finance": [],
+            "tech": [],
+            "ai_tech": [],
+            "ai_tools": [],
+            "social": [],
+            "competitors": ["• **Competitor** [來源](https://example.com/competitor)"],
+        },
+        "keywords": ["source"],
+    }
+
+    plain_text = render_plain_text(briefing)
+
+    assert "**Watchlist**" in plain_text
+    assert "https://example.com/watchlist" in plain_text
+    assert "[來源](https://example.com/watchlist)" not in plain_text
+    assert "<strong>" not in plain_text
+    assert "<a href" not in plain_text
+    assert "</a>" not in plain_text
+    assert 'target="_blank"' not in plain_text

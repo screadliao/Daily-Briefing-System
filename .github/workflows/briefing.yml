@@ -40,6 +40,7 @@ jobs:
           mkdir -p _site
           cp preview.html _site/index.html
           cp preview.html _site/$(date -u +%Y-%m-%d).html
+          cp latest.txt _site/latest.txt
 
       - name: Publish preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

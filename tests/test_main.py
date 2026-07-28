@@ -57,6 +57,17 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
 
     assert result == 0
     assert Path("preview.html").read_text(encoding="utf-8") == "<html>ok</html>"
+    assert Path("latest.txt").read_text(encoding="utf-8") == (
+        "2026年06月30日 星期二 | Test\n\n"
+        "地緣政治\n\n"
+        "金融市場\n\n"
+        "科技產業（安防 / 半導體）\n\n"
+        "醫療影像（ICG 螢光導引手術）\n\n"
+        "AI 技術趨勢\n\n"
+        "AI 應用實踐\n\n"
+        "X / Reddit 熱議（科技 / 政治 / 世界）\n\n"
+        "關鍵字：test"
+    )
 
     captured = capsys.readouterr()
     assert "[dedup] filtered 4/10 articles already seen" in captured.out
