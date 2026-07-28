@@ -75,7 +75,7 @@ def build_sections_for_view(briefing: dict[str, Any]) -> list[dict[str, Any]]:
     if competitors_entries:
         sections.append({
             "key": "competitors",
-            "label": "競品 / 安防產業動態 (LinkedIn)",
+            "label": "競品 / 安防產業動態",
             "entries": [format_entry_html(item) for item in competitors_entries],
         })
 

@@ -16,30 +16,34 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
         {"title": "Seen brave", "url": "https://seen.example/brave"},
         {"title": "Fresh brave", "url": "https://fresh.example/brave"},
     ]
-    linkedin_articles = [
-        {"title": "Fresh linkedin", "url": "https://fresh.example/linkedin"},
+    competitor_articles = [
+        {"title": "Fresh competitor", "url": "https://fresh.example/competitor"},
     ]
 
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr("sys.argv", ["main.py", "--dry-run", "--save-html", "preview.html"])
     monkeypatch.setattr("main.fetch_all", lambda: raw_articles)
     monkeypatch.setattr("main.filter_articles", lambda articles, blocklist: articles)
-    monkeypatch.setattr("main.search_watchlist", lambda watchlist: brave_articles)
-    monkeypatch.setattr("main.search_linkedin", lambda: linkedin_articles)
+    def search_watchlist(watchlist: list[str]) -> list[dict]:
+        if watchlist == main.SECURITY_ICG_COMPETITOR_WATCHLIST:
+            return competitor_articles
+        return brave_articles
+
+    monkeypatch.setattr("main.search_watchlist", search_watchlist)
     monkeypatch.setattr(
         "main.load_seen_urls",
         lambda: {"https://seen.example/raw", "https://seen.example/brave"},
     )
     monkeypatch.setattr(
         "main.synthesize",
-        lambda raw, brave, linkedin, retail_hospitality_articles=None, pos_competitor_articles=None: {
+        lambda raw, brave, competitor_articles=None, retail_hospitality_articles=None, pos_competitor_articles=None: {
             "date": "2026年06月30日 星期二",
             "headline": "Test",
             "sections": {"geo": [], "finance": [], "tech": [], "ai_tech": [], "ai_tools": [], "social": []},
             "keywords": ["test"],
             "raw": raw,
             "brave": brave,
-            "linkedin": linkedin,
+            "competitor_articles": competitor_articles,
         },
     )
     monkeypatch.setattr("main.to_html_email", lambda briefing: "<html>ok</html>")
@@ -63,7 +67,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
                 {"title": "Fresh raw", "url": "https://fresh.example/raw"},
                 {"title": "No url raw"},
                 {"title": "Fresh brave", "url": "https://fresh.example/brave"},
-                {"title": "Fresh linkedin", "url": "https://fresh.example/linkedin"},
+                {"title": "Fresh competitor", "url": "https://fresh.example/competitor"},
                 {"title": "Fresh brave", "url": "https://fresh.example/brave"},
                 {"title": "Fresh brave", "url": "https://fresh.example/brave"},
             ],

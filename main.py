@@ -14,8 +14,12 @@ from src.delivery import deliver
 from src.fetcher import fetch_all
 from src.formatter import to_html_email
 from src.synthesizer import synthesize
-from src.unifapi_social import search_linkedin
-from src.watchlist import WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, POS_COMPETITOR_WATCHLIST
+from src.watchlist import (
+    POS_COMPETITOR_WATCHLIST,
+    RETAIL_HOSPITALITY_WATCHLIST,
+    SECURITY_ICG_COMPETITOR_WATCHLIST,
+    WATCHLIST,
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -42,7 +46,7 @@ def main() -> int:
     brave_articles = search_watchlist(WATCHLIST)
     retail_hospitality_articles = search_watchlist(RETAIL_HOSPITALITY_WATCHLIST)
     pos_competitor_articles = search_watchlist(POS_COMPETITOR_WATCHLIST)
-    linkedin_articles = search_linkedin()
+    competitor_articles = search_watchlist(SECURITY_ICG_COMPETITOR_WATCHLIST)
     seen_urls = load_seen_urls()
     raw_articles, raw_filtered, raw_total = _filter_article_groups(raw_articles, seen_urls)
     brave_articles, brave_filtered, brave_total = _filter_article_list(brave_articles, seen_urls)
@@ -52,14 +56,16 @@ def main() -> int:
     pos_competitor_articles, pos_filtered, pos_total = _filter_article_list(
         pos_competitor_articles, seen_urls
     )
-    linkedin_articles, linkedin_filtered, linkedin_total = _filter_article_list(linkedin_articles, seen_urls)
-    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered + linkedin_filtered
-    article_total = raw_total + brave_total + retail_total + pos_total + linkedin_total
+    competitor_articles, competitor_filtered, competitor_total = _filter_article_list(
+        competitor_articles, seen_urls
+    )
+    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered + competitor_filtered
+    article_total = raw_total + brave_total + retail_total + pos_total + competitor_total
     print(f"[dedup] filtered {filtered_total}/{article_total} articles already seen")
     briefing = synthesize(
         raw_articles,
         brave_articles,
-        linkedin_articles,
+        competitor_articles=competitor_articles,
         retail_hospitality_articles=retail_hospitality_articles,
         pos_competitor_articles=pos_competitor_articles,
     )
@@ -72,7 +78,7 @@ def main() -> int:
         _collect_articles(
             raw_articles,
             brave_articles,
-            linkedin_articles,
+            competitor_articles,
             retail_hospitality_articles,
             pos_competitor_articles,
         ),
@@ -122,7 +128,7 @@ def _filter_article_list(
 def _collect_articles(
     raw_articles: dict[str, list[dict]],
     brave_articles: list[dict],
-    linkedin_articles: list[dict],
+    competitor_articles: list[dict],
     retail_hospitality_articles: list[dict] | None = None,
     pos_competitor_articles: list[dict] | None = None,
 ) -> list[dict]:
@@ -130,7 +136,7 @@ def _collect_articles(
     for articles in raw_articles.values():
         combined.extend(articles)
     combined.extend(brave_articles)
-    combined.extend(linkedin_articles)
+    combined.extend(competitor_articles)
     combined.extend(retail_hospitality_articles or [])
     combined.extend(pos_competitor_articles or [])
     return combined

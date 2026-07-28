@@ -73,7 +73,7 @@ BRIEFING_TOOL: dict[str, Any] = {
                     "competitors": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "競品與安防產業動態（來自 LinkedIn），每條「• **公司/話題**：動向 [來源](URL)」，無資料則輸出空陣列",
+                        "description": "競品與安防產業動態（來自新聞／公開報導），每條「• **公司/話題**：動向 [來源](URL)」，無資料則輸出空陣列",
                     },
                 },
                 "required": ["geo", "finance", "tech", "medical_imaging", "ai_tech", "ai_tools", "social", "competitors"],
@@ -94,7 +94,7 @@ WEEKDAYS = "一二三四五六日"
 def synthesize(
     raw_articles: dict[str, list[dict[str, str]]],
     brave_articles: list[dict[str, str]] | None = None,
-    linkedin_articles: list[dict[str, str]] | None = None,
+    competitor_articles: list[dict[str, str]] | None = None,
     today: datetime | None = None,
     retail_hospitality_articles: list[dict[str, str]] | None = None,
     pos_competitor_articles: list[dict[str, str]] | None = None,
@@ -110,7 +110,14 @@ def synthesize(
     client = anthropic.Anthropic(api_key=api_key)
     watchlist_line = f"追蹤議題：{' / '.join(WATCHLIST)}\n\n" if WATCHLIST else ""
     brave_section = _format_brave_for_prompt(brave_articles) if brave_articles else ""
-    linkedin_section = _format_linkedin_for_prompt(linkedin_articles) if linkedin_articles else ""
+    competitor_section = (
+        _format_topic_search_for_prompt(
+            competitor_articles,
+            "【競品 / 安防產業動態 - 新聞與公開報導】",
+        )
+        if competitor_articles
+        else ""
+    )
     retail_hospitality_section = (
         _format_topic_search_for_prompt(
             retail_hospitality_articles,
@@ -128,7 +135,7 @@ def synthesize(
         else ""
     )
     prompt = (
-        f"今天是 {today_str}。{watchlist_line}{brave_section}{linkedin_section}"
+        f"今天是 {today_str}。{watchlist_line}{brave_section}{competitor_section}"
         f"{retail_hospitality_section}{pos_competitor_section}"
         f"以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
     )
@@ -172,23 +179,6 @@ def synthesize(
 
     print(f"[synthesizer] Claude API failed after retries, falling back: {last_error}")
     return build_fallback_briefing(raw_articles, today_str)
-
-
-def _format_linkedin_for_prompt(linkedin_articles: list[dict[str, str]]) -> str:
-    if not linkedin_articles:
-        return ""
-    lines = ["【LinkedIn 競品 / 安防產業動態】"]
-    for item in linkedin_articles:
-        source = item.get("source", "").replace("linkedin:", "").replace("linkedin_topic:", "")
-        title = item.get("title", "").strip()
-        url = item.get("url", "").strip()
-        summary = item.get("summary", "").strip()
-        line = f"- [{source}] {title} | {url}"
-        if summary and summary != title:
-            line += f" | {summary[:200]}"
-        lines.append(line)
-    lines.append("")
-    return "\n".join(lines) + "\n"
 
 
 def _format_topic_search_for_prompt(articles: list[dict[str, str]], header: str) -> str:
