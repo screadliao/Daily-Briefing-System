@@ -41,6 +41,7 @@ jobs:
           cp preview.html _site/index.html
           cp preview.html _site/$(date -u +%Y-%m-%d).html
           cp latest.txt _site/latest.txt
+          cp latest.json _site/latest.json
 
       - name: Publish preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

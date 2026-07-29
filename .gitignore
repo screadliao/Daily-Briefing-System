@@ -4,4 +4,5 @@
 __pycache__/
 preview.html
 latest.txt
+latest.json
 _site/

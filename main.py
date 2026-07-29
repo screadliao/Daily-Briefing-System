@@ -12,7 +12,7 @@ from src.brave_search import search_watchlist
 from src.deduplicator import load_seen_urls, save_seen_urls
 from src.delivery import deliver
 from src.fetcher import fetch_all
-from src.formatter import render_plain_text, to_html_email
+from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
 from src.synthesizer import synthesize
 from src.watchlist import (
     POS_COMPETITOR_WATCHLIST,
@@ -74,6 +74,15 @@ def main() -> int:
     args.save_html.write_text(to_html_email(briefing), encoding="utf-8")
     args.save_html.parent.joinpath("latest.txt").write_text(
         render_plain_text(briefing), encoding="utf-8"
+    )
+    latest_json = {
+        "date": briefing["date"],
+        "headline": briefing["headline"],
+        "keywords": briefing["keywords"],
+        "sections": build_sections_for_plain_text(briefing),
+    }
+    args.save_html.parent.joinpath("latest.json").write_text(
+        json.dumps(latest_json, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     site_dir = Path("_site")
     site_dir.mkdir(exist_ok=True)

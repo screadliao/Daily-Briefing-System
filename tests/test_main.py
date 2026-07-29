@@ -1,6 +1,8 @@
+import json
 from pathlib import Path
 
 import main
+from src.formatter import build_sections_for_plain_text
 
 
 def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) -> None:
@@ -40,17 +42,18 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
         "main.load_seen_urls",
         lambda: {"https://seen.example/raw", "https://seen.example/brave"},
     )
+    briefing = {
+        "date": "2026年06月30日 星期二",
+        "headline": "Test",
+        "sections": {"geo": [], "finance": [], "tech": [], "ai_tech": [], "ai_tools": [], "social": []},
+        "keywords": ["test"],
+        "raw": raw_articles,
+        "brave": brave_articles,
+        "competitor_articles": competitor_articles,
+    }
     monkeypatch.setattr(
         "main.synthesize",
-        lambda raw, brave, competitor_articles=None, retail_hospitality_articles=None, pos_competitor_articles=None: {
-            "date": "2026年06月30日 星期二",
-            "headline": "Test",
-            "sections": {"geo": [], "finance": [], "tech": [], "ai_tech": [], "ai_tools": [], "social": []},
-            "keywords": ["test"],
-            "raw": raw,
-            "brave": brave,
-            "competitor_articles": competitor_articles,
-        },
+        lambda raw, brave, competitor_articles=None, retail_hospitality_articles=None, pos_competitor_articles=None: briefing,
     )
     monkeypatch.setattr("main.to_html_email", lambda briefing: "<html>ok</html>")
     save_calls: list[tuple[set[str], list[dict], Path]] = []
@@ -79,6 +82,15 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
         "X / Reddit 熱議（科技 / 政治 / 世界）\n\n"
         "關鍵字：test"
     )
+    latest_json = json.loads(Path("latest.json").read_text(encoding="utf-8"))
+    assert latest_json == {
+        "date": briefing["date"],
+        "headline": briefing["headline"],
+        "keywords": briefing["keywords"],
+        "sections": build_sections_for_plain_text(briefing),
+    }
+    assert all(set(section) == {"key", "label", "entries"} for section in latest_json["sections"])
+    assert any(section["entries"] == [] for section in latest_json["sections"])
 
     captured = capsys.readouterr()
     assert "[dedup] filtered 4/10 articles already seen" in captured.out
