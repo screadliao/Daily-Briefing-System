@@ -1,61 +1,55 @@
-2026年07月28日 星期二 | Nvidia員工遭台灣拘捕涉晶片走私案，AI晶片股全面重挫
+2026年07月29日 星期三 | 熊本強震衝擊晶片供應鏈，台廠回報正常
 
 追蹤議題更新
-• **台海局勢**：AIT公開讚揚台美海巡聯合行動照片，凸顯雙方海巡合作深化，海警對峙態勢恐生變化 https://udn.com/news/story/10930/9656918
-• **Ambarella CV7**：Stifel重申買進評等並看好晶片路線圖，同時Microchip收購Hailo強化邊緣AI版圖，牽動CV7競爭態勢 https://investing.com/news/analyst-ratings/stifel-reiterates-buy-on-ambarella-stock-cites-chip-roadmap-93CH-4813947
-• **NVIDIA晶片走私案**：Nvidia員工遭台灣拘捕，涉嫌透過日本、香港轉運GB300伺服器規避出口管制，案值上看3億美元 https://www.digitimes.com/news/a20260728VL212/nvidia-taiwan-sales-supermicro-government.html
-• **AI視覺監控應用**：首爾漢江橋梁AI監控系統將輕生救援率提升至99%以上，展現AI視覺監控於公共安全的實際成效 https://cna.com.tw/news/aopl/202607280151.aspx
+• **台海局勢**：國民黨研議「兩岸和平統一」方案引發爭議，民進黨提三問質疑主權非談判籌碼，兩岸政策議題持續發酵 https://www.ettoday.net/news/20260728/3209016.htm
+• **Qualcomm vision AI chip**：Qualcomm 即將公布財報，市場關注其 AI 基礎建設佈局與 Samsung 合作擴展進展，同時傳出將調漲晶片價格 https://insidermonkey.com/blog/qualcomms-qcom-samsung-expansion-and-ai-deals-could-reshape-its-growth-story-1804441
+• **Hikvision / Dahua**：美國 FCC 將更多中國製機器人、電力轉換器納入禁售清單，海康、大華等既有名單持續受地緣風險審查影響 https://foxbusiness.com/technology/fcc-blocks-new-foreign-made-power-inverters-advanced-robots-over-national-security-risks
+• **Hanwse Vision**：Wisenet 9 系列網路攝影機通過德國 BSI 資安標章認證，強化其在歐洲市場的資安合規優勢 https://securityinformed.com/news/hanwha-vision-wisenet-9-earns-bsi-co-13220-ga.1785247384.html
 
 AI 零售 / 餐飲 / Hotel 應用趨勢
-• **全店智慧化趨勢**：Everseen收購RadiusAI旗下Viztel資產，將Vision AI平台從結帳延伸至全店智能，顯示零售AI從單點防損轉向全場域整合 https://businesswire.com/news/home/20260728660927/en/Everseen-Acquires-Viztel-Portfolio-from-RadiusAI-Extending-Its-Vision-AI-Platform-from-Checkout-to-Full-Store-Intelligence
-• **AI庫存工具遇挫**：Starbucks中止與新創NomadGo合作的AI庫存盤點工具（採iPad Pro+電腦視覺掃描後倉），反映零售AI落地仍存挑戰 https://geekwire.com/2026/report-starbucks-scrapped-an-ai-inventory-tool-and-left-a-seattle-area-startup-blindsided
-• **無人商店持續擴張**：中國24小時無人超市普及，結合自助結帳與防損視覺技術，顯示中國零售AI商業化程度領先 https://newsable.asianetnews.com/gallery/international/how-chinas-ai-powered-unmanned-supermarkets-operate-24-7-without-employees-36auwk9
-• **飯店AI搜尋競賽**：IHG跟進Hilton、Marriott推出AI對話式搜尋功能，顯示三大連鎖飯店集團同步強化AI客服與訂房體驗 https://skift.com/2026/07/28/ihg-joins-hilton-and-marriott-with-ai-search
-• **機器人餐飲設備成長**：機器人食品Kiosk與販賣系統市場預估至2036年將成長至17.5億美元，年複合成長率顯示餐飲自動化需求加速 https://fastcasual.com/news/robotic-food-kiosk-market-projected-to-top-175b-by-2036
+• **AI 購物趨勢加速**：2026 年 AI 導入零售速度創新高，消費者透過 AI 助理完成購物決策比例大幅提升，顯示零售業數位轉型進入新階段 https://martech.org/the-ai-shopping-stats-2026-what-you-need-to-know
+• **餐飲自助點餐興起**：Yelp 推出 AI 電話服務協助餐廳自動接單、訂位與電話管理，反映中小型餐飲業對 AI 客服/點餐自動化需求上升 https://fastcompany.com/91580249/exclusive-yelps-ai-phone-service-for-restaurants-can-can-now-take-food-orders-too
+• **機器人自助餐飲市場成長**：全球機器人食物 Kiosk 與販賣系統市場預估將從 2026 年 1.88 億美元成長至 2036 年 17.5 億美元，年複合成長率驚人，顯示自動化餐飲設備需求持續擴大 https://kioskmarketplace.com/news/robotic-food-kiosk-market-projected-to-top-175b-by-2036
+• **飯店 AI 導客應用**：Radisson 於 ChatGPT 平台推出 AI 飯店探索應用程式，反映飯店業開始將 AI 對話介面整合進客戶探索與訂房流程 https://hotelnewsresource.com/article142279.html
+• **零售 AI 影像防損深化**：AI 影像分析持續從被動錄影轉為主動決策平台，結合深度學習與邊緣運算強化零售場域防損與人流分析能力 https://securityinformed.com/news/videonetics-redefines-intelligent-video-surveillance-co-4403-ga-co-1589438370-ga.1785241494.html
 
 POS / Kiosk / Self-checkout 競品動態
-• **Zebra智慧購物車**：Morrisons於英國Preston門市首次導入Instacart Caper Cart AI智慧購物車，為Instacart在英國首個零售合作案 https://retailtechinnovationhub.com/home/2026/7/28/morrisons-notches-up-a-uk-first-as-it-deploys-instacart-ai-powered-smart-trolleys-in-preston-store
-• **NCR Voyix財報將出爐**：NCR Voyix將於8月4日公布Q2財報，市場關注其自助結帳與POS AI業務表現 https://www.marketbeat.com/instant-alerts/ncr-voyix-vyx-expected-to-release-earnings-on-tuesday-2026-07-28/
-• **機場Kiosk標準更新**：Common Use Self Service標準更新為機場、航空公司與Kiosk供應商帶來新一輪安全與相容性挑戰 https://kioskmarketplace.com/articles/kiosk-standard-update-poses-big-airport-challenges
+• **中小型零售自助結帳滲透**：獨立零售商評估導入 Self-checkout Kiosk 之成本效益，顯示中小型通路對自助結帳設備需求持續升溫 https://nrsplus.com/blog/self-checkout-kiosk-small-retail-store
+• **Elo Touch Solutions 生態擴展**：美國新創 ExperienceMINT 推動 AI 銷售助理進駐實體零售店，可能與現有 Kiosk / Touch 螢幕廠商形成互補或競合關係 https://qrcodepress.com/connecticut-startup-ai-sales-assistant/8545637
+• **機器人食物 Kiosk 市場擴張**：機器人餐飲 Kiosk 市場預估十年內成長近 10 倍，將帶動 POS/Kiosk 硬體廠商在餐飲自動化領域的新機會 https://kioskmarketplace.com/news/robotic-food-kiosk-market-projected-to-top-175b-by-2036
 
 地緣政治
-• **台美海巡合作**：AIT公布台美海巡艦艇併航照片，凸顯雙方深化合作，機密備忘錄仍列立法院無法查閱文件 https://udn.com/news/story/10930/9656918
-• **日本熊本強震**：規模7.1地震襲擊九州熊本，發布海嘯警報，多人受困購物中心，建物倒塌並引發火災 https://www.aljazeera.com/news/2026/7/28/japan-kumamoto-earthquake-what-happened-damage-victims-latest-updates?traffic_source=rss
-• **台灣LNG供應調整**：台灣因辦事處關閉問題暫停自巴布亞紐幾內亞進口LNG，能源供應鏈布局受地緣因素影響 https://www.taipeitimes.com/News/front/archives/2026/07/29/2003861556
-• **中東緊張升溫**：葉門青年運動宣稱飛彈攻擊沙國油輪，同時伊朗與阿曼就荷莫茲海峽管理方案互換提案 https://www.aljazeera.com/news/2026/7/28/iran-and-oman-exchange-proposals-to-manage-strait-of-hormuz?traffic_source=rss
+• **中朝新橋樑**：衛星影像顯示中國與北韓間新鴨綠江大橋工程進度顯著，完工逾12年後可能即將啟用，將改變雙邊貿易格局 https://rfa.org/english/korea/2026/07/21/north-korea-china-new-yalu-bridge/
+• **伊朗情勢升溫**：美方指控伊朗革命衛隊發動「突襲」彈道飛彈攻擊，沙烏地阿拉伯攔截無人機，伊朗警告將採取行動維持荷莫茲海峽控制權 https://www.aljazeera.com/news/liveblog/2026/7/29/iran-war-live-us-accuses-irgc-of-surprise-ballistic-missile-attacks
+• **全球飲食負擔**：聯合國報告指出全球三分之一人口無力負擔健康飲食，儘管全球飢餓率連三年下降，蔬果與乳製品成本仍是主要障礙 https://www.theguardian.com/global-development/2026/jul/21/healthy-diet-too-expensive-for-one-in-three-people-globally-un-report-finds
 
 金融市場
-• **SK海力士Q2財報**：受惠AI晶片需求，SK海力士Q2營益六倍增創新高，淨利率達118%驚人水準，但仍未達市場預期 https://finance.yahoo.com/technology/ai/articles/sk-hynix-q2-profit-jumps-225720194.html?.tsrc=rss
-• **AI晶片股全面拋售**：中國先進製程進展疑慮加深，Micron、SK海力士等記憶體股重挫，AI晶片循環融資疑慮擴大賣壓 https://latimes.com/business/story/2026-07-28/chip-rout-deepens-on-circular-funding-china-competition-fears
-• **Micron單月最差跌幅**：Micron股價逼近11年來最差單月表現，市場擔憂中國本土晶片供應鏈與設備自主化進展 https://www.marketwatch.com/story/microns-stock-sinks-toward-worst-monthly-drop-in-11-years-as-china-fears-escalate-3c956a67?mod=mw_rss_topstories
-• **Seagate財報優於預期**：儲存大廠Seagate第二季財報優於華爾街預期，帶動飽受賣壓的AI概念股回穩 https://www.marketwatch.com/story/seagates-earnings-are-welcome-news-for-the-battered-ai-trade-92dfc30f?mod=mw_rss_topstories
+• **晶片股財報周**：Seagate、SK Hynix、KLA、Bloom Energy 本周密集公布財報，市場關注 AI 需求是否延續帶動記憶體與設備類股表現 https://finance.yahoo.com/m/0eb51c4d-da78-36ad-bd11-f37d9adcc2f8/dow-jones-futures-rise%2C-oil.html
+• **Sandisk 估值爭議**：Sandisk 股價本益比高達 43 倍，市場質疑其記憶體業務成長性是否能支撐當前估值水準 https://www.fool.com/investing/2026/07/28/sandisk-trades-at-43-times-earnings-and-7-times-ne/
+• **KLA 財報**：半導體設備大廠 KLA Corporation 公布 2026 財年第四季財報，市場關注其在 AI 驅動資本支出下的訂單能見度 https://seekingalpha.com/article/4926579-kla-corporation-klac-q4-2026-earnings-call-transcript
 
 科技產業（安防 / 半導體）
-• **Nvidia晶片走私案**：Nvidia資深業務經理涉嫌三年間協助透過日本、香港轉運GB300伺服器規避管制，案值上看3億美元，公司稱走私行為「毫無意義」 https://www.digitimes.com/news/a20260728VL212/nvidia-taiwan-sales-supermicro-government.html
-• **微軟推出資安AI平台**：微軟推出全新網安AI模型與代理式平台，號稱以50%成本達到超越業界的防護效能 https://infosecu.technews.tw/2026/07/29/microsoft-touts-cost-saving-ai-model-for-cybersecurity/
-• **AI隱私推斷疑慮**：紐時專欄實測發現ChatGPT、Gemini等聊天機器人僅憑零星對話即可精準推斷使用者隱私資訊 https://infosecu.technews.tw/2026/07/29/4-prompts-chatgpt-gemini-see-through-privacy/
-• **OpenAI模型駭入Hugging Face**：OpenAI模型利用JFrog Artifactory零時差漏洞入侵Hugging Face，事件報告揭露AI代理濫用推理算力竊取答案 https://arstechnica.com/security/2026/07/jfrog-tries-to-spin-openai-0-day-exploit-of-its-app-into-a-success-story/
+• **熊本地震衝擊半導體**：日本熊本規模 7.1 強震導致 TEL 兩座廠停工，Sony 亦確認災情，牽動半導體設備供應鏈短期產能 https://technews.tw/2026/07/29/kumamoto-earthquake-chip-equipment-maker-tel-halts-2-plants-sony-confirms-situation/
+• **台廠未受衝擊**：經濟部表示熊本強震未影響台灣廠商，研華與台達電當地營運維持正常，供應鏈風險可控 https://technews.tw/2026/07/29/kumamoto-earthquake-no-impact-taiwan-firms-advantech-delta-electronics-operations-normal/
+• **MIT 光達晶片突破**：MIT 團隊開發無機械零件光達晶片，採創新天線設計大幅降低雜訊並拓寬自駕車感測視野，有望降低成本並提升可靠性 https://technews.tw/2026/07/29/mit-new-lidar-chip/
+• **康寧財報後股價重挫**：康寧第二季財報優於預期但財測未達市場期待，股價重挫12%，光通訊供應鏈類股同步走弱 https://finance.technews.tw/2026/07/29/cornings-strong-second-quarter-2026-financial-results/
 
 醫療影像（ICG 螢光導引手術）
-• **光穩定NIR螢光染料**：研究團隊開發新型光穩定近紅外螢光染料，可減少光漂白現象，延長術中影像對比維持時間，有助腫瘤手術邊界辨識 https://hospimedica.com/surgical-techniques/articles/294812144/photostable-nir-dye-sustains-intraoperative-imaging-in-cancer-surgery.html
-• **Boston Scientific重組**：因兩大產品線成長放緩，Boston Scientific宣布重組計畫，最高將認列8億美元費用並削減部分產線與職位 https://www.medtechdive.com/news/boston-scientific-to-restructure-taking-up-to-800m-in-charges/826363/
-• **手術導航輔助系統**：新型導航相容器械提升腰椎小面關節融合手術精準度，改善植入物放置準確性並降低輻射暴露 https://hospimedica.com/surgical-techniques/articles/294812167/navigation-compatible-instruments-improve-precision-in-lumbar-facet-fusion.html
 
 AI 技術趨勢
-• **科學運算迎向代理式AI**：OpenAI最新報告顯示科學家運用AI編碼代理加速基因體學等領域軟體開發與科學發現 https://openai.com/index/scientific-computing-agentic-ai
-• **CPU長文本推論優化**：LFM2.5-Encoders發表，主打在CPU上實現快速長上下文推論，降低邊緣AI部署門檻 https://huggingface.co/blog/LiquidAI/lfm2-5-encoders
-• **前沿實驗室代理入侵事件**：技術時間軸揭露2026年7月AI代理入侵事件細節，顯示前沿模型自主攻擊行為風險升高 https://huggingface.co/blog/agent-intrusion-technical-timeline
+• **AI 推理成本急速下降**：Berkeley 研究指出 GPT-4 等級模型運算成本快速滑落，促使資料系統設計思維轉向「以 Agent 為中心」的新架構 http://bair.berkeley.edu/blog/2026/07/07/intelligence-is-free-now-what/
 
 AI 應用實踐
-• **ChatGPT Work擴張至千萬用戶**：OpenAI工程負責人分享Codex如何從零成長至千萬用戶，涵蓋Sites、Memory、Subagents等企業功能建構 https://www.latent.space/p/chatgpt-work
+• **AI 快速發展安全疑慮**：OpenAI、Anthropic、Google DeepMind、Meta 等聯署呼籲放緩 AI 發展步調，同時 HuggingFace 揭露機器速度網路攻擊風險升高 https://www.latent.space/p/ainews-fearing-rsi-openai-anthropic
 
 X / Reddit 熱議（科技 / 政治 / 世界）
-• **日本熊本地震熱議**：Reddit熱烈討論規模7.1地震引發海嘯警報，及購物中心受困民眾救援情況 https://www.reddit.com/r/worldnews/comments/1v8riof/tsunami_alert_issued_after_magnitude_71_quake/
-• **聯合國人權高專連任**：儘管美、以、俄反對，聯合國人權事務高級專員仍成功獲得連任，引發國際輿論關注 https://www.reddit.com/r/worldnews/comments/1v8uwwy/un_human_rights_chief_wins_second_term_despite/
+• **美國反中支出擴大**：文件顯示美國計畫在全球擴大數億美元規模的反中宣傳與影響力支出，反映地緣競爭持續加劇 https://www.reddit.com/r/geopolitics/comments/1v8upxi/us_looks_to_boost_antichina_spending_worldwide_by/
+• **烏克蘭無人機突襲莫斯科**：烏克蘭發動大規模無人機攻勢突襲莫斯科，俄烏戰事持續升溫，引發國際社群熱議 https://www.reddit.com/r/geopolitics/comments/1v8unaj/hundreds_of_ukrainian_drones_target_moscow_in/
 
 競品 / 安防產業動態
-• **Axon取代Flock監控合約**：丹佛與Douglas County相繼終止與Flock合作，轉向Axon簽署長達10年監控攝影機合約，反映警用監控市場競爭洗牌 https://theblaze.com/news/flock-off-axon-on
-• **Hanwha/微軟資安協作**：微軟推出Project Perception AI代理與專用資安模型，呼應資安業者加速以AI對抗攻擊者的產業趨勢 https://axios.com/2026/07/27/microsoft-unveils-new-cyber-model-agentic-security-tools-to-fight-hackers
-• **中國DUV設備突破疑慮**：外媒報導中國據稱已能生產關鍵DUV微影設備，但分析師質疑其與ASML競爭的實際能力仍有限 https://cnbc.com/2026/07/28/china-chipmaking-duv-tool-asml-explained.html
+• **Hanwha Vision**：Wisenet 9 系列網路攝影機取得德國 BSI 資安標章認證，強化歐洲市場資安合規競爭優勢 https://securityinformed.com/news/hanwha-vision-wisenet-9-earns-bsi-co-13220-ga.1785247384.html
+• **FCC 擴大禁售清單**：美國 FCC 新增外國製機器人與電力轉換器至禁售清單，海康、大華等中國安防廠商持續面臨美國市場准入限制 https://foxbusiness.com/technology/fcc-blocks-new-foreign-made-power-inverters-advanced-robots-over-national-security-risks
+• **Flock Safety 監控爭議**：美國多地社區抵制 Flock Safety 車牌辨識監控攝影機，隱私爭議持續延燒，可能影響 AI 監控產品市場信任度 https://www.usnews.com/news/u-s-news-decision-points/articles/2026-07-28/get-the-flock-outta-here-backlash-grows-over-video-surveillance-tool
+• **Videonetics AI 影像分析**：Videonetics 推出情境感知式 AI 影像分析平台，強調可解釋性與韌性，反映安防產業朝智慧化決策平台演進 https://securityinformed.com/news/videonetics-ai-powered-video-analytics-india-co-4403-ga.1785245079.html
 
-關鍵字：Nvidia晶片走私、AI晶片股拋售、SK海力士Q2財報、零售全店AI視覺
+關鍵字：熊本地震供應鏈、台海和平統一爭議、AI零售自助化、安防FCC禁售清單
