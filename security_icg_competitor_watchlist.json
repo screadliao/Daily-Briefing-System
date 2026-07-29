@@ -1,16 +1,8 @@
 {
   "topics": [
-    "Dahua Technology video surveillance news",
-    "Axis Communications security camera news",
-    "Hanwha Vision AI security news",
-    "video surveillance AI news",
-    "IP camera industry news",
-    "AI vision security news",
-    "Stryker fluorescence imaging surgery news",
-    "Karl Storz fluorescence imaging news",
-    "Olympus Corporation surgical imaging news",
-    "ICG fluorescence guided surgery news",
-    "near-infrared fluorescence imaging device news",
-    "indocyanine green surgical imaging news"
+    "Dahua Technology video surveillance news OR Axis Communications security camera news OR Hanwha Vision AI security news",
+    "video surveillance AI news OR IP camera industry news OR AI vision security news",
+    "Stryker fluorescence imaging surgery news OR Karl Storz fluorescence imaging news OR Olympus Corporation surgical imaging news",
+    "ICG fluorescence guided surgery news OR near-infrared fluorescence imaging device news OR indocyanine green surgical imaging news"
   ]
 }

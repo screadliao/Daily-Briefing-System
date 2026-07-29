@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import date, datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -20,6 +21,14 @@ def load_topic_list(path: Path) -> list[str]:
 
 def load_watchlist() -> list[str]:
     return load_topic_list(WATCHLIST_FILE)
+
+
+def rotate_half(topics: list[str], today: date | None = None) -> list[str]:
+    """Return alternating halves by UTC date parity, completing a full cycle in two days."""
+    today = today or datetime.utcnow().date()
+    midpoint = (len(topics) + 1) // 2
+    first_half, second_half = topics[:midpoint], topics[midpoint:]
+    return first_half if today.toordinal() % 2 == 0 else second_half
 
 
 WATCHLIST = load_watchlist()

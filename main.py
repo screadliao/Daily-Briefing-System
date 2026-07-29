@@ -19,6 +19,7 @@ from src.watchlist import (
     RETAIL_HOSPITALITY_WATCHLIST,
     SECURITY_ICG_COMPETITOR_WATCHLIST,
     WATCHLIST,
+    rotate_half,
 )
 
 
@@ -44,9 +45,9 @@ def main() -> int:
     raw_articles = fetch_all()
     raw_articles = filter_articles(raw_articles, BLOCKLIST)
     brave_articles = search_watchlist(WATCHLIST)
-    retail_hospitality_articles = search_watchlist(RETAIL_HOSPITALITY_WATCHLIST)
-    pos_competitor_articles = search_watchlist(POS_COMPETITOR_WATCHLIST)
-    competitor_articles = search_watchlist(SECURITY_ICG_COMPETITOR_WATCHLIST)
+    retail_hospitality_articles = search_watchlist(rotate_half(RETAIL_HOSPITALITY_WATCHLIST))
+    pos_competitor_articles = search_watchlist(rotate_half(POS_COMPETITOR_WATCHLIST))
+    competitor_articles = search_watchlist(rotate_half(SECURITY_ICG_COMPETITOR_WATCHLIST))
     seen_urls = load_seen_urls()
     raw_articles, raw_filtered, raw_total = _filter_article_groups(raw_articles, seen_urls)
     brave_articles, brave_filtered, brave_total = _filter_article_list(brave_articles, seen_urls)

@@ -24,6 +24,12 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     monkeypatch.setattr("sys.argv", ["main.py", "--dry-run", "--save-html", "preview.html"])
     monkeypatch.setattr("main.fetch_all", lambda: raw_articles)
     monkeypatch.setattr("main.filter_articles", lambda articles, blocklist: articles)
+    rotated_watchlists: list[list[str]] = []
+    monkeypatch.setattr(
+        "main.rotate_half",
+        lambda topics: rotated_watchlists.append(topics) or topics,
+    )
+
     def search_watchlist(watchlist: list[str]) -> list[dict]:
         if watchlist == main.SECURITY_ICG_COMPETITOR_WATCHLIST:
             return competitor_articles
@@ -56,6 +62,11 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     result = main.main()
 
     assert result == 0
+    assert rotated_watchlists == [
+        main.RETAIL_HOSPITALITY_WATCHLIST,
+        main.POS_COMPETITOR_WATCHLIST,
+        main.SECURITY_ICG_COMPETITOR_WATCHLIST,
+    ]
     assert Path("preview.html").read_text(encoding="utf-8") == "<html>ok</html>"
     assert Path("latest.txt").read_text(encoding="utf-8") == (
         "2026年06月30日 星期二 | Test\n\n"
