@@ -1,105 +1,103 @@
 {
-  "date": "2026年07月30日 星期四",
-  "headline": "熊本地震衝擊擴大，TSMC JASM 仍在校正",
+  "date": "2026年07月31日 星期五",
+  "headline": "美中台貿易緊張再起，Qualcomm漲價衝擊供應鏈",
   "keywords": [
-    "熊本地震供應鏈",
-    "Hailo收購",
-    "台海灰色地帶",
-    "ICG分子影像"
+    "Qualcomm漲價",
+    "台海結構性模糊",
+    "NVIDIA Jetson",
+    "AI零售視覺"
   ],
   "sections": [
     {
       "key": "watchlist",
       "label": "追蹤議題更新",
       "entries": [
-        "• **台海局勢**：AIT 公開台美海巡合作照片，分析指北京對台意圖不會成功，象徵性動作引發外界解讀升溫 https://newtalk.tw/news/view/2026-07-29/1049955",
-        "• **台海局勢**：世界新聞網評論指出，AIT 貼出海巡艦合作照片增添想像空間，回顧蔡英文政府時期美台簽署海巡合作文件後，中共海警與解放軍隨即升高灰色地帶行動 https://worldjournal.com/wj/story/124277/9657338",
-        "• **Hailo AI chip**：Microchip Technology 簽署確定協議收購 **Hailo**，取得其 edge AI 加速器與 vision SoC 技術，強化邊緣視覺運算布局 https://edge-ai-vision.com/2026/07/microchip-technology-signs-definitive-agreement-to-acquire-hailo",
-        "• **AI視覺監控**：首爾漢江橋梁 AI 監控系統自 2021 年運作以來，將輕生救援率從 56% 提升至 99% 以上，展現視覺 AI 於公共安全的實質效益 https://worldjournal.com/wj/story/121488/9658114"
+        "• **台海局勢**：美學者倡議由「戰略模糊」轉向「結構性模糊」，主張華府應對北京灰色地帶施壓採取對等反制手段 https://news.nextapple.com/international/20260730/C11A3FA43FADBFF502651BE7788AC537",
+        "• **Ambarella/Qualcomm動態**：Qualcomm Q3財報獲利年減25%，因Apple自研C2 modem提前問世，非手機業務（含AI/車用）將成新成長動能，9月起調漲晶片價格 https://finance.yahoo.com/markets/stocks/articles/qualcomm-q3-2026-earnings-profit-120521329.html",
+        "• **NVIDIA Jetson edge AI**：Jetson平台獲選為Lunar Outpost月球車運算核心，搭載CUDA-X libraries執行自主導航與地圖建構，展現edge AI在極端環境應用潛力 https://engineering.com/lunar-outpost-uses-nvidia-computing-for-moon-missions",
+        "• **Hikvision動態**：Hikrobot於Automation Expo發表Hikpad AMR與新一代機器視覺產品，深化工業自動化與機器視覺布局 https://timestech.in/hikrobot-debuts-hikpad-amr-at-automation-expo"
       ]
     },
     {
       "key": "industry_trends",
       "label": "AI 零售 / 餐飲 / Hotel 應用趨勢",
       "entries": [
-        "• **飯店 AI 搜尋與訂房**：**IHG** 與 **G6 Hospitality** 擴大導入 AI 驅動的搜尋與訂房工具，顯示連鎖飯店集團正將 AI 應用從客房服務延伸至前端獲客與轉換率優化 https://hotelbusiness.com/ihg-g6-expand-ai-powered-search-and-booking-tools",
-        "• **飯店 AI 準備度落差**：Access Hospitality 警告飯店業者若系統分散、資料品質不佳、員工訓練不足，貿然投資 AI 恐淪為浪費，凸顯導入 AI 前需先解決基礎資料整合問題，此趨勢值得評估轉職方向者留意 https://itbrief.com.au/story/hotels-warned-on-ai-readiness-as-tools-gain-traction"
+        "• **零售防損AI化**：AI詐欺手法同步升級，零售業者面臨更精準、自動化的詐騙攻擊，需升級AI風控與異常偵測系統以對應新型態損失 https://retail-insight-network.com/features/the-ai-fraud-wave-retailers-must-prepare-for",
+        "• **貨架智慧化**：Instacart整合Arpalus貨架掃描技術，透過電腦視覺即時監控貨架狀態，提升生鮮雜貨庫存準確度，反映零售業從結帳延伸至上游庫存管理的AI布局趨勢 https://trendhunter.com/trends/ai-shelf-intelligence",
+        "• **智慧購物車崛起**：英國Morrisons於Preston門市試行Instacart Caper Cart智慧購物車，標誌北美業者跨大西洋拓展AI零售硬體，購物車級AI視覺成self-checkout以外新戰場 https://retailtechinnovationhub.com/home/2026/7/29/two-thumbs-up-for-morrisons-as-grocery-retailer-tests-out-instacart-smart-trolleys-in-preston-store"
       ]
     },
     {
       "key": "geo",
       "label": "地緣政治",
       "entries": [
-        "• **中東戰事擴大**：美國與沙烏地阿拉伯聯手打擊伊拉克境內親伊朗民兵，川普揚言將對約旦遇襲事件「強力回擊」，戰線持續擴大至新戰場 https://www.aljazeera.com/news/liveblog/2026/7/30/iran-war-live-trump-threatens-to-hit-back-hard-over-strikes-on-jordan?traffic_source=rss",
-        "• **紅海安全聯盟**：沙烏地阿拉伯尋求組建國際聯盟對抗青年運動（Houthis），因其對能源油輪攻擊擴大，導致油價走高 https://www.aljazeera.com/news/2026/7/29/saudi-arabia-seeks-international-coalition-against-houthis-in-red-sea?traffic_source=rss",
-        "• **熊本強震災情**：日本熊本 7.1 強震死亡人數攀升至 18 人，搜救持續進行，區域產業供應鏈衝擊仍在評估中 https://www.taipeitimes.com/News/front/archives/2026/07/30/2003861620",
-        "• **台灣經濟展望**：瑞銀（UBS）上修台灣今年 GDP 成長預測至 11%，反映半導體與 AI 相關需求對出口的強勁拉動 https://www.taipeitimes.com/News/front/archives/2026/07/30/2003861621",
-        "• **北非抗議延燒**：極端高溫與電力中斷引爆突尼西亞、利比亞等北非國家反政府示威，民眾矛頭指向政府治理失能 https://foreignpolicy.com/2026/07/29/tunisia-libya-north-africa-protests-extreme-heat-power-cuts/"
+        "• **中東戰事升溫**：美國與伊朗互射飛彈，戰事持續擴大，前美國駐UAE大使警告進一步升級「毫無意義」 https://www.aljazeera.com/video/newsfeed/2026/7/31/us-escalation-with-iran-is-pointless-warns-former-us-diplomat?traffic_source=rss",
+        "• **加薩協議進展**：川普宣布Hamas將解除武裝，以色列隨後將逐步撤出加薩，雙方後續執行仍待落實 https://www.aljazeera.com/news/liveblog/2026/7/31/iran-war-live-trump-says-hamas-to-disarm-israel-to-leave-gaza-gradually?traffic_source=rss",
+        "• **日本熊本強震**：熊本地震死亡人數升至34人，倖存者在高溫下於避難所艱困度日，台灣搜救隊曾待命支援展現台日情誼 https://www.bbc.co.uk/news/articles/cdrv36kv7pzo?at_medium=RSS&at_campaign=rss",
+        "• **緬甸政局**：反軍政府抗爭者對革命的期待逐漸消散，數年抗爭未能撼動軍方統治，民主前景仍不明朗 https://www.bbc.co.uk/news/articles/ckgd3k7xe39o?at_medium=RSS&at_campaign=rss"
       ]
     },
     {
       "key": "finance",
       "label": "金融市場",
       "entries": [
-        "• **台股避險急跌**：受中東局勢升溫與 Fed 決議前市場觀望影響，台股盤中重挫逾千點、失守 4.1 萬點大關 https://newtalk.tw/news/view/2026-07-29/1049955",
-        "• **Samsung 獲利暴增**：三星第二季獲利因 AI 晶片需求激增達 19 倍成長，抵銷手機業務虧損，凸顯記憶體與 AI 晶片景氣分歧 https://www.investing.com/news/stock-market-news/samsung-q2-profit-jumps-19fold-as-ai-chip-demand-offsets-mobile-loss-4822115",
-        "• **Qualcomm 財測轉弱**：**Qualcomm** 因記憶體成本吃緊將調漲晶片售價，第三季財測保守，股價應聲下跌 https://www.marketwatch.com/story/qualcomms-stock-falls-as-memory-woes-weigh-on-earnings-fc2b6317?mod=mw_rss_topstories",
-        "• **Fed 鷹派言論衝擊市場**：Fed 主席 Kevin Warsh 談及通膨升溫言論引發股市重挫，銀行股如 JPMorgan 同步下跌 https://www.fool.com/investing/2026/07/29/why-jpmorgan-chase-stock-tumbled-today/?.tsrc=rss",
-        "• **Tamron 併購案**：**Tamron** 證實收到 **Sony** 提出的非約束性收購提案，光學鏡頭供應鏈整合動向值得關注 https://www.investing.com/news/stock-market-news/tamron-confirms-nonbinding-buyout-proposal-from-sony-after-media-report-4822171"
+        "• **Apple財報疲弱**：Apple財測受供應鏈壓力拖累，儘管iPhone、Mac銷售優於預期，股價仍下滑，市場關注C2 modem自研進度 https://www.investing.com/news/stock-market-news/apple-revenue-profits-beat-expectations-on-iphone-mac-sales-4826219",
+        "• **美中貿易磋商**：中國國務院副總理向美方Bessent、Greer表達對貿易限制措施的關切，雙方持續就關稅議題角力 https://www.investing.com/news/stock-market-news/chinese-vice-premier-raises-concerns-over-trade-restrictions-with-bessent-greer-xinhua-93CH-4826583",
+        "• **AMD股價動能**：分析師討論AMD股價能否挑戰600美元關卡，反映市場對AI晶片需求持續樂觀 https://www.fool.com/investing/2026/07/30/is-amd-stock-heading-to-600-per-share/?.tsrc=rss",
+        "• **內部人示警**：企業內部人士拋售股票信號轉為20年來最悲觀，市場解讀為對後市保守的警訊 https://www.marketwatch.com/story/the-warning-signal-insiders-are-sending-f0538ddf?mod=mw_rss_topstories"
       ]
     },
     {
       "key": "tech",
       "label": "科技產業（安防 / 半導體）",
       "entries": [
-        "• **熊本地震衝擊擴大**：豐田 3 座工廠與三菱電機半導體廠因熊本強震停工，日本汽車與功率半導體供應鏈受衝擊 https://technews.tw/2026/07/30/earthquake-impact-expands-toyota-suspends-3-plants-mitsubishi-halts-power-semiconductor-plant/",
-        "• **TSMC JASM 復原進度**：台積電熊本子公司 JASM 廠區仍在進行設備校正調整，公司最新說明釐清地震對當地產能影響程度 https://technews.tw/2026/07/30/recovery-status-of-tsmc-jasm-after-the-kumamoto-earthquake/",
-        "• **AMD 挑戰 CUDA 生態**：AMD 的 **Helios** 平台在 AI 基礎設施競爭中逐步取得進展，市場焦點從單純 GPU 效能轉向整體運算系統評估，牽動 NVIDIA 生態護城河 https://www.digitimes.com/news/a20260729PD230/amd-nvidia-cuda-infrastructure-competition.html",
-        "• **台灣車用光學供應鏈**：台灣廠商 Ken Sean Industries 攜手日本夥伴，避開中國供應鏈布局智慧車用「眼睛」感測器市場，反映地緣風險下的供應鏈重組 https://www.digitimes.com/news/a20260729PD223/automakers-automotive-electronics-electronics-taiwan-market.html",
-        "• **GlobalFoundries 獲美國政府挹注**：美國政府提供 GlobalFoundries 3 億美元並取得 1% 股權，扶植其發展矽光子（silicon photonics）技術，強化本土先進封裝與光通訊產能 https://www.theregister.com/public-sector/2026/07/29/uncle-sam-sees-the-light-offers-globalfoundries-300m-to-pursue-silicon-photonics-while-taking-1-stake/5280620"
+        "• **先進封裝競爭**：Unimicron指出Intel EMIB-T要到2027年才量產，TSMC CoWoS產能吃緊下，第二供應來源需求增溫，加劇封裝產業競爭格局 https://www.digitimes.com/news/a20260730PD212/packaging-cowos-unimicron-tsmc-production.html",
+        "• **UMC擴大資本支出**：UMC將2026年資本支出由15億美元上調至20億美元，並公布新加坡擴產與南科新廠計畫，聚焦AI SiPh需求 https://www.digitimes.com/news/a20260730PD223/umc-capex-siph-demand-2026.html",
+        "• **歐盟AI超級工廠計畫**：歐盟啟動全歐7座AI Gigafactories計畫，投資規模上看1.12兆，用以訓練先進AI模型並強化歐洲運算能量 https://technews.tw/2026/07/31/eu-launches-ai-gigafactories-call-to-boost-europes-computing-capacity/",
+        "• **WAIC 2026觀察**：DIGITIMES於2026世界人工智慧大會觀察到汽車產業正從軟體定義車輛轉向AIDV（AI-Defined Vehicle），physical AI趨勢成形 https://www.digitimes.com/news/a20260730PD229/2026-digitimes-waic-automotive-industry-chips.html",
+        "• **CISA水務OT警示**：CISA因明尼蘇達州多起PLC遭入侵事件，呼籲水務與污水處理業者強化對外聯網控制器的防護 https://www.securityweek.com/cisa-urges-water-sector-to-protect-ot-after-coordinated-attacks-on-plcs/"
       ]
     },
     {
       "key": "medical_imaging",
       "label": "醫療影像（ICG 螢光導引手術）",
       "entries": [
-        "• **Vergent Bioscience 分子影像突破**：Stanford 團隊發表論文證實 **Abenacianine** 搭配術中分子影像技術可提升肺癌手術中腫瘤可視化效果，優於白光下裸視偵測，為 ICG 類螢光導引手術新競品技術 https://biospace.com/press-releases/vergent-bioscience-announces-publication-in-the-annals-of-surgical-oncology-demonstrating-abenacianine-with-intraoperative-molecular-imaging-improved-tumor-visualization-during-lung-cancer-surgery",
-        "• **FDA AI 策略前景不明**：FDA 高層人事異動導致其原本全力支持醫療 AI 的政策方向出現不確定性，可能影響未來醫療影像相關 AI 產品審查節奏 https://www.medtechdive.com/news/AI-guidance-in-question-FDA/826420/",
-        "• **Boston Scientific 財測下修**：因電生理與 Watchman 業務挑戰，Boston Scientific 連續第二季下修 2026 年營收與每股盈餘展望，醫材大廠成長動能受壓 https://www.medtechdive.com/news/boston-scientific-again-cuts-2026-guidance/826473/"
+        "• **J&J Ottava手術機器人**：J&J揭露Ottava機器人手術系統細節，全球總裁說明其與競品的差異化定位及商業化布局規劃 https://www.medtechdive.com/news/what-jjs-ottava-robot-brings-to-the-surgical-table/826536/",
+        "• **Medtronic投資消融標測新創**：Medtronic領投CoreMap 3700萬美元融資，鎖定心房顫動治療中未被滿足的消融標測需求，強化其電生理產品線 https://www.medtechdive.com/news/medtronic-leads-37m-investment-in-ablation-mapping-startup-coremap/826550/"
       ]
     },
     {
       "key": "ai_tech",
       "label": "AI 技術趨勢",
       "entries": [
-        "• **GPT-5.6 效率提升**：OpenAI 發布 GPT-5.6，透過融合前沿智慧與運算效率，在推論與 agentic workflow 上提供更高性價比 https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency",
-        "• **ARC-AGI-3 基準突破**：OpenAI 揭露僅調整兩項 API 設定即可讓 GPT-5.6 在 ARC-AGI-3 基準測試分數提升三倍，凸顯推理保留與 compaction 機制的重要性 https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores",
-        "• **CUDA 移植 MLX**：Berkeley BAIR 團隊發表 K-Search 方法，將數十年 CUDA kernel 優化經驗轉譯為 Apple Silicon 原生 MLX 策略，而非逐指令複製 http://bair.berkeley.edu/blog/2026/07/29/cuda-to-mlx-k-search/",
-        "• **Prompt Injection 蠕蟲化**：資安研究者揭露新型態 prompt injection 攻擊手法，可透過 Microsoft Word 文件自我複製擴散，形成 AI 蠕蟲攻擊向量，安防與資安團隊應留意 https://simonwillison.net/2026/Jul/29/ai-worming-through-word/#atom-everything"
+        "• **GPT-5.6效能優化**：OpenAI發表GPT-5.6，強調更佳的價格效能比，協助企業以更低成本大規模部署AI workflow https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6",
+        "• **LLM資安根本缺陷**：學者於研討會提出論文，指出LLM架構存在難以根除的安全漏洞，使其永遠無法完全抵禦特定攻擊手法 https://www.technologyreview.com/2026/07/30/1140927/a-fundamental-flaw-leaves-llms-vulnerable-to-attack/"
       ]
     },
     {
       "key": "ai_tools",
       "label": "AI 應用實踐",
       "entries": [
-        "• **AI 滲透金融業**：Latent Space 分析指出 AI 正快速滲透金融服務業，成為繼程式開發之後下一個大型應用垂直領域，值得關注其場景遷移邏輯是否適用於零售 / 餐飲 https://www.latent.space/p/ainews-ai-is-eating-finance-aie-nyc"
+        "• **企業AI鎖定風險**：評論指出AI產業正從commodity競爭走向差異化堆疊，恐使企業陷入特定供應商的技術鎖定困境 https://www.normaltech.ai/p/up-the-stack-how-ais-escape-from",
+        "• **Ontology回歸**：AI工程師重新擁抱ontology作為讓機率性agent維持在確定性邊界內運作的方法，語意網技術重獲關注 https://www.latent.space/p/ontologies-agentic-systems"
       ]
     },
     {
       "key": "social",
       "label": "X / Reddit 熱議（科技 / 政治 / 世界）",
       "entries": [
-        "• **Flock 監控爭議延燒**：Reddit 熱議一名亞利桑那州男子為抗議 **Flock** 車牌辨識監控系統，提出反向監控政府官員計畫，反映大眾對 AI 監控隱私疑慮升溫 https://www.reddit.com/r/technology/comments/1v9jrvr/i_would_never_do_this_to_you_protesting_flock/",
-        "• **AI 資料中心徵地爭議**：美國居民對政府擬徵收、拆除民宅以興建 AI 資料中心的計畫表達強烈不滿，土地與能源資源爭奪浮上檯面 https://www.reddit.com/r/technology/comments/1v9xv5e/us_residents_furious_at_plan_to_seize_and_destroy/",
-        "• **AI 泡沫化疑慮**：評論者 Ed Zitron 於 Reddit 熱議串中預警若 AI 泡沫破裂，Apple 恐首當其衝「隔岸觀火」，反映市場對 AI 資本支出永續性的辯論 https://www.reddit.com/r/technology/comments/1v9jzsh/apple_will_watch_everything_burn_when_ai_bubble/"
+        "• **LLM資安漏洞討論**：MIT Technology Review報導LLM存在結構性安全缺陷，難以透過工程手段完全修補，引發資安圈廣泛討論 https://www.technologyreview.com/2026/07/30/1140936/the-download-tricking-llms-reviving-geothermal/",
+        "• **Starlink衛星通訊擴展**：TLDR報導Starlink cell network與DoorDash無人機配送等新興科技應用進展，反映邊緣運算與物聯網整合趨勢 https://tldr.tech/tech/2026-07-30"
       ]
     },
     {
       "key": "competitors",
       "label": "競品 / 安防產業動態",
       "entries": [
-        "• **OSDP 驗證里程碑**：SIA OSDP Verified 計畫確認超過 200 款門禁裝置通過驗證，標誌著門禁協定標準化與安全性進一步提升，安防產業互通性持續強化 https://sourcesecurity.com/news/sia-osdp-verified-hits-200-devices-co-1508-ga-npr.1785327873.html",
-        "• **Boon Edam 實體安防擴充**：全球實體安防入口方案商 Boon Edam 推出專為特定場域設計的行動式全高旋轉閘門，強化人員進出管制產品線 https://securityinformed.com/news/physical-security-boon-edam-turnstiles-co-286-ga.1785303273.html"
+        "• **Dahua車隊安防**：Dahua Technology為巴西Viação Brígida巴士車隊導入智慧行動視訊監控，含即時監控、乘客計數與盲區偵測功能 https://www.sourcesecurity.com/news/dahua-tech-boosts-safety-br-gida-co-4261-ga.1785395076.html",
+        "• **Hikvision深度學習應用**：報導盤點中國十大監控攝影機廠商，強調Hikvision深度學習演算法在即時物件辨識與行為分析的城市級應用優勢 https://einnews.com/pr_news/930154007/ten-reputable-surveillance-camera-manufacturers-in-china-2026-advancing-intelligent-video-security",
+        "• **印度自主監控晶片**：新加坡StraitsMicro將發表Visora，印度首款自主監控SoC的pre-silicon展示，挑戰現有海外供應鏈依賴 https://www.business-standard.com/content/press-releases-ani/straitsmicro-to-unveil-india-s-sovereign-surveillance-soc-in-exclusive-pre-silicon-demonstration-126073001017_1.html",
+        "• **AI監控獄政應用**：美國德州某郡評估導入AI攝影機監控獄所囚犯，盼提升緊急應變效率，反映公部門AI視覺監控需求擴大 https://abcnews.com/US/texas-county-explores-ai-powered-cameras-monitor-jail/story?id=135234449"
       ]
     }
   ]
