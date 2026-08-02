@@ -1,50 +1,50 @@
-2026年08月01日 星期六 | NXP傳洽購Ambarella，股價飆漲18%
+2026年08月02日 星期日 | NXP傳洽購Ambarella，車用AI晶片版圖生變
 
 追蹤議題更新
-• **台海局勢**：大陸海警「秀山艦」編隊於台灣以東海域常態化執法巡查，台海巡署派「台北艦」跟監，海上灰色地帶對峙持續 https://zaobao.com.sg/news/china/story20260731-9449948
-• **台海局勢**：台美海巡同框合作被解讀為安全合作制度化，惟學者指出雙方實力落差仍大，象徵意義大於實質嚇阻 https://chinatimes.com/realtimenews/20260801000029-260407
-• **Ambarella chip CV7**：傳NXP Semiconductors洽購Ambarella，市值約33億美元，帶動邊緣AI晶片整併想像，股價單日飆漲近18% https://www.tradingview.com/news/stocktwits:dd1bf6e49094b:0-amba-stock-rockets-18-on-nxp-buyout-talks-for-self-driving-chip-maker/
-• **NVIDIA Jetson edge AI**：南韓KT攜手DeepX、Sesol三方合作，開發NPU-based邊緣AI系統，聚焦本地端運算部署 https://koreaherald.com/article/10827055
-• **MediaTek security camera SoC**：MediaTek核准50億美元融資框架，轉向AI資料中心自研晶片，挑戰Broadcom與NVIDIA市場地位，反映手機營收下滑20%壓力 https://hothardware.com/news/mediatek-bets-5-billion-ai-data-center-chips
+• **台海局勢**：美眾議員跨黨派敦促台灣立院加速通過預算並擴大無人機採購與生產，強化國防韌性 https://secretchina.com/news/gb/2026/08/01/1102833.html
+• **台海局勢**：台灣陸軍展開旅級全員動員操演，為漢光演習暖身，凸顯防衛整備持續強化 https://www.taipeitimes.com/News/front/archives/2026/08/02/2003861785
+• **Ambarella CV7**：NXP傳洽購Ambarella，看中其車用影像處理與邊緣AI技術，AMBA股價單日暴漲18% https://siliconangle.com/2026/07/31/nxp-reportedly-talks-acquire-vehicle-chip-supplier-ambarella
+• **Qualcomm vision AI chip**：高通完成39.2億美元收購Modular，其軟體可讓AI模型跨廠牌晶片運行，挑戰NVIDIA生態壟斷 https://wionews.com/world/qualcomm-just-bought-the-software-that-breaks-nvidia-s-grip-on-ai-1785431969310/amp
+• **MediaTek security camera SoC**：MediaTek投資人會議重申ASIC營收目標，2026年上看20億美元，2027年ASIC市佔目標20% https://digitimes.com/news/a20260731PD239/mediatek-asic-pmic-revenue-growth-2026.html
 
 AI 零售 / 餐飲 / Hotel 應用趨勢
-• **飯店AI能見度競爭**：AI驅動的旅遊探索工具正在決定消費者考慮哪些飯店，逼迫飯店營收團隊重新分配數位行銷預算，SEO思維轉向「AI可見度優化」 https://skift.com/2026/07/31/ai-driven-travel-discovery-hotel-visibility
+• **Retail Computer Vision 普及**：零售業導入電腦視覺進行防損與客流分析漸成主流，重點在ROI量化與AI團隊建置策略，顯示技術已從概念驗證邁向規模化部署 https://tekrecruiter.com/post/retail-computer-vision
 
 地緣政治
-• **台海局勢**：美國國會議員敦促加速通過對台無人機採購法案，反映美方持續強化台灣不對稱防衛能量 https://www.taipeitimes.com/News/front/archives/2026/08/01/2003861742
-• **台灣經濟**：台灣第二季GDP成長率飆升至12.92%，創近40年最快增速，主要受惠於半導體與AI相關出口動能 https://www.taipeitimes.com/News/front/archives/2026/08/01/2003861743
-• **中東局勢**：Hamas同意解除武裝，配合川普提出的「和平委員會」計畫，但後續執行挑戰仍多 https://www.taipeitimes.com/News/front/archives/2026/08/01/2003861744
-• **歐洲移民危機**：數萬移民24小時內湧入西班牙飛地休達，至少57人死亡，歐盟緊急協調應對 https://www.theguardian.com/world/2026/jul/31/ceuta-spain-morocco-border-deaths
+• **台灣經濟**：半島電視台分析台灣GDP受惠美國AI晶片出口大增而強勁成長，惟專家警示中美貿易政策風險猶存 https://www.aljazeera.com/economy/2026/8/1/growing-like-gangbusters-can-taiwan-maintain-its-economic-momentum
+• **索羅門群島**：與美國簽署安全協議，同時重申在中美之間維持中立立場，反映太平洋島國避險策略 https://rfa.org/english/pacific/2026/08/01/solomon-islands-security-agreement-usa/
+• **中國政局**：中國北京大舉編列防災預算應對頻繁天災，網路輿論質疑是否為政權穩定性警訊 https://bannedbook.org/bnews/sohnews/20260801/2344461.html
+• **台灣財政**：內閣本月將公布新年度預算案，市場關注國防與基礎建設支出配置 https://www.taipeitimes.com/News/front/archives/2026/08/02/2003861783
+• **伊朗局勢**：德黑蘭警告若美國採取「侵略」行動將有決定性回應，中東緊張情勢持續升溫 https://www.aljazeera.com/news/liveblog/2026/8/2/iran-war-live-tehran-warns-of-decisive-response-to-any-us-aggression
 
 金融市場
-• **AI對沖基金崩盤**：前OpenAI研究員Leopold Aschenbrenner的450億美元AI主題對沖基金「Situational Awareness」單週暴跌，多筆倉位被迫出清 https://www.cnbc.com/2026/07/31/leopold-aschenbrenner-situational-awareness-fund-fire-sale.html
-• **科技巨頭AI燒錢隱憂**：主要科技公司在AI基礎建設上的鉅額投資，被指恐為整體美國經濟與退休金帳戶帶來系統性風險 https://www.washingtonpost.com/technology/2026/07/31/tech-giants-burning-cash-ai-create-risks-whole-economy/
-• **Amazon財報**：Amazon自由現金流季減260億美元，但股價逆勢大漲15%，反映市場對AI雲端業務長期布局的信心 https://www.fool.com/investing/2026/07/31/amazons-free-cash-flow-swung-26-billion-in-the-wro/?.tsrc=rss
-• **動能交易崩盤**：7月momentum交易經歷2000年以來最大單月崩跌，市場情緒於月底轉為觀望性樂觀 https://www.marketwatch.com/story/july-ends-on-a-hopeful-note-for-stocks-after-momentum-trade-sees-biggest-wipeout-since-2000-4b90b6b2?mod=mw_rss_topstories
+• **Meta AI投資**：Zuckerberg計劃2026年投入高達1450億美元建設AI基礎設施，惟Q2財報公布後股價一度重挫10% https://www.fool.com/investing/2026/08/01/zuckerberg-bet-145-billion-ai-infrastructure-2026/
+• **Berkshire Hathaway**：新任CEO Greg Abel坐擁3970億美元創紀錄現金部位，市場關注是否啟動大型併購或股票回購 https://www.fool.com/investing/2026/08/01/berkshire-hathaway-397-billion-cash-pile-greg-abel/
+• **Apple財報**：iPhone營收年增16%達1090億美元，獲利增26%，但華爾街憂心成長動能能否延續 https://www.thestreet.com/investing/apples-record-iphone-boom-just-became-a-wall-street-trap
+• **Microsoft股價**：自52週低點反彈26%，投資人評估是否追高或觀望後續AI雲業務表現 https://www.fool.com/investing/2026/08/01/microsoft-stock-is-up-26-from-its-52-week-low-buy/
 
 科技產業（安防 / 半導體）
-• **台灣OCP峰會**：TSMC、Applied Materials、Advantest等廠商聚焦光學與先進封裝議題，伺服器主題退居次要，反映AI基礎建設重心轉移 https://www.digitimes.com/news/a20260729VL222/ocp-optics-packaging-infrastructure-servers-taiwan.html
-• **Lite-On布局光通訊**：Lite-On以3430萬美元入股新加坡DenseLight 21%股權，擴大InP光學元件布局，瞄準AI資料中心系統級光通訊需求 https://www.digitimes.com/news/a20260731PD238/lite-on-communications-inp-data-investment.html
-• **力晶創辦人辭世**：力晶半導體（PSMC）創辦人黃崇仁辭世享壽76歲，副董事長暫代職務，公司治理過渡受關注 https://www.digitimes.com/news/a20260731VL220/chairman-psmc-dram-taiwan-tsmc.html
-• **實體安防品牌資安事件**：知名實體安防品牌遭駭客集團ShinyHunters入侵，SaaS系統防護不足引發諷刺討論 https://www.theregister.com/security/2026/07/31/the-most-famous-brand-in-physical-security-got-pwned-by-shinyhunters/5281924
+• **聯電矽光子**：聯電首批12吋矽光子量產晶圓已交付新加坡客戶，AI供應鏈布局浮上檯面，成未來三年成長引擎 https://technews.tw/2026/08/02/umc-ai-bet-on-silicon-photonics-becomes-a-key-revenue-driver/
+• **AWS自研晶片**：Amazon客製化晶片業務年營收突破250億美元，年增率達三位數，CEO稱不排除將Trainium對外銷售 https://www.digitimes.com/news/a20260731VL206/amazon-aws-silicon-business-revenue.html
+• **NVIDIA Vera CPU**：深度剖析NVIDIA新款Vera CPU，內建88顆客製核心、176執行緒，NVLink頻寬達1.8TB/s https://www.theregister.com/systems/2026/08/01/nvidias-vera-cpu-and-the-olympus-cores-that-power-it-deep-dive/5282056
+• **中國多模態AI**：MiniMax推出H3模型，結合2K影片與原生立體音效，加劇中國AI模型開發商競爭 https://www.digitimes.com/news/a20260731VL210/stereo-competition-language.html
+• **企業雲基礎設施**：全球雲端服務營收單季突破1430億美元，成長動能不減反增 https://www.theregister.com/off-prem/2026/08/01/enterprise-cloud-infrastructure-uptake-shows-no-sign-of-slowing/5281835
 
 醫療影像（ICG 螢光導引手術）
-• **Stryker營運復甦**：Stryker第二季淨銷售成長9.4%達66億美元，同時仍在消化網路攻擊導致的訂單與供應鏈積壓 https://www.medtechdive.com/news/stryker-catching-up-on-orders-manufacturing-after-cyberattack/826725/
-• **機器人微創手術**：MMI擴大Symani機器人微創手術可行性試驗，用於阿茲海默症患者淋巴引流路徑重建，FDA核准擴大收案 https://www.medtechdive.com/news/mmi-to-expand-study-of-robotic-microsurgery-for-alzheimers/826709/
-• **影像治療聯盟**：Siemens Healthineers與Cleveland Clinic簽署10年策略聯盟，延續雙方在影像與治療技術上的長期合作 https://www.medtechdive.com/news/siemens-healthineers-cleveland-clinic-form-10-year-alliance/826682/
 
 AI 技術趨勢
-• **DeepSeek新模型**：DeepSeek發布V4-Flash-0731，具304B參數並強化agentic能力，持續在開源大模型領域快速迭代 https://simonwillison.net/2026/Jul/31/deepseek-v4-flash-0731/#atom-everything
-• **MCP協議升級**：Model Context Protocol釋出2026-07-28新規範（稱Stateless MCP／MCP 2.0），被視為近期最重大協議更新 https://simonwillison.net/2026/Jul/31/stateless-mcp/#atom-everything
+• **AI Agent企業導入**：金融業導入AI代理人需建立治理層以符合法規要求，成為規模化部署關鍵挑戰 https://www.digitimes.com/news/a20260731VL219/finance-efficiency-governance.html
+• **ChatGPT企業串接**：OpenAI內部觀察顯示員工將ChatGPT串接Slack代為處理任務，引發同事對AI主動聯繫的不適感 https://simonwillison.net/2026/Aug/1/greg-brockman/#atom-everything
 
 AI 應用實踐
-• **GPT-5.6降價**：OpenAI大砍GPT-5.6價格20%-80%，透過遞迴自我優化技術使同等智慧成本4個月內下降13倍 https://www.latent.space/p/ainews-gpt-56-price-cut-by-20-80
+• **DeepSeek低價策略**：DeepSeek推出新款低價模型加速AI價格戰，推動整體產業運算成本快速下滑 https://www.axios.com/2026/08/01/deepseek-model-cheap-ai-price-war
 
 X / Reddit 熱議（科技 / 政治 / 世界）
-• **Tesla-SpaceX合併議題**：市場熱議馬斯克可能推動特斯拉與SpaceX合併，並藉切割中國業務因應台海風險的地緣布局 https://www.nownews.com/news/6861836
-• **中東戰事討論**：Reddit地緣政治版熱議伊朗在荷莫茲海峽襲擊美方護航油輪，及美方考慮對伊朗實施陸地封鎖 https://www.reddit.com/r/geopolitics/comments/1vburzz/iran_strikes_tankers_under_us_escort_in_hormuz/
+• **中東地緣風險**：美國呼籲在中東公民做好應變準備，以防區域衝突進一步升級 https://www.reddit.com/r/geopolitics/comments/1vczalh/us_urges_its_citizens_in_middle_east_to_be_ready/
+• **烏克蘭Starlink議題**：Zelenskyy尋求透過川普取得Musk同意，讓Starlink協助對俄羅斯目標的打擊行動 https://www.reddit.com/r/geopolitics/comments/1vcn0af/zelenskyy_asks_trump_to_help_him_get_elon_musks/
 
 競品 / 安防產業動態
-• **實體安防資安**：知名實體安防品牌遭ShinyHunters入侵SaaS系統，凸顯安防業者自身資安防護與其核心業務的落差 https://www.theregister.com/security/2026/07/31/the-most-famous-brand-in-physical-security-got-pwned-by-shinyhunters/5281924
+• **DoorDash中國AI審查**：美國兩大眾議院委員會對DoorDash使用中國開發AI模型展開調查，凸顯中美科技審查升溫 https://socialnews.xyz/2026/08/01/american-company-faces-china-ai-scrutiny
+• **校園AI監控爭議**：MIT砸下300萬美元安裝逾500支AI監控攝影機，學生質疑臉部辨識與校園監控的隱私問題 https://timesofindia.indiatimes.com/technology/tech-news/as-mit-spends-3-million-on-500-ai-cameras-students-question-facial-recognition-and-campus-surveillance/articleshow/132787845.cms
 
-關鍵字：Ambarella併購、台海監控、ICG螢光手術、AI零售趨勢
+關鍵字：Ambarella併購、矽光子、AI價格戰、台海防務預算
