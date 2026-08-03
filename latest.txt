@@ -1,50 +1,49 @@
-2026年08月02日 星期日 | NXP傳洽購Ambarella，車用AI晶片版圖生變
+2026年08月03日 星期一 | Ambarella傳與NXP洽談收購案
 
 追蹤議題更新
-• **台海局勢**：美眾議員跨黨派敦促台灣立院加速通過預算並擴大無人機採購與生產，強化國防韌性 https://secretchina.com/news/gb/2026/08/01/1102833.html
-• **台海局勢**：台灣陸軍展開旅級全員動員操演，為漢光演習暖身，凸顯防衛整備持續強化 https://www.taipeitimes.com/News/front/archives/2026/08/02/2003861785
-• **Ambarella CV7**：NXP傳洽購Ambarella，看中其車用影像處理與邊緣AI技術，AMBA股價單日暴漲18% https://siliconangle.com/2026/07/31/nxp-reportedly-talks-acquire-vehicle-chip-supplier-ambarella
-• **Qualcomm vision AI chip**：高通完成39.2億美元收購Modular，其軟體可讓AI模型跨廠牌晶片運行，挑戰NVIDIA生態壟斷 https://wionews.com/world/qualcomm-just-bought-the-software-that-breaks-nvidia-s-grip-on-ai-1785431969310/amp
-• **MediaTek security camera SoC**：MediaTek投資人會議重申ASIC營收目標，2026年上看20億美元，2027年ASIC市佔目標20% https://digitimes.com/news/a20260731PD239/mediatek-asic-pmic-revenue-growth-2026.html
-
-AI 零售 / 餐飲 / Hotel 應用趨勢
-• **Retail Computer Vision 普及**：零售業導入電腦視覺進行防損與客流分析漸成主流，重點在ROI量化與AI團隊建置策略，顯示技術已從概念驗證邁向規模化部署 https://tekrecruiter.com/post/retail-computer-vision
+• **台海局勢**：美方稱中國解放軍例行性巡弋台海「深具破壞穩定性」，並警告中共研究複製俄烏戰爭中攻擊星鏈手法以切斷台灣軍隊通訊 https://www.taipeitimes.com/News/front/archives/2026/08/03/2003861830
+• **台海局勢**：台灣傳新型飛彈最快明年量產，強化不對稱戰力因應中國軍事壓力 https://www.taipeitimes.com/News/front/archives/2026/08/03/2003861831
+• **AI視覺監控**：紐約時報報導中國建置平台監控外籍人士，運用臉孔辨識系統追蹤其在陸行蹤 https://cna.com.tw/news/aopl/202608030013.aspx
+• **Ambarella chip CV7**：市場傳出Ambarella正與NXP Semiconductors洽談收購案，聚焦AI晶片與車用科技領域整合 https://simplywall.st/stocks/us/semiconductors/nasdaq-amba/ambarella/news/ambarella-amba-is-reportedly-in-acquisition-talks-with-nxp-s
 
 地緣政治
-• **台灣經濟**：半島電視台分析台灣GDP受惠美國AI晶片出口大增而強勁成長，惟專家警示中美貿易政策風險猶存 https://www.aljazeera.com/economy/2026/8/1/growing-like-gangbusters-can-taiwan-maintain-its-economic-momentum
-• **索羅門群島**：與美國簽署安全協議，同時重申在中美之間維持中立立場，反映太平洋島國避險策略 https://rfa.org/english/pacific/2026/08/01/solomon-islands-security-agreement-usa/
-• **中國政局**：中國北京大舉編列防災預算應對頻繁天災，網路輿論質疑是否為政權穩定性警訊 https://bannedbook.org/bnews/sohnews/20260801/2344461.html
-• **台灣財政**：內閣本月將公布新年度預算案，市場關注國防與基礎建設支出配置 https://www.taipeitimes.com/News/front/archives/2026/08/02/2003861783
-• **伊朗局勢**：德黑蘭警告若美國採取「侵略」行動將有決定性回應，中東緊張情勢持續升溫 https://www.aljazeera.com/news/liveblog/2026/8/2/iran-war-live-tehran-warns-of-decisive-response-to-any-us-aggression
+• **台海情勢**：美國國務院公開批評中國海空軍近期在台海周邊「常態化」巡弋行動「深具破壞穩定性」，升高區域緊張 https://www.taipeitimes.com/News/front/archives/2026/08/03/2003861830
+• **中國交流風險**：學者專家警告台灣民眾赴陸交流項目暗藏統戰與資安風險，籲政府加強因應措施 https://www.taipeitimes.com/News/front/archives/2026/08/03/2003861832
+• **中東局勢**：川普宣布暫緩對伊朗新一輪軍事打擊，稱中東停火協議已接近達成，新一輪談判本週登場 https://secretchina.com/news/gb/2026/08/03/1102899.html
+• **委內瑞拉**：委內瑞拉宣布本週將展開政權轉移相關談判，牽動拉美地緣政治格局 https://www.taipeitimes.com/News/front/archives/2026/08/03/2003861834
+• **巴基斯坦恐攻**：斯瓦特谷地反武裝團體集會遭自殺炸彈攻擊，至少14人死亡 https://www.aljazeera.com/video/newsfeed/2026/8/3/suicide-bombing-kills-at-least-14-people-in-pakistans-swat-valley?traffic_source=rss
 
 金融市場
-• **Meta AI投資**：Zuckerberg計劃2026年投入高達1450億美元建設AI基礎設施，惟Q2財報公布後股價一度重挫10% https://www.fool.com/investing/2026/08/01/zuckerberg-bet-145-billion-ai-infrastructure-2026/
-• **Berkshire Hathaway**：新任CEO Greg Abel坐擁3970億美元創紀錄現金部位，市場關注是否啟動大型併購或股票回購 https://www.fool.com/investing/2026/08/01/berkshire-hathaway-397-billion-cash-pile-greg-abel/
-• **Apple財報**：iPhone營收年增16%達1090億美元，獲利增26%，但華爾街憂心成長動能能否延續 https://www.thestreet.com/investing/apples-record-iphone-boom-just-became-a-wall-street-trap
-• **Microsoft股價**：自52週低點反彈26%，投資人評估是否追高或觀望後續AI雲業務表現 https://www.fool.com/investing/2026/08/01/microsoft-stock-is-up-26-from-its-52-week-low-buy/
+• **記憶體缺貨**：受AI需求推升記憶體吃緊衝擊，MacBook Air傳出大缺貨並兩度調漲售價 https://technews.tw/2026/08/03/macbook-air-reportedly-facing-major-supply-shortages-due-to-ai-driven-memory-crisis/
+• **韓股震盪**：南韓KOSPI指數受半導體股領軍，自6月高點暴跌逾40%後迅速反彈，外資趁機大舉抄底 https://finance.technews.tw/2026/08/03/epic-volatility-in-south-korean-stocks/
+• **Amazon財報**：Amazon受惠Anthropic投資帳面獲利與AWS強勁展望，CEO預測AWS營收上看1兆美元 https://www.fool.com/investing/2026/08/02/is-amazon-stock-a-buy-after-ceo-andy-jassys-1-tril/?.tsrc=rss
+• **OPEC+增產**：OPEC+同意9月起每日增產18.8萬桶原油，回應中東戰事干擾全球供應疑慮 https://technews.tw/2026/08/03/opec-boosts-september-production-by-188000-barrelsday/
+• **併購動態**：Prysmian傳近期將完成收購美國電氣製造商Atkore的交易 https://www.investing.com/news/stock-market-news/prysmian-nears-deal-to-acquire-us-electrical-maker-atkore-bloomberg-93CH-4829729
 
 科技產業（安防 / 半導體）
-• **聯電矽光子**：聯電首批12吋矽光子量產晶圓已交付新加坡客戶，AI供應鏈布局浮上檯面，成未來三年成長引擎 https://technews.tw/2026/08/02/umc-ai-bet-on-silicon-photonics-becomes-a-key-revenue-driver/
-• **AWS自研晶片**：Amazon客製化晶片業務年營收突破250億美元，年增率達三位數，CEO稱不排除將Trainium對外銷售 https://www.digitimes.com/news/a20260731VL206/amazon-aws-silicon-business-revenue.html
-• **NVIDIA Vera CPU**：深度剖析NVIDIA新款Vera CPU，內建88顆客製核心、176執行緒，NVLink頻寬達1.8TB/s https://www.theregister.com/systems/2026/08/01/nvidias-vera-cpu-and-the-olympus-cores-that-power-it-deep-dive/5282056
-• **中國多模態AI**：MiniMax推出H3模型，結合2K影片與原生立體音效，加劇中國AI模型開發商競爭 https://www.digitimes.com/news/a20260731VL210/stereo-competition-language.html
-• **企業雲基礎設施**：全球雲端服務營收單季突破1430億美元，成長動能不減反增 https://www.theregister.com/off-prem/2026/08/01/enterprise-cloud-infrastructure-uptake-shows-no-sign-of-slowing/5281835
+• **機器人出口限制**：美國FCC新規將部分中國製先進機器人設備納入管制清單，衝擊Unitree等中國機器人業者對美出口 https://www.digitimes.com/news/a20260731VL218/fcc-unitree-robot-robotics-usa-sales.html
+• **X光微影新創**：美國能源部資助新創Inversion Semiconductor研發X光微影技術，企圖挑戰ASML在先進製程設備的霸主地位 https://technews.tw/2026/08/03/inversion-semiconductor-x-ray-lithography-challenge-asml/
+• **印度半導體**：印度透過新建R&D中心、本土設計工具與OSAT封裝投資，加速推進半導體自主供應鏈布局 https://www.digitimes.com/news/a20260731VL211/infrastructure-expansion-design-packaging-manufacturing.html
+• **軟板廠動能**：軟板廠台郡（Flexium）第二季轉虧為盈，受惠美系客戶AI伺服器新產品量產，出貨看增一倍 https://www.digitimes.com/news/a20260731PD236/flexium-pcb-ai-server-loss-revenue-shipments.html
+• **光通訊布局**：雷笛克（ROEC）董事長透過併購切入AI光通訊市場，鎖定中長期微型化光模組商機 https://www.digitimes.com/news/a20260731PD230/radiant-communications-market-demand-optics.html
 
 醫療影像（ICG 螢光導引手術）
+• **醫材資安**：醫材專家指出已上市醫療設備常搭載無法修補的軟體，籲業界導入可持續更新的資安架構因應長期使用風險 https://www.medicaldesignandoutsourcing.com/how-to-secure-a-medical-device-you-cant-patch/
+• **手術機器人**：J&J MedTech揭露Ottava手術機器人系統可折疊手臂與觸覺回饋設計，該系統已取得FDA de novo認證 https://www.medicaldesignandoutsourcing.com/jnj-robotics-rd-ottava-folding-arms-soothing-sounds-and-haptics-capability/
+• **連續監測技術**：BD揭示非侵入式連續病患監測技術發展方向，目標涵蓋從入院、手術到出院全流程監控 https://www.medicaldesignandoutsourcing.com/bd-noninvasive-continuous-patient-monitoring-advances/
+• **腫瘤消融新法**：麻州大學安默斯特分校團隊改良消融技術，開發免切除器官的膀胱癌新型治療方案 https://www.medicaldesignandoutsourcing.com/umass-amherst-researchers-ablation-bladder-cancer-device/
 
 AI 技術趨勢
-• **AI Agent企業導入**：金融業導入AI代理人需建立治理層以符合法規要求，成為規模化部署關鍵挑戰 https://www.digitimes.com/news/a20260731VL219/finance-efficiency-governance.html
-• **ChatGPT企業串接**：OpenAI內部觀察顯示員工將ChatGPT串接Slack代為處理任務，引發同事對AI主動聯繫的不適感 https://simonwillison.net/2026/Aug/1/greg-brockman/#atom-everything
+• **手術模擬技術**：NVIDIA發表Cosmos-H-Dreams，將即時生成式模擬技術應用於手術機器人訓練場景 https://huggingface.co/blog/nvidia/cosmos-h-dreams
+• **LLM長程互動**：Berkeley BAIR團隊提出ABBEL方法，以信念更新取代完整歷史紀錄，提升LLM長程互動效率 http://bair.berkeley.edu/blog/2026/07/26/abbel/
 
 AI 應用實踐
-• **DeepSeek低價策略**：DeepSeek推出新款低價模型加速AI價格戰，推動整體產業運算成本快速下滑 https://www.axios.com/2026/08/01/deepseek-model-cheap-ai-price-war
 
 X / Reddit 熱議（科技 / 政治 / 世界）
-• **中東地緣風險**：美國呼籲在中東公民做好應變準備，以防區域衝突進一步升級 https://www.reddit.com/r/geopolitics/comments/1vczalh/us_urges_its_citizens_in_middle_east_to_be_ready/
-• **烏克蘭Starlink議題**：Zelenskyy尋求透過川普取得Musk同意，讓Starlink協助對俄羅斯目標的打擊行動 https://www.reddit.com/r/geopolitics/comments/1vcn0af/zelenskyy_asks_trump_to_help_him_get_elon_musks/
+• **Nvidia-OpenAI合作**：市場熱議Nvidia與OpenAI高達2500億美元的合作案，成為科技圈本週焦點話題 https://tldr.tech/tech/2026-07-27
 
 競品 / 安防產業動態
-• **DoorDash中國AI審查**：美國兩大眾議院委員會對DoorDash使用中國開發AI模型展開調查，凸顯中美科技審查升溫 https://socialnews.xyz/2026/08/01/american-company-faces-china-ai-scrutiny
-• **校園AI監控爭議**：MIT砸下300萬美元安裝逾500支AI監控攝影機，學生質疑臉部辨識與校園監控的隱私問題 https://timesofindia.indiatimes.com/technology/tech-news/as-mit-spends-3-million-on-500-ai-cameras-students-question-facial-recognition-and-campus-surveillance/articleshow/132787845.cms
+• **中國視覺產業**：杭州「中國視谷」視覺產業年營收突破人民幣1兆元，Shining 3D等業者聚焦高精度3D視覺技術研發 https://news.futunn.com/en/post/76975460/hangzhou-s-visual-industry-surpasses-rmb-1-trillion-in-revenue
+• **監控爭議**：《華盛頓郵報》揭露美國Flock車牌辨識攝影機網路遭至少50名執法人員濫用於跟蹤私人對象 https://washingtonpost.com/technology/2026/08/02/how-police-officers-used-vast-network-cameras-spy-their-exes
 
-關鍵字：Ambarella併購、矽光子、AI價格戰、台海防務預算
+關鍵字：Ambarella-NXP併購、台海星鏈戰術、AI記憶體缺貨、手術機器人AI
