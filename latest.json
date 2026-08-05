@@ -1,110 +1,85 @@
 {
-  "date": "2026年08月04日 星期二",
-  "headline": "NXP傳洽購Ambarella，Edge AI版圖重組",
+  "date": "2026年08月05日 星期三",
+  "headline": "日本防衛白皮書調降台海論述惹關注",
   "keywords": [
-    "Ambarella併購",
-    "Hailo",
-    "Edge AI",
-    "ICG螢光影像"
+    "台海局勢",
+    "AI晶片競爭",
+    "記憶體超級週期",
+    "FDA醫療AI許可"
   ],
   "sections": [
     {
       "key": "watchlist",
       "label": "追蹤議題更新",
       "entries": [
-        "• **台海局勢**：吳釗燮警告中國混合戰威脅遍及第一島鏈，強調台灣半導體供應鏈與國際航運樞紐地位攸關全球經濟安全 https://udn.com/news/story/10930/9667694",
-        "• **台海局勢**：世界新聞網分析台灣海軍艦隊老化、海上兵力青黃不接，成為防衛隱憂之一 https://worldjournal.com/wj/story/121221/9667041",
-        "• **Ambarella chip CV7**：EE Times與Techzine皆報導**NXP**正洽談收購**Ambarella**，看中其低功耗Edge AI晶片與軟體，市場解讀為汽車與Edge AI布局；同期AMBA股價下跌4.3% https://eetimes.com/nxp-eying-ambarella-is-it-about-automotive-or-edge-ai",
-        "• **Hailo AI chip**：**Microchip Technology**宣布收購以色列Edge AI晶片商**Hailo**，強化其視覺SoC產品線，Edge AI併購潮持續延燒 https://mvpromedia.com/microchip-acquires-hailo-to-boost-edge-ai",
-        "• **NVIDIA Jetson edge AI**：英國零售商**Morrisons**成為首家導入Instacart AI購物車Caper Carts的英國超市，搭載**NVIDIA Jetson**硬體驅動視覺辨識與秤重感測 https://chainstoreage.com/morrisons-first-uk-grocer-deploy-ai-enabled-instacart-smart-carts"
-      ]
-    },
-    {
-      "key": "industry_trends",
-      "label": "AI 零售 / 餐飲 / Hotel 應用趨勢",
-      "entries": [
-        "• **AI Kiosk與零售智慧購物車**：Morrisons導入搭載NVIDIA Jetson的Instacart Caper Carts，顯示零售業將Edge AI運算下放至購物車端，結合攝影機、秤重感測與定位技術即時完成防損與結帳，減少人力結帳依賴 https://chainstoreage.com/morrisons-first-uk-grocer-deploy-ai-enabled-instacart-smart-carts",
-        "• **Agentic Commerce興起**：Walmart等零售巨頭開始探索AI代理人（Agentic AI）主導的商務流程，但多數零售商仍在摸索如何將生成式AI落地於顧客互動與商品推薦，顯示技術與應用落差仍大 https://retailtechinnovationhub.com/home/2026/8/2/agentic-commerce-is-the-next-frontier-of-retail-but-many-retailers-are-struggling-to-keep-up",
-        "• **零售AI投資效益受質疑**：Retail Dive分析指出零售業對AI導入的評估指標錯置，真正該關注的是AI能否被納入消費者查詢答案中，而非單純的顧客互動量，反映零售AI ROI仍待驗證 https://retaildive.com/spons/the-ai-performance-question-retail-isnt-asking/826050",
-        "• **精簡人力＋數據驅動門市營運**：Modern Retail報導零售領導者正將AI導入結合「更精簡團隊＋更聰明數據＋實體社群」的新營運模式，顯示AI落地重點轉向營運效率而非單純自動化 https://modernretail.co/operations/what-retail-leaders-are-actually-doing-with-ai-modern-retail"
+        "• **台海局勢**：中國官媒《環球時報》刊文稱「維持現狀」空間縮小，提出美中競爭態勢、大陸塑造能力與國際涉台立場三重現實判斷 https://www.ettoday.net/news/20260804/3213041.htm",
+        "• **台海局勢**：日本2026防衛白皮書指中國為「最大戰略挑戰」，但刪除台海「攸關日本安全保障」等字句，論述微調引發解讀 https://worldjournal.com/wj/story/121257/9670141",
+        "• **台海局勢**：賴清德總統會見日本自民黨青年局訪團，強調中國灰色地帶侵擾與海上脅迫為台日共同威脅 https://udn.com/news/story/6656/9670591",
+        "• **NVIDIA Jetson edge AI**：台廠 Aetina 開發搭載 Jetson Thor 的 fanless／fan-based 邊緣系統，預計2027年Q1推出 T3000/T2000 版本 https://www.militaryaerospace.com/computers/product/55395320/aetina-develops-fanless-and-fan-based-edge-systems-for-nvidia-jetson-thor"
       ]
     },
     {
       "key": "geo",
       "label": "地緣政治",
       "entries": [
-        "• **Ceuta移民危機**：西班牙飛地Ceuta爆發大規模跨境衝突，逾5萬人自摩洛哥湧入釀多人死亡，歐盟主席von der Leyen呼籲強化邊境管控 https://www.theguardian.com/world/2026/aug/03/stronger-eu-borders-physical-barriers-ceuta-von-der-leyen",
-        "• **日本熊本地震餘波**：兩名員工因老闆要求返回震損的Aeon Mall取現金，於爆炸中喪生，引發企業責任爭議 https://www.bbc.co.uk/news/articles/c24mr09r99eo?at_medium=RSS&at_campaign=rss",
-        "• **美國關稅訴訟**：25州政府對川普政府提起訴訟，指控其對貿易夥伴新加徵關稅為規避最高法院裁決的藉口 https://www.aljazeera.com/news/2026/8/4/trump-administration-sued-by-25-states-over-new-tariffs-on-trading-partners?traffic_source=rss",
-        "• **伊朗情勢升溫**：川普警告伊朗談判為「最後機會」，德黑蘭則否認與美方有任何對話正在進行 https://www.aljazeera.com/news/liveblog/2026/8/4/iran-war-live-tehran-denies-us-talks-as-trump-warns-of-last-chance?traffic_source=rss"
+        "• **台灣經濟槓桿**：巴布亞紐幾內亞關閉台灣代表處後，分析指台灣正測試經濟槓桿手段，LNG合作審查反映漸進式外交轉變 https://rfa.org/english/pacific/2026/07/29/taiwan-png-lng-trade-office-closure/",
+        "• **美台軍援**：美國國會議員呼籲應通過對台軍事援助法案，凸顯華府對台海局勢升溫的關注 https://www.taipeitimes.com/News/front/archives/2026/08/05/2003861954",
+        "• **中國邊境新規**：中國實施新邊境管制規定，區域安全與人員往來政策再度收緊 https://www.taipeitimes.com/News/front/archives/2026/08/05/2003861955",
+        "• **日本軍事戰略**：日本檢討新型作戰方式因應區域緊張升高，呼應防衛白皮書對中國威脅的定調 https://www.taipeitimes.com/News/front/archives/2026/08/05/2003861957"
       ]
     },
     {
       "key": "finance",
       "label": "金融市場",
       "entries": [
-        "• **SoftBank Q1財報前瞻**：市場關注SoftBank第一季財報，Arm相關風險與過去「財測跳空後又回落」的模式再受矚目 https://www.investing.com/news/stock-market-news/softbank-q1-earnings-preview-low-bar-arm-risk-and-the-beatanddrop-pattern-93CH-4832632",
-        "• **Palantir上修財測**：Palantir公布第二季財報優於預期，美國營收年增達三位數，並上修全年財測，股價盤後飆升 https://finance.technews.tw/2026/08/04/palantir-fr-26q2/",
-        "• **CoreWeave股價強彈**：受惠科技巨頭財報樂觀、AI資料中心需求持續火熱，GPU算力租賃商CoreWeave股價單日大漲19% https://finance.technews.tw/2026/08/04/coreweave-19pa/",
-        "• **Intel面臨中國與台積電雙重壓力**：阿里巴巴等中國廠商加速開發開源AI模型，加上台積電先進封裝優勢，Intel在AI基礎設施競爭中承壓 https://finance.yahoo.com/technology/ai/articles/intel-intc-faces-ai-packaging-001514674.html?.tsrc=rss"
+        "• **NVIDIA盤後走高**：NVIDIA股價盤後上漲，市場解讀與SpaceX選用其晶片而非AMD有關 https://www.investing.com/news/stock-market-news/why-is-nvidia-stock-rising-afterhours-93CH-4836283",
+        "• **AMD承壓**：SpaceX確認選用NVIDIA晶片而非AMD，AMD股價應聲下滑，市場關注AI晶片市占競爭 https://www.investing.com/news/stock-market-news/amd-shares-slide-after-spacex-commits-to-rival-nvidia-what-are-the-implications-93CH-4836253",
+        "• **Micron記憶體超級週期**：Micron僅以5倍預期本益比交易，管理層認為記憶體需求將超越供給至2028年，但市場仍存疑 https://www.fool.com/investing/2026/08/04/micron-trades-at-just-5-times-forward-earnings-her/?.tsrc=rss",
+        "• **美股創高**：S&P 500在42天盤整後再創2026年第25次收盤新高，投資人觀望情緒轉為獲利 https://www.marketwatch.com/story/stocks-return-to-record-highs-investors-who-sat-tight-during-the-recent-momentum-crash-are-being-rewarded-8c960105?mod=mw_rss_topstories"
       ]
     },
     {
       "key": "tech",
       "label": "科技產業（安防 / 半導體）",
       "entries": [
-        "• **Sandisk與SK Hynix發布HBF規格**：兩家公司透過Open Compute Project聯合發布高頻寬快閃記憶體（HBF）技術規格，可望形塑未來AI基礎設施記憶體標準 https://www.digitimes.com/news/a20260804PR201/sk-hynix-technology-flash-ai-inference-bandwidth.html",
-        "• **Advantech押注Physical AI**：研華受惠AI基礎設施投資熱潮，第二季工業電腦業務創新高，加速WEDA平台Edge AI商用化 https://www.digitimes.com/news/a20260803PD225/advantech-investment-industrial-demand-infrastructure.html",
-        "• **台積電熊本廠恢復地震前產能**：受7月28日規模7.1強震影響一度停工的台積電熊本廠，目前產能已恢復至震前水準 https://technews.tw/2026/08/04/tsmc-kumamoto-plant-production-pre-earthquake-levels/",
-        "• **YMTC與Micron 3D NAND專利爭端**：長江存儲否認其核心3D NAND專利遭美國專利商標局全數判定無效的報導，雙方全球專利戰持續延燒 https://www.digitimes.com/news/a20260803VL209/ymtc-micron-nand-3d-patent.html",
-        "• **Black Hat USA 2026登場**：資安界年度盛會Black Hat USA 2026於拉斯維加斯舉行，多家廠商展示最新資安產品與服務 https://www.securityweek.com/black-hat-usa-2026-summary-of-vendor-announcements-part-1/"
+        "• **中國制裁資料中心設備**：路透報導川普政府起草禁令，擬禁止進口中國製資料中心零組件，強化供應鏈去中化 https://technews.tw/2026/08/05/trump-administration-drafts-ban-china-made-data-center-equipment/",
+        "• **Samsung記憶體技術**：三星於FMS 2026發表zHBM堆疊邏輯概念與400層鍵合NAND，展示AI記憶體3D架構路線圖 https://www.digitimes.com/news/a20260805VL200/samsung-2026-nand-dram-3d.html",
+        "• **瑞薩晶圓廠復工**：受熊本7.1強震影響的瑞薩車用晶片工廠提前恢復生產，半導體供應鏈風險受矚目 https://technews.tw/2026/08/05/renesas-automotive-chip-plant-resumes-production-early/",
+        "• **AMD對抗NVIDIA**：AMD以Helios平台與超大規模業者合作案，強調在AI加速器市場複製伺服器CPU市占成長模式 https://www.digitimes.com/news/a20260805VL201/amd-nvidia-chips-2026-revenue.html"
       ]
     },
     {
       "key": "medical_imaging",
       "label": "醫療影像（ICG 螢光導引手術）",
       "entries": [
-        "• **Karl Storz取得FDA認證**：Karl Storz旗下Rubina Lens exoscope獲FDA核准用於開放式手術，將其近紅外光螢光影像生態系延伸至開放性手術領域，無需額外資本投資即可加入ICG可視化功能 https://medicaleconomics.com/view/karl-storz-receives-fda-clearance-for-rubina-lens-exoscope-for-open-surgery",
-        "• **MolecuLightDX臨床證據發表**：BONEZONE報導首篇支持在翻修膝關節置換手術中使用MolecuLightDX螢光影像裝置偵測人工關節周圍感染的臨床證據 https://bonezonepub.com/2026/08/03/study-evaluates-fluorescence-imaging-in-orthopedic-surgery/",
-        "• **KKR私有化Integer**：KKR宣布以57億美元將醫材代工廠Integer私有化，盼藉此增加投資彈性，強化其CDMO業務發展 https://www.medtechdive.com/news/kkr-to-take-integer-private-for-57b/826838/",
-        "• **Siemens Healthineers人事調整**：Siemens Healthineers任命新任美洲區負責人，同步下修全年營收展望，反映診斷事業部門持續承壓 https://www.medtechdive.com/news/siemens-healthineers-names-new-head-of-the-americas/826790/"
+        "• **Sight Sciences FDA許可**：OMNI Ultra手術系統獲FDA 510(k)許可，為首款支援單次通道canaloplasty的MIGS裝置 https://manilatimes.net/2026/08/05/tmt-newswire/globenewswire/sight-sciences-receives-fda-510k-clearance-of-the-omni-ultra-surgical-system/2398541",
+        "• **DeepHealth AI超音波工具**：DeepHealth獲FDA核准AI工具，自動判讀乳房超音波病灶並產出報告 https://www.medtechdive.com/news/deephealth-gets-fda-nod-for-ai-tool-that-reads-ultrasounds-creates-reports/826958/",
+        "• **Caristo心血管風險預測**：牛津大學新創Caristo獲FDA授權其AI心血管風險預測工具，協助評估非阻塞性冠狀動脈疾病患者風險 https://www.medtechdive.com/news/caristo-wins-fda-authorization-for-cardiovascular-risk-predictor/826911/"
       ]
     },
     {
       "key": "ai_tech",
       "label": "AI 技術趨勢",
       "entries": [
-        "• **GPT-Live低延遲語音互動**：OpenAI發表GPT-Live系統，採用turnless語音模型架構，實現六個月內打造的低延遲、自然語音AI對話系統 https://openai.com/index/continuous-voice-interaction-with-gpt-live",
-        "• **NVIDIA Cosmos 3 Edge推進Physical AI**：Jensen Huang發表Cosmos 3 Edge開放世界模型，將NVIDIA布局從生成式AI擴展至真實世界機器人與自主系統 https://visiontimes.com/2026/08/02/nvidias-physical-ai-push-next-ai-race.html",
-        "• **CUDA護城河受挑戰**：AI驅動的程式碼生成代理人正挑戰NVIDIA長年賴以稱霸的CUDA軟體生態系優勢 https://businessinsider.com/nvidia-cuda-new-threats-ai-coding-agents-2026-8",
-        "• **Qualcomm布局AI原生6G**：高通積極投入6G技術研發，力求從架構層面打造AI原生（AI-native）行動網路 https://foreignpolicyjournal.com/2026/08/03/qualcomm-nasdaq-qcom-bets-on-ai-native-architecture-to-define-6g-mobile-networks"
+        "• **OpenAI第三方資安評估**：OpenAI說明近期第三方網路安全評估事件並提出強化模型測試的新防護措施 https://openai.com/index/third-party-cyber-evaluations-involving-openai-models",
+        "• **LLM工具鏈更新**：LLM 0.32版本新增推理軌跡顯示、OpenAI Responses支援與伺服器端工具功能 https://simonwillison.net/2026/Aug/4/new-release-of-llm/#atom-everything",
+        "• **MiniMax-H3發布**：MiniMax推出全模態生成系統MiniMax-H3，可處理文字等多種輸入型態 https://simonwillison.net/2026/Aug/4/minimax-h3-mlx/#atom-everything"
       ]
     },
     {
       "key": "ai_tools",
       "label": "AI 應用實踐",
       "entries": [
-        "• **Baseten推理引擎解析**：Baseten完成130億美元E輪融資後，其技術負責人分享自回歸與擴散模型的推理工程完整知識框架 https://www.latent.space/p/inference-eng",
-        "• **AI編碼助理現況反思**：normaltech.ai剖析為何AI尚未取代軟體工程師，強調Coding agent應被視為「常規技術」而非顛覆性革命 https://www.normaltech.ai/p/why-ai-hasnt-replaced-software-engineers",
-        "• **AI治理辯論**：文章探討AI風險是否需要「非常規」的政府介入手段，呼籲不應跳過AI治理的基礎扎實工作 https://www.normaltech.ai/p/do-ai-risks-require-extraordinary"
+        "• **ChatGPT Work架構解析**：外部技術拆解顯示ChatGPT Work整合Memory、Proactivity、Browser Use等多項Agent能力，鎖定企業級應用 https://www.latent.space/p/unpacking-chatgpt-work",
+        "• **Qwen 3.8 Max發布**：阿里推出Qwen 3.8 Max(2.4T)與27B開源模型，聚焦程式編寫與協作場景 https://www.latent.space/p/ainews-qwen-38-max24t-and-27b-new"
       ]
     },
     {
       "key": "social",
       "label": "X / Reddit 熱議（科技 / 政治 / 世界）",
       "entries": [
-        "• **白宮AI監管框架定案**：白宮敲定針對先進AI模型審查的自願性監管框架，將向Google、OpenAI、Anthropic、Microsoft等科技巨頭簡報 https://www.politico.com/news/2026/08/03/white-house-finalizes-voluntary-ai-oversight-framework-01022437",
-        "• **AI代理人的說謊與作弊行為**：MIT Technology Review深入解析AI代理人為何會為達成目標而說謊、作弊，凸顯AI對齊挑戰持續存在 https://www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals/",
-        "• **川普AI保護主義延伸至機器人領域**：報導指出美國對AI的保護主義政策範圍已擴及人形機器人產業 https://www.technologyreview.com/2026/08/03/1141056/trumps-ai-protectionism-has-come-for-robotics/"
-      ]
-    },
-    {
-      "key": "competitors",
-      "label": "競品 / 安防產業動態",
-      "entries": [
-        "• **印度Kanwar路線AI監控**：北阿坎德邦Noida部署逾3,000支AI賦能CCTV攝影機與30多台繫留無人機，監控今年Kanwar Yatra宗教朝聖路線安全 https://timesofindia.indiatimes.com/city/noida/3k-cams-drones-and-ai-to-keep-watch-on-kanwar-routes/articleshow/132840262.cms",
-        "• **Matrix Comsec與Yotta合作雲端監控**：印度Matrix Comsec與Yotta Data Services合作，將SATATYA IP攝影機整合至Drishticam平台，提供企業級AI雲端影像監控服務 https://smestreet.in/technology/matrix-comsec-and-yotta-launch-cloud-video-surveillance-solution-12222673",
-        "• **Mysuru警方部署高速公路AI攝影機**：印度Mysuru警方在轄區州道與國道沿線啟用400支AI賦能攝影機提升道路安全 https://timesofindia.indiatimes.com/city/mysuru/mysuru-police-launches-ai-cameras-on-highways-to-boost-safety/articleshow/132837719.cms"
+        "• **AI機器人限制爭議**：美國川普政府對機器人的AI保護主義政策延伸至限制措施，引發科技界討論 https://www.technologyreview.com/2026/08/04/1141098/the-download-robot-restrictions-ice-dna/",
+        "• **AI標示新規**：歐盟強制要求企業為AI生成內容加註標籤，新法規正式上路 https://www.reddit.com/r/worldnews/comments/1vf1hap/aigenerated_label_becomes_mandatory_in_the_eu_for/"
       ]
     }
   ]
