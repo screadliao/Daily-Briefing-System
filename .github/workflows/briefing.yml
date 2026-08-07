@@ -1,9 +1,10 @@
 name: Daily Briefing
 
 on:
-  schedule:
-    - cron: "30 23 * * *"  # 07:30 Taipei → target 08:00
   workflow_dispatch:
+    # NOTE: 排程已移到本機 Hermes cron（每日 09:00，取代此 GitHub Actions schedule + email）。
+    #       Hermes cron 跑 daily_briefing_discord.sh，本機產 latest.json 並送 Discord embed。
+    #       workflow_dispatch 保留供需要時手動觸發（例如雲端重跑）。
 
 jobs:
   briefing:
