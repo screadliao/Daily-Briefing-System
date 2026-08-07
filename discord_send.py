@@ -99,23 +99,38 @@ def build_embed(briefing: dict) -> dict:
     if not description:
         embed.pop("description", None)
 
+    # Wide 2-column layout: sections are emitted in adjacent pairs so Discord
+    # packs one row of two-wide columns. After every two real fields we insert
+    # an invisible non-inline (full-width) spacer so the next pair starts on a
+    # fresh row — each row stays exactly two columns wide (wider than the 3-col
+    # squeeze, but more compact than a single tall stack).
+    fields: list[dict] = []
+    pair_counter = 0
     for section in briefing.get("sections", []):
         label = section.get("label") or section.get("key") or "Section"
         entries = section.get("entries") or []
         if not entries:
             continue
-        if len(embed["fields"]) >= MAX_FIELDS:
+        if len(fields) >= MAX_FIELDS:
             break
         value_lines = [_format_entry(e, max_len=220) for e in entries]
         value = "\n".join(value_lines)[:MAX_FIELD_VALUE]
-        # Wide layout: mark every field inline so Discord packs adjacent
-        # sections side-by-side (roughly 2-3 columns wide) instead of one
-        # long vertical stack.
-        embed["fields"].append({
+        fields.append({
             "name": label[:MAX_NAME],
             "value": value or "—",
             "inline": True,
         })
+        pair_counter += 1
+        # After every completed pair, push a zero-width full-width spacer so the
+        # next pair starts on a fresh row. spacer is NOT inlined so it doesn't
+        # consume a slot in the row pairing.
+        if pair_counter % 2 == 0:
+            fields.append({
+                "name": "\u200b",
+                "value": "\u200b",
+                "inline": False,
+            })
+    embed["fields"] = fields
 
     return embed
 
