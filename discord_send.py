@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Send the Daily Briefing to a Discord channel as a structured Embed card.
+"""Send the Daily Briefing to a Discord channel as structured Embed cards.
 
 Reads latest.json (the structured briefing output) and posts it to the
-configured Discord webhook as an Embed with one field per section.
+configured Discord webhook. Each section becomes its own Embed so every
+category gets its own accent color on the left-hand color bar.
+
+Layout: one section per Embed (a "wide" stacked card list). Discord does NOT
+support per-field colors inside a single embed, so giving each section its own
+color requires one embed per section (Discord allows up to 10 embeds per
+message).
 
 Usage:
     python3 discord_send.py [--webhook URL] [--json PATH] [--preview-json OUT]
-
-If --webhook is omitted, the DISCORD_WEBHOOK_URL env var is used. If neither
-is present, and --preview-json is given, the embed payload is written to that
-file instead of being sent (used for local preview without network).
 
 Discord rejects python-urllib's default User-Agent (Cloudflare 1010), so we
 send a browser-like User-Agent header.
@@ -36,18 +38,33 @@ DEFAULT_ENV = PROJECT_ROOT / ".env"
 
 BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 
-# Discord embed limits
-MAX_FIELDS = 25
+# Discord limits
 MAX_TITLE = 256
 MAX_DESC = 4096
 MAX_NAME = 256
 MAX_FIELD_VALUE = 1024
+MAX_EMBEDS = 10
 
+# Default accent (used for the header embed and any uncategorized section).
 ACCENT_BLUE = 3447003
+
+# Per-category accent colors (see https://gist.github.com/thomasbnt/b6f455e2c7d743b796917fa3c637f3c7)
+SECTION_COLORS = {
+    "watchlist": 15844367,          # orange
+    "geo": 15548997,                # red
+    "finance": 3066993,             # green
+    "tech": 3447003,                # blue
+    "medical_imaging": 10181046,    # purple
+    "ai_tech": 1752220,             # teal
+    "ai_tools": 15105570,           # pink
+    "social": 15844367,             # yellow
+    "competitors": 15158332,        # gray
+    "industry_trends": 15844367,    # orange
+    "pos_competitors": 15105570,    # pink
+}
 
 
 def _strip_md(text: str) -> str:
-    """Remove bold markers; keep it readable for embed titles."""
     return BOLD_RE.sub(r"\1", text)
 
 
@@ -56,87 +73,69 @@ def _extract_url(entry: str) -> str | None:
     return m.group(0).rstrip(".,;，。；)】") if m else None
 
 
-def _format_entry(entry: str, max_len: int = 900) -> str:
-    """Convert a briefing bullet into a clean embed field value.
-
-    Removes the leading bullet, keeps bold, and appends the source link as a
-    plain URL (Discord auto-links URLs in embed fields).
-    """
+def _format_entry(entry: str, max_len: int = 520) -> str:
     text = entry.strip()
     text = re.sub(r"^\s*[•·]\s*", "", text)
     url = _extract_url(text)
     if url:
         text = text.replace(url, "").replace("  ", " ").strip()
-    # Render bold as Discord reads **...** fine inside embed values; keep them.
     clean = text
     if len(clean) > max_len:
         clean = clean[: max_len - 1].rstrip() + "…"
-    if url:
-        return f"{clean}\n{url}"
-    return clean
+    return f"{clean}\n{url}" if url else clean
 
 
-def build_embed(briefing: dict) -> dict:
+def _section_color(section: dict) -> int:
+    key = section.get("key")
+    return SECTION_COLORS.get(key or "", ACCENT_BLUE)
+
+
+def build_embeds(briefing: dict) -> list[dict]:
+    """Return one embed per section, each with its own accent color."""
+    date = briefing.get("date") or ""
+    embeds: list[dict] = []
+
+    # Header embed: headline + keywords
     headline = _strip_md(briefing.get("headline", "")).strip()
     title = headline[:MAX_TITLE] if headline else "Daily Briefing"
-
-    description_lines = []
+    header_desc_parts = []
     if headline:
-        description_lines.append(f"**{title}**")
+        header_desc_parts.append(f"**{title}**")
     keywords = briefing.get("keywords") or []
     if keywords:
-        description_lines.append("關鍵字：`" + "`、`".join(keywords[:4]) + "`")
-    description = "\n".join(description_lines)[:MAX_DESC]
-
-    embed: dict = {
+        header_desc_parts.append("關鍵字：`" + "`、`".join(keywords[:4]) + "`")
+    header_desc = "\n".join(header_desc_parts)[:MAX_DESC]
+    header: dict = {
         "title": title,
-        "description": description or None,
         "color": ACCENT_BLUE,
-        "footer": {"text": briefing.get("date") or ""},
-        "fields": [],
+        "footer": {"text": date},
     }
-    # drop empty title/description to keep payload clean
-    if not description:
-        embed.pop("description", None)
+    if header_desc:
+        header["description"] = header_desc
+    embeds.append(header)
 
-    # Wide 2-column layout: sections are emitted in adjacent pairs so Discord
-    # packs one row of two-wide columns. After every two real fields we insert
-    # an invisible non-inline (full-width) spacer so the next pair starts on a
-    # fresh row — each row stays exactly two columns wide (wider than the 3-col
-    # squeeze, but more compact than a single tall stack).
-    fields: list[dict] = []
-    pair_counter = 0
+    # One embed per non-empty section
     for section in briefing.get("sections", []):
         label = section.get("label") or section.get("key") or "Section"
         entries = section.get("entries") or []
         if not entries:
             continue
-        if len(fields) >= MAX_FIELDS:
+        if len(embeds) >= MAX_EMBEDS:
             break
-        value_lines = [_format_entry(e, max_len=220) for e in entries]
+        value_lines = [_format_entry(e) for e in entries]
         value = "\n".join(value_lines)[:MAX_FIELD_VALUE]
-        fields.append({
-            "name": label[:MAX_NAME],
-            "value": value or "—",
-            "inline": True,
+        embeds.append({
+            "title": label[:MAX_NAME],
+            "description": value or "—",
+            "color": _section_color(section),
+            "footer": {"text": date},
         })
-        pair_counter += 1
-        # After every completed pair, push a zero-width full-width spacer so the
-        # next pair starts on a fresh row. spacer is NOT inlined so it doesn't
-        # consume a slot in the row pairing.
-        if pair_counter % 2 == 0:
-            fields.append({
-                "name": "\u200b",
-                "value": "\u200b",
-                "inline": False,
-            })
-    embed["fields"] = fields
 
-    return embed
+    return embeds
 
 
-def send_embed(url: str, embed: dict) -> int:
-    payload = {"embeds": [embed]}
+def send_embeds(url: str, embeds: list[dict]) -> int:
+    payload = {"embeds": embeds}
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     req = urllib.request.Request(
         url,
@@ -151,7 +150,7 @@ def send_embed(url: str, embed: dict) -> int:
         method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
+        with urllib.request.urlopen(req, timeout=25) as resp:
             return resp.status
     except urllib.error.HTTPError as e:
         raise RuntimeError(f"Discord webhook HTTP {e.code}: {e.read().decode()[:300]}") from e
@@ -160,7 +159,7 @@ def send_embed(url: str, embed: dict) -> int:
 def main() -> int:
     if load_dotenv is not None:
         load_dotenv(DEFAULT_ENV)
-    parser = argparse.ArgumentParser(description="Post Daily Briefing as Discord embed.")
+    parser = argparse.ArgumentParser(description="Post Daily Briefing as Discord embeds.")
     parser.add_argument("--webhook", default=os.getenv("DISCORD_WEBHOOK_URL"))
     parser.add_argument("--json", type=Path, default=DEFAULT_JSON, help="Path to latest.json")
     parser.add_argument("--preview-json", type=Path, help="Write embed payload to this file instead of sending")
@@ -171,21 +170,21 @@ def main() -> int:
         return 1
 
     briefing = json.loads(args.json.read_text(encoding="utf-8"))
-    embed = build_embed(briefing)
+    embeds = build_embeds(briefing)
 
     if args.preview_json:
         args.preview_json.write_text(
-            json.dumps({"embeds": [embed]}, ensure_ascii=False, indent=2), encoding="utf-8"
+            json.dumps({"embeds": embeds}, ensure_ascii=False, indent=2), encoding="utf-8"
         )
-        print(f"preview written to {args.preview_json}")
+        print(f"preview written to {args.preview_json} (embeds: {len(embeds)})")
         return 0
 
     if not args.webhook:
         print("no webhook URL (set --webhook or DISCORD_WEBHOOK_URL)", file=sys.stderr)
         return 1
 
-    status = send_embed(args.webhook, embed)
-    print(f"sent: HTTP {status}")
+    status = send_embeds(args.webhook, embeds)
+    print(f"sent: HTTP {status} (embeds: {len(embeds)})")
     return 0
 
 
