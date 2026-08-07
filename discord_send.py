@@ -106,12 +106,15 @@ def build_embed(briefing: dict) -> dict:
             continue
         if len(embed["fields"]) >= MAX_FIELDS:
             break
-        value_lines = [_format_entry(e) for e in entries]
+        value_lines = [_format_entry(e, max_len=220) for e in entries]
         value = "\n".join(value_lines)[:MAX_FIELD_VALUE]
+        # Wide layout: mark every field inline so Discord packs adjacent
+        # sections side-by-side (roughly 2-3 columns wide) instead of one
+        # long vertical stack.
         embed["fields"].append({
             "name": label[:MAX_NAME],
             "value": value or "—",
-            "inline": False,
+            "inline": True,
         })
 
     return embed
