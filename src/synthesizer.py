@@ -53,7 +53,7 @@ BRIEFING_TOOL: dict[str, Any] = {
             "industry_trends": {
                 "type": "array",
                 "items": {"type": "string"},
-                "description": "AI 在零售 / 餐飲 / Hotel 應用趨勢分析，獨立版面，每條「• **主題**：趨勢說明 [來源](URL)」，無資料則輸出空陣列",
+                "description": "重點版面：AI 在零售 / 餐飲 / Hotel 應用趨勢分析（self-checkout、AI kiosk、電腦視覺防損、AI 點餐、飯店自助入住、個人化行銷、無人商店、供應鏈 AI 等），聚焦趨勢解讀，至少 4-6 條，每條「• **主題**：趨勢說明 [來源](URL)」，無資料則輸出空陣列",
             },
             "pos_competitors": {
                 "type": "array",
@@ -65,8 +65,6 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "properties": {
                     "geo":         {"type": "array", "items": {"type": "string"}},
                     "finance":     {"type": "array", "items": {"type": "string"}},
-                    "tech":        {"type": "array", "items": {"type": "string"}},
-                    "medical_imaging": {"type": "array", "items": {"type": "string"}},
                     "ai_tech":     {"type": "array", "items": {"type": "string"}},
                     "ai_tools":    {"type": "array", "items": {"type": "string"}},
                     "social":      {"type": "array", "items": {"type": "string"}},
@@ -76,7 +74,7 @@ BRIEFING_TOOL: dict[str, Any] = {
                         "description": "競品與安防產業動態（來自新聞／公開報導），每條「• **公司/話題**：動向 [來源](URL)」，無資料則輸出空陣列",
                     },
                 },
-                "required": ["geo", "finance", "tech", "medical_imaging", "ai_tech", "ai_tools", "social", "competitors"],
+                "required": ["geo", "finance", "ai_tech", "ai_tools", "social", "competitors"],
             },
             "keywords": {
                 "type": "array",
