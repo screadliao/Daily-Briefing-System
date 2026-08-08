@@ -68,13 +68,13 @@ BRIEFING_TOOL: dict[str, Any] = {
                     "ai_tech":     {"type": "array", "items": {"type": "string"}},
                     "ai_tools":    {"type": "array", "items": {"type": "string"}},
                     "social":      {"type": "array", "items": {"type": "string"}},
-                    "competitors": {
+                    "pos_retail": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "競品與安防產業動態（來自新聞／公開報導），每條「• **公司/話題**：動向 [來源](URL)」，無資料則輸出空陣列",
+                        "description": "POS / 零售科技與 Kiosk 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec、零售科技/kiosk 應用），每條「• **公司/主題**：動向 [來源](URL)」，無資料則輸出空陣列",
                     },
                 },
-                "required": ["geo", "finance", "ai_tech", "ai_tools", "social", "competitors"],
+                "required": ["geo", "finance", "ai_tech", "ai_tools", "social", "pos_retail"],
             },
             "keywords": {
                 "type": "array",

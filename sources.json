@@ -82,5 +82,16 @@
       "https://www.reddit.com/r/singularity/top/.rss?t=day"
     ],
     "scrape": []
+  },
+  "pos_retail": {
+    "label": "POS / 零售科技與 Kiosk",
+    "feeds": [
+      "https://www.retaildive.com/feeds/news/",
+      "https://www.pymnts.com/feed/",
+      "https://www.kioskindustry.org/rss",
+      "https://www.digitalsignagetoday.com/rss/",
+      "https://www.retailwire.com/feed/"
+    ],
+    "scrape": []
   }
 }

@@ -122,7 +122,9 @@ def build_embeds(briefing: dict) -> list[dict]:
             continue
         if len(embeds) >= MAX_EMBEDS:
             break
-        value_lines = [_format_entry(e) for e in entries]
+        # Keep each section's embed under Discord's 6000-char limit: cap the
+        # number of bullets and their length.
+        value_lines = [_format_entry(e, max_len=180) for e in entries[:4]]
         value = "\n".join(value_lines)[:MAX_FIELD_VALUE]
         embeds.append({
             "title": label[:MAX_NAME],

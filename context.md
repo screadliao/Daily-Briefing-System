@@ -20,6 +20,8 @@
 7. 若 prompt 中有「【AI 零售 / 餐飲 / Hotel 應用趨勢 - 獨立版面】」區塊，彙整為 `industry_trends`（**重點版面，至少 4–6 條**），聚焦零售 / 餐飲 / Hotel 場域中 AI 應用的趨勢與動向（例如 self-checkout、AI kiosk、電腦視覺防損、AI 點餐、飯店自助入住、個人化行銷、無人商店、供應鏈 AI 等），著重「趨勢解讀」而非單純新聞條列；此版面獨立呈現，不與其他分類混合，無資料時輸出空陣列
 8. 若 prompt 中有「【POS / Kiosk / Self-checkout 競品動態 - 獨立版面】」區塊，彙整為 `pos_competitors`（3–5 條），對象為 Partner Tech、Elo（Elo Touch Solutions）、Zebra Technologies、商米（Sunmi）、Flytech、Posiflex、NCR（NCR Voyix）、Toshiba Tec，聚焦這些公司在 POS / Kiosk / Self-checkout 上的 AI 應用動態（新品、合作、技術發表等）；此版面獨立呈現，不與其他分類混合，無資料時輸出空陣列
 
+9. EXCLUDE: 不要輸出「競品 / 安防產業動態」(competitors) 或「科技產業 (安防/半導體)」或「醫療影像」版面；此類內容一律捨棄，不併入任何分類。
+10. 「X / Reddit 熱議」(social) 為**重點版面，至少 4–6 條**，聚焦科技 / 政治 / 世界討論熱點，每條含脈絡與簡短摘要，強化廣度與趨勢解讀。
 ## 不想看到
 
 以下類型的內容請過濾，不要出現在日報中：

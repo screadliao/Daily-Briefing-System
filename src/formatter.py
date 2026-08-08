@@ -72,24 +72,29 @@ def _build_sections(
         })
 
     section_payload = briefing.get("sections", {})
+    if not isinstance(section_payload, dict):
+        section_payload = {}
     sections.extend([
         {
             "key": key,
             "label": config["label"],
-            "entries": [format_entry(item) for item in section_payload.get(key, [])],
+            "entries": _as_entries(section_payload.get(key)),
         }
         for key, config in SOURCES.items()
     ])
 
-    competitors_entries = section_payload.get("competitors", [])
-    if competitors_entries:
-        sections.append({
-            "key": "competitors",
-            "label": "競品 / 安防產業動態",
-            "entries": [format_entry(item) for item in competitors_entries],
-        })
-
     return sections
+
+
+def _as_entries(value) -> list:
+    """Coerce a section value to a list of strings, tolerating LLM quirks
+    (occasionally a section is a plain string instead of a list)."""
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, str)]
+    if isinstance(value, str) and value.strip():
+        # Some model outputs put a single bullet in a string; normalize it.
+        return [value]
+    return []
 
 
 def format_entry_html(item: str) -> str:
