@@ -12,9 +12,9 @@ from src.sources import SOURCES
 from src.watchlist import WATCHLIST
 
 try:
-    import anthropic
+    import openai
 except ImportError:  # pragma: no cover
-    anthropic = None
+    openai = None
 
 
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -32,9 +32,11 @@ def load_context_md() -> str:
 SYSTEM_PROMPT = load_context_md()
 
 BRIEFING_TOOL: dict[str, Any] = {
-    "name": "produce_briefing",
-    "description": "產出今日早報結構化資料",
-    "input_schema": {
+    "type": "function",
+    "function": {
+        "name": "produce_briefing",
+        "description": "產出今日早報結構化資料",
+        "parameters": {
         "type": "object",
         "properties": {
             "date": {
@@ -83,10 +85,16 @@ BRIEFING_TOOL: dict[str, Any] = {
             },
         },
         "required": ["date", "headline", "watchlist", "industry_trends", "pos_competitors", "sections", "keywords"],
+        },
     },
 }
 
 WEEKDAYS = "一二三四五六日"
+
+
+def extract_schema(tool: dict[str, Any]) -> dict[str, Any]:
+    """Extract the plain JSON schema from an OpenAI function tool def."""
+    return tool.get("function", tool).get("parameters", tool)
 
 
 def synthesize(
@@ -101,11 +109,11 @@ def synthesize(
     today_str = format_tw_date(today)
     article_dump = format_articles_for_prompt(raw_articles)
 
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if anthropic is None or not api_key:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if openai is None or not api_key:
         return build_fallback_briefing(raw_articles, today_str)
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = openai.OpenAI(api_key=api_key, timeout=60.0)
     watchlist_line = f"追蹤議題：{' / '.join(WATCHLIST)}\n\n" if WATCHLIST else ""
     brave_section = _format_brave_for_prompt(brave_articles) if brave_articles else ""
     competitor_section = (
@@ -141,33 +149,26 @@ def synthesize(
     last_error: Exception | None = None
     for attempt in range(3):
         try:
-            message = client.messages.create(
-                model="claude-sonnet-5",
-                max_tokens=8192,
-                system=[
-                    {
-                        "type": "text",
-                        "text": SYSTEM_PROMPT,
-                        "cache_control": {"type": "ephemeral"},
-                    }
+            # GPT-5.6 Terra 支援 JSON 輸出模式（不支援 function calling + reasoning）。
+            # 用 system prompt 給 schema + response_format 強制 JSON。
+            system_msg = SYSTEM_PROMPT + (
+                "\n\n請只輸出一個符合下列 schema 的 JSON 物件（不要有 markdown、不要說明文字）：\n"
+                + json.dumps(extract_schema(BRIEFING_TOOL), ensure_ascii=False, indent=2)
+            )
+            message = client.chat.completions.create(
+                model="gpt-5.6-terra",
+                max_completion_tokens=8192,
+                response_format={"type": "json_object"},
+                messages=[
+                    {"role": "system", "content": system_msg},
+                    {"role": "user", "content": prompt},
                 ],
-                tools=[BRIEFING_TOOL],
-                tool_choice={"type": "tool", "name": "produce_briefing"},
-                messages=[{"role": "user", "content": prompt}],
             )
-            tool_block = next(
-                (b for b in message.content if hasattr(b, "type") and b.type == "tool_use"),
-                None,
-            )
-            if tool_block is not None:
-                return tool_block.input
-            # fallback: parse text if tool block absent
-            raw_text = next(
-                (b.text for b in message.content if hasattr(b, "text")), ""
-            )
-            if not raw_text.strip():
+            msg = message.choices[0].message if message.choices else None
+            raw_text = (getattr(msg, "content", None) or "").strip()
+            if not raw_text:
                 raise ValueError(
-                    f"Empty response from API (stop_reason={message.stop_reason})"
+                    f"Empty response from API (finish_reason={message.choices[0].finish_reason if message.choices else None})"
                 )
             return extract_json(raw_text)
         except Exception as exc:  # pragma: no cover
