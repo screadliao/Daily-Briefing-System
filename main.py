@@ -15,6 +15,7 @@ from src.fetcher import fetch_all
 from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
 from src.synthesizer import synthesize
 from src.watchlist import POS_COMPETITOR_WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, WATCHLIST
+from src.multi_search import search_watchlist_multi
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -39,9 +40,12 @@ def main() -> int:
     raw_articles = fetch_all()
     raw_articles = filter_articles(raw_articles, BLOCKLIST)
     brave_articles = search_watchlist(WATCHLIST)
-    # 零售/POS 每天全查（移除 rotate_half 隔日輪換）
-    retail_hospitality_articles = search_watchlist(RETAIL_HOSPITALITY_WATCHLIST)
-    pos_competitor_articles = search_watchlist(POS_COMPETITOR_WATCHLIST)
+    # 零售/POS 每天全查，用多後端（Brave + Tavily + Exa）提高命中率
+    #（追蹤議題 watchlist 維持 Brave，僅對零售/POS 競品加 Tavily/Exa）
+    retail_hospitality_articles = search_watchlist_multi(RETAIL_HOSPITALITY_WATCHLIST)
+    retail_hospitality_articles += search_watchlist(RETAIL_HOSPITALITY_WATCHLIST)
+    pos_competitor_articles = search_watchlist_multi(POS_COMPETITOR_WATCHLIST)
+    pos_competitor_articles += search_watchlist(POS_COMPETITOR_WATCHLIST)
     # SECURITY_ICG_COMPETITOR_WATCHLIST 已停用（2026-08：移除安控新聞、減少 Brave 用量），
     # competitors section 改由 RSS 新聞提供。
     competitor_articles: list[dict] = []
