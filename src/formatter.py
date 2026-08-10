@@ -78,7 +78,7 @@ def _build_sections(
         {
             "key": key,
             "label": config["label"],
-            "entries": _as_entries(section_payload.get(key)),
+            "entries": [format_entry(item) for item in _as_entries(section_payload.get(key))],
         }
         for key, config in SOURCES.items()
     ])

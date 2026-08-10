@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -13,7 +14,7 @@ from src.deduplicator import load_seen_urls, save_seen_urls
 from src.delivery import deliver
 from src.fetcher import fetch_all
 from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
-from src.synthesizer import synthesize
+from src.synthesizer import _is_fallback, synthesize
 from src.watchlist import POS_COMPETITOR_WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, WATCHLIST
 from src.multi_search import search_watchlist_multi
 
@@ -71,6 +72,9 @@ def main() -> int:
         retail_hospitality_articles=retail_hospitality_articles,
         pos_competitor_articles=pos_competitor_articles,
     )
+    if _is_fallback(briefing):
+        print("[main] 偵測到 synthesize 降級 fallback（LLM 分析失敗），早報內容不完整。請檢查 API 與 PYTHONPATH 環境。", file=sys.stderr)
+        return 1
 
     args.save_html.write_text(to_html_email(briefing), encoding="utf-8")
     args.save_html.parent.joinpath("latest.txt").write_text(

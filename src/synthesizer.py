@@ -180,6 +180,22 @@ def synthesize(
     return build_fallback_briefing(raw_articles, today_str)
 
 
+def _is_fallback(briefing: dict[str, Any]) -> bool:
+    """Detect a degraded fallback briefing (LLM failed → truncated titles, empty sections)."""
+    if not isinstance(briefing, dict):
+        return True
+    # Fallback 產物特徵：watchlist/industry_trends/pos_competitors 全空且 sections 用截斷標題
+    empty_llm_boards = not (briefing.get("watchlist") or briefing.get("industry_trends")
+                            or briefing.get("pos_competitors"))
+    if not empty_llm_boards:
+        return False
+    for cat_items in (briefing.get("sections") or {}).values():
+        for item in cat_items or []:
+            if "建議追蹤原文與後續市場反應" in str(item):
+                return True
+    return False
+
+
 def _format_topic_search_for_prompt(articles: list[dict[str, str]], header: str) -> str:
     lines = [header]
     for item in articles:
