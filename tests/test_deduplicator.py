@@ -6,7 +6,7 @@ import httpx
 from src import deduplicator
 
 
-def test_load_seen_urls_returns_empty_on_http_error(monkeypatch) -> None:
+def test_load_seen_urls_returns_empty_on_http_error(monkeypatch, tmp_path) -> None:
     class FakeClient:
         def __init__(self, *args, **kwargs) -> None:
             pass
@@ -22,10 +22,10 @@ def test_load_seen_urls_returns_empty_on_http_error(monkeypatch) -> None:
 
     monkeypatch.setattr("src.deduplicator.httpx.Client", FakeClient)
 
-    assert deduplicator.load_seen_urls() == set()
+    assert deduplicator.load_seen_urls(tmp_path) == set()
 
 
-def test_load_seen_urls_prunes_old_entries(monkeypatch) -> None:
+def test_load_seen_urls_prunes_old_entries(monkeypatch, tmp_path) -> None:
     payload = {
         "entries": [
             {"url": "https://keep.example/a", "seen_at": "2026-06-30"},
@@ -59,9 +59,27 @@ def test_load_seen_urls_prunes_old_entries(monkeypatch) -> None:
     monkeypatch.setattr("src.deduplicator.httpx.Client", FakeClient)
     monkeypatch.setattr("src.deduplicator._utc_today", lambda: date(2026, 6, 30))
 
-    seen = deduplicator.load_seen_urls()
+    seen = deduplicator.load_seen_urls(tmp_path)
 
     assert seen == {"https://keep.example/a", "https://keep.example/b"}
+
+
+def test_load_seen_urls_prefers_local_file(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr("src.deduplicator._utc_today", lambda: date(2026, 6, 30))
+    (tmp_path / "seen_urls.json").write_text(
+        json.dumps(
+            {
+                "entries": [
+                    {"url": "https://local.example/x", "seen_at": "2026-06-30"},
+                    {"url": "https://local.example/y", "seen_at": "2026-06-24"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    # If it tries the remote path it would hit real network/fail; local must win.
+    seen = deduplicator.load_seen_urls(tmp_path)
+    assert seen == {"https://local.example/x", "https://local.example/y"}
 
 
 def test_save_seen_urls_merges_and_writes_rolling_window(tmp_path, monkeypatch) -> None:

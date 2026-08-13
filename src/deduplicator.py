@@ -13,8 +13,23 @@ DEFAULT_TIMEOUT = 10.0
 _loaded_entries: dict[str, str] = {}
 
 
-def load_seen_urls() -> set[str]:
+def load_seen_urls(site_dir: Path | None = None) -> set[str]:
     global _loaded_entries
+    site_dir = site_dir or Path("_site")
+    local_path = site_dir / "seen_urls.json"
+
+    if local_path.exists():
+        try:
+            payload = json.loads(local_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            payload = None
+        if isinstance(payload, dict) and isinstance(payload.get("entries"), list):
+            entries = _normalize_entries(payload.get("entries", []))
+            if entries:
+                _loaded_entries = _prune_entries(entries, _utc_today())
+                return set(_loaded_entries)
+
+    # Local file absent/empty/invalid → seed from GitHub Pages remote (first run / migration).
     try:
         with httpx.Client(timeout=DEFAULT_TIMEOUT, follow_redirects=True) as client:
             response = client.get(SEEN_URLS_URL)
@@ -27,8 +42,15 @@ def load_seen_urls() -> set[str]:
         _loaded_entries = {}
         return set()
 
+    entries = _normalize_entries(payload.get("entries", []))
+
+    _loaded_entries = _prune_entries(entries, _utc_today())
+    return set(_loaded_entries)
+
+
+def _normalize_entries(raw_entries) -> dict[str, str]:
     entries: dict[str, str] = {}
-    for item in payload.get("entries", []):
+    for item in raw_entries:
         if not isinstance(item, dict):
             continue
         url = item.get("url")
@@ -38,9 +60,7 @@ def load_seen_urls() -> set[str]:
         if not isinstance(seen_at, str) or not _is_iso_date(seen_at):
             continue
         entries[url] = seen_at
-
-    _loaded_entries = _prune_entries(entries, _utc_today())
-    return set(_loaded_entries)
+    return entries
 
 
 def save_seen_urls(seen: set[str], new_articles: list[dict], site_dir: Path) -> None:
