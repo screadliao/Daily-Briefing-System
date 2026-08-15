@@ -4,6 +4,8 @@ import argparse
 import json
 import os
 import sys
+from datetime import datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -15,8 +17,11 @@ from src.delivery import deliver
 from src.fetcher import fetch_all
 from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
 from src.synthesizer import _is_fallback, synthesize
-from src.watchlist import POS_COMPETITOR_WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, WATCHLIST
+from src.watchlist import POS_COMPETITOR_WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, WATCHLIST, rotate_half
 from src.multi_search import search_watchlist_multi
+
+MULTI_SEARCH_FALLBACK_THRESHOLD = int(os.getenv("MULTI_SEARCH_FALLBACK_THRESHOLD", "4"))
+PROMPT_ARTICLE_LIMIT = int(os.getenv("PROMPT_ARTICLE_LIMIT", "10"))
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -40,16 +45,9 @@ def main() -> int:
 
     raw_articles = fetch_all()
     raw_articles = filter_articles(raw_articles, BLOCKLIST)
-    brave_articles = search_watchlist(WATCHLIST)
-    # 零售/POS 每天全查，用多後端（Brave + Tavily + Exa）提高命中率
-    #（追蹤議題 watchlist 維持 Brave，僅對零售/POS 競品加 Tavily/Exa）
-    retail_hospitality_articles = search_watchlist_multi(RETAIL_HOSPITALITY_WATCHLIST)
-    retail_hospitality_articles += search_watchlist(RETAIL_HOSPITALITY_WATCHLIST)
-    pos_competitor_articles = search_watchlist_multi(POS_COMPETITOR_WATCHLIST)
-    pos_competitor_articles += search_watchlist(POS_COMPETITOR_WATCHLIST)
-    # SECURITY_ICG_COMPETITOR_WATCHLIST 已停用（2026-08：移除安控新聞、減少 Brave 用量），
-    # competitors section 改由 RSS 新聞提供。
-    competitor_articles: list[dict] = []
+    brave_articles = search_watchlist(rotate_half(WATCHLIST))
+    retail_hospitality_articles = search_watchlist_with_fallback(RETAIL_HOSPITALITY_WATCHLIST)
+    pos_competitor_articles = search_watchlist_with_fallback(POS_COMPETITOR_WATCHLIST)
     seen_urls = load_seen_urls()
     raw_articles, raw_filtered, raw_total = _filter_article_groups(raw_articles, seen_urls)
     brave_articles, brave_filtered, brave_total = _filter_article_list(brave_articles, seen_urls)
@@ -59,16 +57,19 @@ def main() -> int:
     pos_competitor_articles, pos_filtered, pos_total = _filter_article_list(
         pos_competitor_articles, seen_urls
     )
-    competitor_articles, competitor_filtered, competitor_total = _filter_article_list(
-        competitor_articles, seen_urls
-    )
-    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered + competitor_filtered
-    article_total = raw_total + brave_total + retail_total + pos_total + competitor_total
+    raw_articles = {
+        category: limit_articles(articles, [category.replace("_", " ")])
+        for category, articles in raw_articles.items()
+    }
+    brave_articles = limit_articles(brave_articles, WATCHLIST)
+    retail_hospitality_articles = limit_articles(retail_hospitality_articles, RETAIL_HOSPITALITY_WATCHLIST)
+    pos_competitor_articles = limit_articles(pos_competitor_articles, POS_COMPETITOR_WATCHLIST)
+    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered
+    article_total = raw_total + brave_total + retail_total + pos_total
     print(f"[dedup] filtered {filtered_total}/{article_total} articles already seen")
     briefing = synthesize(
         raw_articles,
         brave_articles,
-        competitor_articles=competitor_articles,
         retail_hospitality_articles=retail_hospitality_articles,
         pos_competitor_articles=pos_competitor_articles,
     )
@@ -96,7 +97,6 @@ def main() -> int:
         _collect_articles(
             raw_articles,
             brave_articles,
-            competitor_articles,
             retail_hospitality_articles,
             pos_competitor_articles,
         ),
@@ -150,7 +150,6 @@ def _filter_article_list(
 def _collect_articles(
     raw_articles: dict[str, list[dict]],
     brave_articles: list[dict],
-    competitor_articles: list[dict],
     retail_hospitality_articles: list[dict] | None = None,
     pos_competitor_articles: list[dict] | None = None,
 ) -> list[dict]:
@@ -158,10 +157,36 @@ def _collect_articles(
     for articles in raw_articles.values():
         combined.extend(articles)
     combined.extend(brave_articles)
-    combined.extend(competitor_articles)
     combined.extend(retail_hospitality_articles or [])
     combined.extend(pos_competitor_articles or [])
     return combined
+
+
+def search_watchlist_with_fallback(
+    topics: list[str], threshold: int = MULTI_SEARCH_FALLBACK_THRESHOLD
+) -> list[dict]:
+    results = search_watchlist(topics)
+    return results if len(results) >= threshold else results + search_watchlist_multi(topics)
+
+
+def limit_articles(articles: list[dict], keywords: list[str], limit: int = PROMPT_ARTICLE_LIMIT) -> list[dict]:
+    """Keep the most relevant, newest articles before they enter the LLM prompt."""
+    normalized_keywords = [keyword.lower() for keyword in keywords if keyword.strip()]
+
+    def score(article: dict) -> tuple[int, float]:
+        text = " ".join(str(article.get(field, "")) for field in ("title", "summary")).lower()
+        hits = sum(text.count(keyword) for keyword in normalized_keywords)
+        published = str(article.get("published", "")).replace("Z", "+00:00")
+        try:
+            freshness = datetime.fromisoformat(published).timestamp()
+        except ValueError:
+            try:
+                freshness = parsedate_to_datetime(published).timestamp()
+            except (TypeError, ValueError):
+                freshness = 0.0
+        return hits, freshness
+
+    return sorted(articles, key=score, reverse=True)[:limit]
 
 
 if __name__ == "__main__":

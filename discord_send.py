@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import re
 import sys
@@ -43,7 +44,7 @@ MAX_TITLE = 256
 MAX_DESC = 4096
 MAX_NAME = 256
 MAX_FIELD_VALUE = 1024
-MAX_EMBEDS = 10
+MAX_EMBEDS = 9
 
 # Default accent (used for the header embed and any uncategorized section).
 ACCENT_BLUE = 3447003
@@ -59,8 +60,8 @@ SECTION_COLORS = {
     "ai_tools": 15105570,           # pink
     "social": 15844367,             # yellow
     "competitors": 15158332,        # gray
-    "industry_trends": 15844367,    # orange
-    "pos_competitors": 15105570,    # pink
+    "retail_hospitality_ai": 15844367,  # orange
+    "pos_kiosk_dynamics": 15105570,     # pink
 }
 
 
@@ -76,6 +77,7 @@ def _extract_url(entry: str) -> str | None:
 def _format_entry(entry: str, max_len: int = 520) -> str:
     text = entry.strip()
     text = re.sub(r"^\s*[•·]\s*", "", text)
+    text = re.sub(r"\[([^\]]*)\]\((https?://[^)]+)\)", r"\1 \2", text)
     url = _extract_url(text)
     if url:
         text = text.replace(url, "").replace("  ", " ").strip()
@@ -121,6 +123,7 @@ def build_embeds(briefing: dict) -> list[dict]:
         if not entries:
             continue
         if len(embeds) >= MAX_EMBEDS:
+            logging.warning("embed 數量已達上限，捨棄版面：%s", label)
             break
         # Keep each section's embed under Discord's 6000-char limit: cap the
         # number of bullets and their length.

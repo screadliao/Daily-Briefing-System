@@ -83,8 +83,8 @@
     ],
     "scrape": []
   },
-  "pos_retail": {
-    "label": "POS / 零售科技與 Kiosk",
+  "pos_kiosk_dynamics": {
+    "label": "硬體/競品動態來源",
     "feeds": [
       "https://www.retaildive.com/feeds/news/",
       "https://www.pymnts.com/feed/",

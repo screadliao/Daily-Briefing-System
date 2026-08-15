@@ -55,20 +55,20 @@ def _build_sections(
             "entries": [format_entry(item) for item in watchlist_entries],
         })
 
-    industry_trends_entries = briefing.get("industry_trends", [])
-    if industry_trends_entries:
+    retail_hospitality_ai_entries = briefing.get("retail_hospitality_ai", [])
+    if retail_hospitality_ai_entries:
         sections.append({
-            "key": "industry_trends",
-            "label": "AI 零售 / 餐飲 / Hotel 應用趨勢",
-            "entries": [format_entry(item) for item in industry_trends_entries],
+            "key": "retail_hospitality_ai",
+            "label": "場域AI應用",
+            "entries": [format_entry(item) for item in retail_hospitality_ai_entries],
         })
 
-    pos_competitors_entries = briefing.get("pos_competitors", [])
-    if pos_competitors_entries:
+    pos_kiosk_dynamics_entries = briefing.get("pos_kiosk_dynamics", [])
+    if pos_kiosk_dynamics_entries:
         sections.append({
-            "key": "pos_competitors",
-            "label": "POS / Kiosk / Self-checkout 競品動態",
-            "entries": [format_entry(item) for item in pos_competitors_entries],
+            "key": "pos_kiosk_dynamics",
+            "label": "硬體/競品",
+            "entries": [format_entry(item) for item in pos_kiosk_dynamics_entries],
         })
 
     section_payload = briefing.get("sections", {})
@@ -81,6 +81,7 @@ def _build_sections(
             "entries": [format_entry(item) for item in _as_entries(section_payload.get(key))],
         }
         for key, config in SOURCES.items()
+        if key != "pos_kiosk_dynamics"
     ])
 
     return sections

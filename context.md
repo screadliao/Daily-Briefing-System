@@ -17,10 +17,10 @@
 4. 重點名詞用 **XXX** 標記
 5. 跨分類去重：同一新聞事件只在最相關的分類出現一次，其他分類略過
 6. 若 prompt 中有「追蹤議題：」，對每個議題進行廣義搜尋（含相關地名、人名、政黨、政策、事件），有相關動向則彙整於 watchlist（2–4 條）；確實無任何相關資訊才略過，無任何議題有資訊時輸出空陣列
-7. 若 prompt 中有「【AI 零售 / 餐飲 / Hotel 應用趨勢 - 獨立版面】」區塊，彙整為 `industry_trends`（**重點版面，至少 4–6 條**），聚焦零售 / 餐飲 / Hotel 場域中 AI 應用的趨勢與動向（例如 self-checkout、AI kiosk、電腦視覺防損、AI 點餐、飯店自助入住、個人化行銷、無人商店、供應鏈 AI 等），著重「趨勢解讀」而非單純新聞條列；此版面獨立呈現，不與其他分類混合，無資料時輸出空陣列
-8. 若 prompt 中有「【POS / Kiosk / Self-checkout 競品動態 - 獨立版面】」區塊，彙整為 `pos_competitors`（3–5 條），對象為 Partner Tech、Elo（Elo Touch Solutions）、Zebra Technologies、商米（Sunmi）、Flytech、Posiflex、NCR（NCR Voyix）、Toshiba Tec，聚焦這些公司在 POS / Kiosk / Self-checkout 上的 AI 應用動態（新品、合作、技術發表等）；此版面獨立呈現，不與其他分類混合，無資料時輸出空陣列
+7. 若 prompt 中有「【AI 零售 / 餐飲 / Hotel 應用趨勢 - 獨立版面】」區塊，彙整為 `retail_hospitality_ai`（場域 AI 應用，**重點版面，4–6 條**）：聚焦零售、餐飲與 Hotel 場域的 AI 導入、營運成果與趨勢解讀（例如 AI 點餐、飯店自助入住、個人化行銷、電腦視覺與供應鏈 AI）；不收錄單純 POS、Kiosk 或硬體新品，無資料時輸出空陣列。
+8. 若 prompt 中有「【POS / Kiosk / Self-checkout 競品動態 - 獨立版面】」區塊，彙整為 `pos_kiosk_dynamics`（硬體 / 競品動態，3–5 條）：聚焦 Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec 等在 POS、Kiosk、Self-checkout 的新品、合作與技術發表；可收錄相關零售科技硬體，但不重複 Rule 7 的場域 AI 解讀，無資料時輸出空陣列。
 
-9. EXCLUDE: 不要輸出「競品 / 安防產業動態」(competitors) 或「科技產業 (安防/半導體)」或「醫療影像」版面；此類內容一律捨棄，不併入任何分類。
+9. EXCLUDE: 不要輸出安防產業動態、醫療影像，或舊的 `competitors` 版面；POS / Kiosk 競品僅可依 Rule 8 收錄，且不得併入其他分類。
 10. 「X / Reddit 熱議」(social) 為**重點版面，至少 4–6 條**，聚焦科技 / 政治 / 世界討論熱點，每條含脈絡與簡短摘要，強化廣度與趨勢解讀。
 ## 不想看到
 
@@ -30,4 +30,3 @@
 - 重複報導：與昨日已報導的同一事件實質相同的消息
 - 無關消費電子：與安防、半導體、醫療影像無關的消費電子評測或上市新聞
 - 幣圈雜訊：加密貨幣、NFT、Web3 相關（除非與 AI 或半導體供應鏈直接相關）
-

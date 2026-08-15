@@ -22,10 +22,14 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     monkeypatch.setattr("sys.argv", ["main.py", "--dry-run", "--save-html", "preview.html"])
     monkeypatch.setattr("main.fetch_all", lambda: raw_articles)
     monkeypatch.setattr("main.filter_articles", lambda articles, blocklist: articles)
+    search_calls: list[list[str]] = []
+
     def search_watchlist(watchlist: list[str]) -> list[dict]:
+        search_calls.append(watchlist)
         return brave_articles
 
     monkeypatch.setattr("main.search_watchlist", search_watchlist)
+    monkeypatch.setattr("main.rotate_half", lambda topics: ["rotated topic"])
     monkeypatch.setattr("main.search_watchlist_multi", lambda watchlist: [])
     monkeypatch.setattr(
         "main.load_seen_urls",
@@ -41,7 +45,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     }
     monkeypatch.setattr(
         "main.synthesize",
-        lambda raw, brave, competitor_articles=None, retail_hospitality_articles=None, pos_competitor_articles=None: briefing,
+        lambda raw, brave, retail_hospitality_articles=None, pos_competitor_articles=None: briefing,
     )
     monkeypatch.setattr("main.to_html_email", lambda briefing: "<html>ok</html>")
     save_calls: list[tuple[set[str], list[dict], Path]] = []
@@ -53,6 +57,11 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     result = main.main()
 
     assert result == 0
+    assert search_calls == [
+        ["rotated topic"],
+        main.RETAIL_HOSPITALITY_WATCHLIST,
+        main.POS_COMPETITOR_WATCHLIST,
+    ]
     assert Path("preview.html").read_text(encoding="utf-8") == "<html>ok</html>"
     assert Path("latest.txt").read_text(encoding="utf-8") == (
         "2026年06月30日 星期二 | Test\n\n"
@@ -61,7 +70,6 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
         "AI 技術趨勢\n\n"
         "AI 應用實踐\n\n"
         "X / Reddit 熱議（科技 / 政治 / 世界）\n\n"
-        "POS / 零售科技與 Kiosk\n\n"
         "關鍵字：test"
     )
     latest_json = json.loads(Path("latest.json").read_text(encoding="utf-8"))
@@ -103,3 +111,29 @@ def test_filter_article_list_keeps_missing_url() -> None:
     assert kept == [{"title": "A"}]
     assert removed == 1
     assert total == 2
+
+
+def test_search_watchlist_with_fallback_uses_multi_only_when_brave_is_short(monkeypatch) -> None:
+    calls: list[str] = []
+    monkeypatch.setattr("main.search_watchlist", lambda topics: calls.append("brave") or [{"title": "A"}])
+    monkeypatch.setattr("main.search_watchlist_multi", lambda topics: calls.append("multi") or [{"title": "B"}])
+
+    assert main.search_watchlist_with_fallback(["topic"], threshold=2) == [{"title": "A"}, {"title": "B"}]
+    assert calls == ["brave", "multi"]
+
+    calls.clear()
+    assert main.search_watchlist_with_fallback(["topic"], threshold=1) == [{"title": "A"}]
+    assert calls == ["brave"]
+
+
+def test_limit_articles_prefers_keyword_matches_then_newer_articles() -> None:
+    articles = [
+        {"title": "AI old", "summary": "", "published": "Wed, 01 Jan 2025 00:00:00 +0000"},
+        {"title": "AI AI new", "summary": "", "published": "2026-01-01"},
+        {"title": "other newest", "summary": "", "published": "2026-08-01"},
+    ]
+
+    assert [item["title"] for item in main.limit_articles(articles, ["AI"], limit=2)] == [
+        "AI AI new",
+        "AI old",
+    ]

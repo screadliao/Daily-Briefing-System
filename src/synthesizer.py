@@ -52,12 +52,12 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "items": {"type": "string"},
                 "description": "追蹤議題更新，每條「• **議題**：動向 [來源](URL)」",
             },
-            "industry_trends": {
+            "retail_hospitality_ai": {
                 "type": "array",
                 "items": {"type": "string"},
                 "description": "重點版面：AI 在零售 / 餐飲 / Hotel 應用趨勢分析（self-checkout、AI kiosk、電腦視覺防損、AI 點餐、飯店自助入住、個人化行銷、無人商店、供應鏈 AI 等），聚焦趨勢解讀，至少 4-6 條，每條「• **主題**：趨勢說明 [來源](URL)」，無資料則輸出空陣列",
             },
-            "pos_competitors": {
+            "pos_kiosk_dynamics": {
                 "type": "array",
                 "items": {"type": "string"},
                 "description": "POS / Kiosk / Self-checkout 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec 在 AI 應用上的更新），獨立版面，每條「• **公司**：動向 [來源](URL)」，無資料則輸出空陣列",
@@ -70,13 +70,8 @@ BRIEFING_TOOL: dict[str, Any] = {
                     "ai_tech":     {"type": "array", "items": {"type": "string"}},
                     "ai_tools":    {"type": "array", "items": {"type": "string"}},
                     "social":      {"type": "array", "items": {"type": "string"}},
-                    "pos_retail": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "POS / 零售科技與 Kiosk 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec、零售科技/kiosk 應用），每條「• **公司/主題**：動向 [來源](URL)」，無資料則輸出空陣列",
-                    },
                 },
-                "required": ["geo", "finance", "ai_tech", "ai_tools", "social", "pos_retail"],
+                "required": ["geo", "finance", "ai_tech", "ai_tools", "social"],
             },
             "keywords": {
                 "type": "array",
@@ -84,7 +79,7 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "description": "4個關鍵字",
             },
         },
-        "required": ["date", "headline", "watchlist", "industry_trends", "pos_competitors", "sections", "keywords"],
+        "required": ["date", "headline", "watchlist", "retail_hospitality_ai", "pos_kiosk_dynamics", "sections", "keywords"],
         },
     },
 }
@@ -100,7 +95,6 @@ def extract_schema(tool: dict[str, Any]) -> dict[str, Any]:
 def synthesize(
     raw_articles: dict[str, list[dict[str, str]]],
     brave_articles: list[dict[str, str]] | None = None,
-    competitor_articles: list[dict[str, str]] | None = None,
     today: datetime | None = None,
     retail_hospitality_articles: list[dict[str, str]] | None = None,
     pos_competitor_articles: list[dict[str, str]] | None = None,
@@ -116,14 +110,6 @@ def synthesize(
     client = openai.OpenAI(api_key=api_key, timeout=60.0)
     watchlist_line = f"追蹤議題：{' / '.join(WATCHLIST)}\n\n" if WATCHLIST else ""
     brave_section = _format_brave_for_prompt(brave_articles) if brave_articles else ""
-    competitor_section = (
-        _format_topic_search_for_prompt(
-            competitor_articles,
-            "【競品 / 安防產業動態 - 新聞與公開報導】",
-        )
-        if competitor_articles
-        else ""
-    )
     retail_hospitality_section = (
         _format_topic_search_for_prompt(
             retail_hospitality_articles,
@@ -141,7 +127,7 @@ def synthesize(
         else ""
     )
     prompt = (
-        f"今天是 {today_str}。{watchlist_line}{brave_section}{competitor_section}"
+        f"今天是 {today_str}。{watchlist_line}{brave_section}"
         f"{retail_hospitality_section}{pos_competitor_section}"
         f"以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
     )
@@ -184,9 +170,9 @@ def _is_fallback(briefing: dict[str, Any]) -> bool:
     """Detect a degraded fallback briefing (LLM failed → truncated titles, empty sections)."""
     if not isinstance(briefing, dict):
         return True
-    # Fallback 產物特徵：watchlist/industry_trends/pos_competitors 全空且 sections 用截斷標題
-    empty_llm_boards = not (briefing.get("watchlist") or briefing.get("industry_trends")
-                            or briefing.get("pos_competitors"))
+    # Fallback 產物特徵：watchlist/新版面全空且 sections 用截斷標題
+    empty_llm_boards = not (briefing.get("watchlist") or briefing.get("retail_hospitality_ai")
+                            or briefing.get("pos_kiosk_dynamics"))
     if not empty_llm_boards:
         return False
     for cat_items in (briefing.get("sections") or {}).values():
@@ -335,6 +321,8 @@ def build_fallback_briefing(
     keyword_seed: list[str] = []
 
     for category in SOURCES:
+        if category == "pos_kiosk_dynamics":
+            continue
         items = raw_articles.get(category, [])
         bullets: list[str] = []
         for item in items[:3]:
@@ -353,8 +341,8 @@ def build_fallback_briefing(
         "date": today_str,
         "headline": headline,
         "watchlist": [],
-        "industry_trends": [],
-        "pos_competitors": [],
+        "retail_hospitality_ai": [],
+        "pos_kiosk_dynamics": [],
         "sections": sections,
         "keywords": keywords,
     }

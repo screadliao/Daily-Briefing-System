@@ -84,8 +84,8 @@ def test_plain_text_keeps_markdown_bold_and_uses_bare_urls() -> None:
         "date": "2026年06月06日 星期六",
         "headline": "Test",
         "watchlist": ["• **Watchlist** [來源](https://example.com/watchlist)"],
-        "industry_trends": ["• **Industry** [來源](https://example.com/industry)"],
-        "pos_competitors": ["• **POS** [來源](https://example.com/pos)"],
+        "retail_hospitality_ai": ["• **Industry** [來源](https://example.com/industry)"],
+        "pos_kiosk_dynamics": ["• **POS** [來源](https://example.com/pos)"],
         "sections": {
             "geo": ["• **Geo** [來源](https://example.com/geo)"],
             "finance": [],
