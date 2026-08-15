@@ -247,15 +247,79 @@ def format_articles_for_prompt(raw_articles: dict[str, list[dict[str, str]]]) ->
     return "\n".join(lines).strip()
 
 
+_CODE_FENCE_RE = re.compile(r"```(?:json)?\s*(.*?)```", re.DOTALL | re.IGNORECASE)
+
+
 def extract_json(raw_text: str) -> dict[str, Any]:
     candidate = raw_text.strip()
+    parsed = _try_json_loads(candidate)
+    if parsed is not None:
+        return parsed
+
+    fence_match = _CODE_FENCE_RE.search(candidate)
+    if fence_match:
+        parsed = _try_json_loads(fence_match.group(1).strip())
+        if parsed is not None:
+            return parsed
+
+    balanced = _extract_balanced_object(candidate)
+    if balanced is not None:
+        parsed = _try_json_loads(balanced)
+        if parsed is not None:
+            return parsed
+
+    repaired = _try_repair_truncated_json(candidate)
+    if repaired is not None:
+        return repaired
+    raise ValueError("Model response does not contain valid JSON object.")
+
+
+def _try_json_loads(text: str) -> dict[str, Any] | None:
     try:
-        return json.loads(candidate)
+        result = json.loads(text)
     except json.JSONDecodeError:
-        match = re.search(r"\{.*\}", candidate, re.DOTALL)
-        if not match:
-            raise ValueError("Model response does not contain JSON object.")
-        return json.loads(match.group(0))
+        return None
+    return result if isinstance(result, dict) else None
+
+
+def _extract_balanced_object(text: str) -> str | None:
+    start = text.find("{")
+    if start == -1:
+        return None
+    depth = 0
+    in_string = False
+    escape = False
+    for index in range(start, len(text)):
+        char = text[index]
+        if in_string:
+            if escape:
+                escape = False
+            elif char == "\\":
+                escape = True
+            elif char == '"':
+                in_string = False
+        elif char == '"':
+            in_string = True
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start : index + 1]
+    return None
+
+
+def _try_repair_truncated_json(text: str) -> dict[str, Any] | None:
+    start = text.find("{")
+    if start == -1:
+        return None
+    truncated = text[start:]
+    if truncated.count('"') % 2:
+        truncated += '"'
+    open_braces = truncated.count("{") - truncated.count("}")
+    open_brackets = truncated.count("[") - truncated.count("]")
+    truncated = truncated.rstrip().rstrip(",")
+    return _try_json_loads(truncated + "]" * max(open_brackets, 0) + "}" * max(open_braces, 0))
 
 
 def format_tw_date(today: datetime) -> str:

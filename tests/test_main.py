@@ -75,15 +75,18 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     assert any(section["entries"] == [] for section in latest_json["sections"])
 
     captured = capsys.readouterr()
-    assert "[dedup] filtered 4/9 articles already seen" in captured.out
+    assert "[dedup] filtered 6/9 articles already seen" in captured.out
     assert save_calls == [
         (
-            {"https://seen.example/raw", "https://seen.example/brave"},
+            {
+                "https://seen.example/raw",
+                "https://seen.example/brave",
+                "https://fresh.example/raw",
+                "https://fresh.example/brave",
+            },
             [
                 {"title": "Fresh raw", "url": "https://fresh.example/raw"},
                 {"title": "No url raw"},
-                {"title": "Fresh brave", "url": "https://fresh.example/brave"},
-                {"title": "Fresh brave", "url": "https://fresh.example/brave"},
                 {"title": "Fresh brave", "url": "https://fresh.example/brave"},
             ],
             Path("_site"),

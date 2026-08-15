@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 from src.blocklist import BLOCKLIST, filter_articles
 from src.brave_search import search_watchlist
-from src.deduplicator import load_seen_urls, save_seen_urls
+from src.deduplicator import load_seen_urls, normalize_url, save_seen_urls
 from src.delivery import deliver
 from src.fetcher import fetch_all
 from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
@@ -131,14 +131,18 @@ def _filter_article_list(
     articles: list[dict],
     seen_urls: set[str],
 ) -> tuple[list[dict], int, int]:
+    seen_urls.update(normalize_url(url) for url in tuple(seen_urls) if url)
     filtered_articles: list[dict] = []
     filtered_count = 0
     total_count = len(articles)
     for article in articles:
         url = article.get("url")
-        if isinstance(url, str) and url and url in seen_urls:
+        normalized = normalize_url(url) if isinstance(url, str) and url else None
+        if normalized and normalized in seen_urls:
             filtered_count += 1
             continue
+        if normalized:
+            seen_urls.add(normalized)
         filtered_articles.append(article)
     return filtered_articles, filtered_count, total_count
 

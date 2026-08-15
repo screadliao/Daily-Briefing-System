@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import httpx
 
@@ -10,7 +11,24 @@ SEEN_URLS_URL = "https://screadliao.github.io/Daily-Briefing-System/seen_urls.js
 WINDOW_DAYS = 7
 DEFAULT_TIMEOUT = 10.0
 
+_TRACKING_PARAM_PREFIXES = ("utm_",)
+_TRACKING_PARAM_EXACT = {"ref", "fbclid", "gclid", "igshid", "mc_cid", "mc_eid", "spm", "from"}
+
 _loaded_entries: dict[str, str] = {}
+
+
+def normalize_url(url: str) -> str:
+    """Normalize a URL for deduplication."""
+    if not url:
+        return url
+    parts = urlsplit(url.strip())
+    query_pairs = [
+        (key, value)
+        for key, value in parse_qsl(parts.query, keep_blank_values=True)
+        if not (key.lower().startswith(_TRACKING_PARAM_PREFIXES) or key.lower() in _TRACKING_PARAM_EXACT)
+    ]
+    query_pairs.sort()
+    return urlunsplit((parts.scheme.lower() or "https", parts.netloc.lower(), parts.path.rstrip("/") or "/", urlencode(query_pairs), ""))
 
 
 def load_seen_urls(site_dir: Path | None = None) -> set[str]:
@@ -59,7 +77,7 @@ def _normalize_entries(raw_entries) -> dict[str, str]:
             continue
         if not isinstance(seen_at, str) or not _is_iso_date(seen_at):
             continue
-        entries[url] = seen_at
+        entries[normalize_url(url)] = seen_at
     return entries
 
 
@@ -70,12 +88,12 @@ def save_seen_urls(seen: set[str], new_articles: list[dict], site_dir: Path) -> 
 
     for url in seen:
         if url:
-            entries.setdefault(url, today.isoformat())
+            entries.setdefault(normalize_url(url), today.isoformat())
 
     for article in new_articles:
         url = article.get("url")
         if isinstance(url, str) and url:
-            entries[url] = today.isoformat()
+            entries[normalize_url(url)] = today.isoformat()
 
     site_dir.mkdir(parents=True, exist_ok=True)
     output_path = site_dir / "seen_urls.json"
