@@ -45,7 +45,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     }
     monkeypatch.setattr(
         "main.synthesize",
-        lambda raw, brave, retail_hospitality_articles=None, pos_competitor_articles=None: briefing,
+        lambda raw, brave, retail_hospitality_articles=None, pos_competitor_articles=None, market_intel_articles=None: briefing,
     )
     monkeypatch.setattr("main.to_html_email", lambda briefing: "<html>ok</html>")
     save_calls: list[tuple[set[str], list[dict], Path]] = []
@@ -61,6 +61,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
         ["rotated topic"],
         main.RETAIL_HOSPITALITY_WATCHLIST,
         main.POS_COMPETITOR_WATCHLIST,
+        main.MARKET_INTEL_WATCHLIST,
     ]
     assert Path("preview.html").read_text(encoding="utf-8") == "<html>ok</html>"
     assert Path("latest.txt").read_text(encoding="utf-8") == (
@@ -83,7 +84,7 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
     assert any(section["entries"] == [] for section in latest_json["sections"])
 
     captured = capsys.readouterr()
-    assert "[dedup] filtered 6/9 articles already seen" in captured.out
+    assert "[dedup] filtered 8/11 articles already seen" in captured.out
     assert save_calls == [
         (
             {

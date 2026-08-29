@@ -17,7 +17,13 @@ from src.delivery import deliver
 from src.fetcher import fetch_all
 from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
 from src.synthesizer import _is_fallback, synthesize
-from src.watchlist import POS_COMPETITOR_WATCHLIST, RETAIL_HOSPITALITY_WATCHLIST, WATCHLIST, rotate_half
+from src.watchlist import (
+    MARKET_INTEL_WATCHLIST,
+    POS_COMPETITOR_WATCHLIST,
+    RETAIL_HOSPITALITY_WATCHLIST,
+    WATCHLIST,
+    rotate_half,
+)
 from src.multi_search import search_watchlist_multi
 
 MULTI_SEARCH_FALLBACK_THRESHOLD = int(os.getenv("MULTI_SEARCH_FALLBACK_THRESHOLD", "4"))
@@ -48,6 +54,7 @@ def main() -> int:
     brave_articles = search_watchlist(rotate_half(WATCHLIST))
     retail_hospitality_articles = search_watchlist_with_fallback(RETAIL_HOSPITALITY_WATCHLIST)
     pos_competitor_articles = search_watchlist_with_fallback(POS_COMPETITOR_WATCHLIST)
+    market_intel_articles = search_watchlist_with_fallback(MARKET_INTEL_WATCHLIST)
     seen_urls = load_seen_urls()
     raw_articles, raw_filtered, raw_total = _filter_article_groups(raw_articles, seen_urls)
     brave_articles, brave_filtered, brave_total = _filter_article_list(brave_articles, seen_urls)
@@ -57,6 +64,9 @@ def main() -> int:
     pos_competitor_articles, pos_filtered, pos_total = _filter_article_list(
         pos_competitor_articles, seen_urls
     )
+    market_intel_articles, market_filtered, market_total = _filter_article_list(
+        market_intel_articles, seen_urls
+    )
     raw_articles = {
         category: limit_articles(articles, [category.replace("_", " ")])
         for category, articles in raw_articles.items()
@@ -64,14 +74,16 @@ def main() -> int:
     brave_articles = limit_articles(brave_articles, WATCHLIST)
     retail_hospitality_articles = limit_articles(retail_hospitality_articles, RETAIL_HOSPITALITY_WATCHLIST)
     pos_competitor_articles = limit_articles(pos_competitor_articles, POS_COMPETITOR_WATCHLIST)
-    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered
-    article_total = raw_total + brave_total + retail_total + pos_total
+    market_intel_articles = limit_articles(market_intel_articles, MARKET_INTEL_WATCHLIST)
+    filtered_total = raw_filtered + brave_filtered + retail_filtered + pos_filtered + market_filtered
+    article_total = raw_total + brave_total + retail_total + pos_total + market_total
     print(f"[dedup] filtered {filtered_total}/{article_total} articles already seen")
     briefing = synthesize(
         raw_articles,
         brave_articles,
         retail_hospitality_articles=retail_hospitality_articles,
         pos_competitor_articles=pos_competitor_articles,
+        market_intel_articles=market_intel_articles,
     )
     if _is_fallback(briefing):
         print("[main] 偵測到 synthesize 降級 fallback（LLM 分析失敗），早報內容不完整。請檢查 API 與 PYTHONPATH 環境。", file=sys.stderr)
@@ -99,6 +111,7 @@ def main() -> int:
             brave_articles,
             retail_hospitality_articles,
             pos_competitor_articles,
+            market_intel_articles,
         ),
         site_dir,
     )
@@ -152,6 +165,7 @@ def _collect_articles(
     brave_articles: list[dict],
     retail_hospitality_articles: list[dict] | None = None,
     pos_competitor_articles: list[dict] | None = None,
+    market_intel_articles: list[dict] | None = None,
 ) -> list[dict]:
     combined: list[dict] = []
     for articles in raw_articles.values():
@@ -159,6 +173,7 @@ def _collect_articles(
     combined.extend(brave_articles)
     combined.extend(retail_hospitality_articles or [])
     combined.extend(pos_competitor_articles or [])
+    combined.extend(market_intel_articles or [])
     return combined
 
 

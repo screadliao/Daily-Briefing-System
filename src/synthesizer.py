@@ -62,6 +62,11 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "items": {"type": "string"},
                 "description": "POS / Kiosk / Self-checkout 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec 在 AI 應用上的更新），獨立版面，每條「• **公司**：動向 [來源](URL)」，無資料則輸出空陣列",
             },
+            "retail_market_data": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "零售市場研調數據（POS/Self-checkout/Kiosk/Retail Media 等市場規模、成長率、CAGR、滲透率，來自 IHL、RBR、ABI Research、Gartner、MarketsandMarkets、Grand View Research 等研調機構），獨立版面，每條「• **議題**：數字/研判 [來源](URL)」，無資料則輸出空陣列",
+            },
             "sections": {
                 "type": "object",
                 "properties": {
@@ -79,7 +84,7 @@ BRIEFING_TOOL: dict[str, Any] = {
                 "description": "4個關鍵字",
             },
         },
-        "required": ["date", "headline", "watchlist", "retail_hospitality_ai", "pos_kiosk_dynamics", "sections", "keywords"],
+        "required": ["date", "headline", "watchlist", "retail_hospitality_ai", "pos_kiosk_dynamics", "retail_market_data", "sections", "keywords"],
         },
     },
 }
@@ -98,6 +103,7 @@ def synthesize(
     today: datetime | None = None,
     retail_hospitality_articles: list[dict[str, str]] | None = None,
     pos_competitor_articles: list[dict[str, str]] | None = None,
+    market_intel_articles: list[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     today = today or datetime.now()
     today_str = format_tw_date(today)
@@ -126,9 +132,17 @@ def synthesize(
         if pos_competitor_articles
         else ""
     )
+    market_intel_section = (
+        _format_topic_search_for_prompt(
+            market_intel_articles,
+            "【零售市場研調數據 - 獨立版面】",
+        )
+        if market_intel_articles
+        else ""
+    )
     prompt = (
         f"今天是 {today_str}。{watchlist_line}{brave_section}"
-        f"{retail_hospitality_section}{pos_competitor_section}"
+        f"{retail_hospitality_section}{pos_competitor_section}{market_intel_section}"
         f"以下是今日抓取的文章，請產出早報 JSON：\n\n{article_dump}"
     )
 
@@ -172,7 +186,7 @@ def _is_fallback(briefing: dict[str, Any]) -> bool:
         return True
     # Fallback 產物特徵：watchlist/新版面全空且 sections 用截斷標題
     empty_llm_boards = not (briefing.get("watchlist") or briefing.get("retail_hospitality_ai")
-                            or briefing.get("pos_kiosk_dynamics"))
+                            or briefing.get("pos_kiosk_dynamics") or briefing.get("retail_market_data"))
     if not empty_llm_boards:
         return False
     for cat_items in (briefing.get("sections") or {}).values():
@@ -343,6 +357,7 @@ def build_fallback_briefing(
         "watchlist": [],
         "retail_hospitality_ai": [],
         "pos_kiosk_dynamics": [],
+        "retail_market_data": [],
         "sections": sections,
         "keywords": keywords,
     }

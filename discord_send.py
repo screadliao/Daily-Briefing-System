@@ -62,6 +62,7 @@ SECTION_COLORS = {
     "competitors": 15158332,        # gray
     "retail_hospitality_ai": 15844367,  # orange
     "pos_kiosk_dynamics": 15105570,     # pink
+    "retail_market_data": 3066993,      # green
 }
 
 

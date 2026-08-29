@@ -71,6 +71,14 @@ def _build_sections(
             "entries": [format_entry(item) for item in pos_kiosk_dynamics_entries],
         })
 
+    retail_market_data_entries = briefing.get("retail_market_data", [])
+    if retail_market_data_entries:
+        sections.append({
+            "key": "retail_market_data",
+            "label": "市場研調數據",
+            "entries": [format_entry(item) for item in retail_market_data_entries],
+        })
+
     section_payload = briefing.get("sections", {})
     if not isinstance(section_payload, dict):
         section_payload = {}

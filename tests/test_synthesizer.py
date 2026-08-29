@@ -15,7 +15,7 @@ def test_format_tw_date_uses_traditional_weekday() -> None:
 
 def test_new_retail_and_pos_boards_are_required_and_fallback_compatible() -> None:
     schema = extract_schema(BRIEFING_TOOL)
-    assert {"retail_hospitality_ai", "pos_kiosk_dynamics"} <= set(schema["required"])
+    assert {"retail_hospitality_ai", "pos_kiosk_dynamics", "retail_market_data"} <= set(schema["required"])
     assert "pos_kiosk_dynamics" in SOURCES
     retired_keys = {"industry" + "_trends", "pos" + "_competitors", "pos" + "_retail"}
     assert not retired_keys & set(schema["properties"])
@@ -23,3 +23,4 @@ def test_new_retail_and_pos_boards_are_required_and_fallback_compatible() -> Non
     fallback = build_fallback_briefing({}, "2026年06月05日 星期五")
     assert fallback["retail_hospitality_ai"] == []
     assert fallback["pos_kiosk_dynamics"] == []
+    assert fallback["retail_market_data"] == []

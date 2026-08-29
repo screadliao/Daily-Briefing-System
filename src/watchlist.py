@@ -8,6 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 WATCHLIST_FILE = PROJECT_ROOT / "watchlist.json"
 RETAIL_HOSPITALITY_WATCHLIST_FILE = PROJECT_ROOT / "retail_hospitality_watchlist.json"
 POS_COMPETITOR_WATCHLIST_FILE = PROJECT_ROOT / "pos_competitor_watchlist.json"
+MARKET_INTEL_WATCHLIST_FILE = PROJECT_ROOT / "market_intel_watchlist.json"
 
 
 def load_topic_list(path: Path) -> list[str]:
@@ -33,3 +34,4 @@ def rotate_half(topics: list[str], today: date | None = None) -> list[str]:
 WATCHLIST = load_watchlist()
 RETAIL_HOSPITALITY_WATCHLIST = load_topic_list(RETAIL_HOSPITALITY_WATCHLIST_FILE)
 POS_COMPETITOR_WATCHLIST = load_topic_list(POS_COMPETITOR_WATCHLIST_FILE)
+MARKET_INTEL_WATCHLIST = load_topic_list(MARKET_INTEL_WATCHLIST_FILE)
