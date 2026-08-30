@@ -44,7 +44,7 @@ MAX_TITLE = 256
 MAX_DESC = 4096
 MAX_NAME = 256
 MAX_FIELD_VALUE = 1024
-MAX_EMBEDS = 9
+MAX_EMBEDS = 10
 
 # Default accent (used for the header embed and any uncategorized section).
 ACCENT_BLUE = 3447003
