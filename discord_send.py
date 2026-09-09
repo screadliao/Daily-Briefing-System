@@ -11,7 +11,7 @@ color requires one embed per section (Discord allows up to 10 embeds per
 message).
 
 Usage:
-    python3 discord_send.py [--webhook URL] [--json PATH] [--preview-json OUT]
+    python3 discord_send.py [--webhook URL] [--json PATH] [--preview-json OUT] [--result-json OUT]
 
 Discord rejects python-urllib's default User-Agent (Cloudflare 1010), so we
 send a browser-like User-Agent header.
@@ -24,7 +24,9 @@ import logging
 import os
 import re
 import sys
+from datetime import datetime, timezone
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -140,7 +142,10 @@ def build_embeds(briefing: dict) -> list[dict]:
     return embeds
 
 
-def send_embeds(url: str, embeds: list[dict]) -> int:
+def send_embeds(url: str, embeds: list[dict]) -> dict[str, int | str | None]:
+    parts = urllib.parse.urlsplit(url)
+    query = [(key, value) for key, value in urllib.parse.parse_qsl(parts.query, keep_blank_values=True) if key != "wait"]
+    url = urllib.parse.urlunsplit((*parts[:3], urllib.parse.urlencode([*query, ("wait", "true")]), parts.fragment))
     payload = {"embeds": embeds}
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     req = urllib.request.Request(
@@ -157,9 +162,23 @@ def send_embeds(url: str, embeds: list[dict]) -> int:
     )
     try:
         with urllib.request.urlopen(req, timeout=25) as resp:
-            return resp.status
+            message = json.loads(resp.read().decode("utf-8"))
+            return {"status": resp.status, "message_id": message.get("id")}
     except urllib.error.HTTPError as e:
         raise RuntimeError(f"Discord webhook HTTP {e.code}: {e.read().decode()[:300]}") from e
+
+
+def write_result(path: Path, result: dict[str, int | str | None], embeds_count: int) -> None:
+    """Atomically persist delivery evidence without retaining the webhook URL."""
+    payload = {
+        "status": result["status"],
+        "message_id": result["message_id"],
+        "sent_at": datetime.now(timezone.utc).isoformat(),
+        "embeds_count": embeds_count,
+    }
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8")
+    temporary.replace(path)
 
 
 def main() -> int:
@@ -169,6 +188,7 @@ def main() -> int:
     parser.add_argument("--webhook", default=os.getenv("DISCORD_WEBHOOK_URL"))
     parser.add_argument("--json", type=Path, default=DEFAULT_JSON, help="Path to latest.json")
     parser.add_argument("--preview-json", type=Path, help="Write embed payload to this file instead of sending")
+    parser.add_argument("--result-json", type=Path, help="Write successful delivery evidence to this JSON file")
     args = parser.parse_args()
 
     if not args.json.exists():
@@ -189,8 +209,10 @@ def main() -> int:
         print("no webhook URL (set --webhook or DISCORD_WEBHOOK_URL)", file=sys.stderr)
         return 1
 
-    status = send_embeds(args.webhook, embeds)
-    print(f"sent: HTTP {status} (embeds: {len(embeds)})")
+    result = send_embeds(args.webhook, embeds)
+    if args.result_json:
+        write_result(args.result_json, result, len(embeds))
+    print(f"sent: HTTP {result['status']} (message_id: {result['message_id']}, embeds: {len(embeds)})")
     return 0
 
 

@@ -1,6 +1,13 @@
+import json
 import logging
+from datetime import datetime
+from io import BytesIO
+from urllib.error import HTTPError
+from urllib.parse import parse_qs, urlsplit
 
-from discord_send import MAX_EMBEDS, SECTION_COLORS, _format_entry, build_embeds
+import pytest
+
+from discord_send import MAX_EMBEDS, SECTION_COLORS, _format_entry, build_embeds, send_embeds, write_result
 
 
 def test_format_entry_flattens_markdown_link() -> None:
@@ -34,3 +41,53 @@ def test_build_embeds_logs_section_discarded_over_cap(caplog) -> None:
 def test_new_board_colors_are_explicit() -> None:
     assert SECTION_COLORS["retail_hospitality_ai"]
     assert SECTION_COLORS["pos_kiosk_dynamics"]
+
+
+def test_send_embeds_requests_message_and_returns_message_id(monkeypatch) -> None:
+    class Response:
+        status = 200
+
+        def read(self) -> bytes:
+            return b'{"id": "123456789"}'
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+    captured = {}
+
+    def urlopen(request, timeout):
+        captured["url"] = request.full_url
+        return Response()
+
+    monkeypatch.setattr("urllib.request.urlopen", urlopen)
+
+    assert send_embeds("https://discord.example/webhook?thread_id=42", []) == {
+        "status": 200,
+        "message_id": "123456789",
+    }
+    assert parse_qs(urlsplit(captured["url"]).query) == {"thread_id": ["42"], "wait": ["true"]}
+
+
+def test_send_embeds_keeps_http_errors_as_failures(monkeypatch) -> None:
+    def urlopen(request, timeout):
+        raise HTTPError(request.full_url, 400, "Bad Request", None, BytesIO(b"invalid embed"))
+
+    monkeypatch.setattr("urllib.request.urlopen", urlopen)
+
+    with pytest.raises(RuntimeError, match=r"Discord webhook HTTP 400: invalid embed"):
+        send_embeds("https://discord.example/webhook", [])
+
+
+def test_write_result_writes_delivery_evidence_without_webhook_url(tmp_path) -> None:
+    path = tmp_path / "latest.result.json"
+    write_result(path, {"status": 200, "message_id": "123456789"}, 3)
+
+    result = json.loads(path.read_text(encoding="utf-8"))
+    assert result["status"] == 200
+    assert result["message_id"] == "123456789"
+    assert result["embeds_count"] == 3
+    assert datetime.fromisoformat(result["sent_at"]).tzinfo is not None
+    assert "webhook" not in json.dumps(result).lower()
