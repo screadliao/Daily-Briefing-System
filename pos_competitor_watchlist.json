@@ -18,6 +18,12 @@
     "Stripe AI POS OR Stripe Terminal self-checkout kiosk OR Stripe payments partnership acquisition",
     "Clover Fiserv AI POS OR Clover self-checkout kiosk OR Clover partnership acquisition",
     "Toast POS AI OR Toast restaurant self-checkout kiosk OR Toast partnership acquisition",
-    "Square Block AI POS OR Square self-checkout kiosk OR Square partnership acquisition"
+    "Square Block AI POS OR Square self-checkout kiosk OR Square partnership acquisition",
+    "Pan Oston SCO kiosk AI OR Pan Oston self-checkout OR Pan Oston partnership acquisition",
+    "Sensormatic Solutions retail loss prevention OR Sensormatic RFID self-checkout OR ShopperTrak partnership",
+    "ITAB retail self-checkout kiosk AI OR ITAB loss prevention OR ITAB OnRed",
+    "HiStone POS self-checkout kiosk AI OR HiStone retail hardware OR HiStone partnership acquisition",
+    "POSBANK POS kiosk self-checkout AI OR POSBANK retail hardware OR POSBANK partnership acquisition",
+    "Pyramid Computer POLYTOUCH kiosk SCO OR AKHET FAYTECH retail kiosk OR Pyramid Computer partnership"
   ]
 }
