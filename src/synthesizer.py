@@ -11,10 +11,13 @@ from typing import Any
 from src.sources import SOURCES
 from src.watchlist import WATCHLIST
 
-try:
-    import openai
-except ImportError:  # pragma: no cover
-    openai = None
+import shutil
+import subprocess
+import tempfile
+
+CLAUDE_BIN = os.environ.get("BRIEFING_CLAUDE_BIN", str(Path.home() / ".local" / "bin" / "claude"))
+CODEX_BIN = os.environ.get("BRIEFING_CODEX_BIN", str(Path.home() / ".local" / "bin" / "codex"))
+CLI_TIMEOUT = int(os.environ.get("BRIEFING_CLI_TIMEOUT", "900"))
 
 
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -97,6 +100,64 @@ def extract_schema(tool: dict[str, Any]) -> dict[str, Any]:
     return tool.get("function", tool).get("parameters", tool)
 
 
+def _cli_env() -> dict[str, str]:
+    """CLI 走本機訂閱登入，不吃 API key：移除會讓 CLI 改走 API 計費的變數。"""
+    env = {k: v for k, v in os.environ.items()
+           if k not in ("ANTHROPIC_API_KEY", "OPENAI_API_KEY", "PYTHONPATH")}
+    import getpass
+    env.setdefault("USER", getpass.getuser())  # claude CLI 讀 Keychain 憑證需要 USER/LOGNAME
+    env.setdefault("LOGNAME", env["USER"])
+    env.setdefault("HOME", str(Path.home()))
+    home_bin = str(Path.home() / ".local" / "bin")
+    env["PATH"] = ":".join([home_bin, "/opt/homebrew/bin", "/usr/local/bin", "/usr/bin", "/bin", env.get("PATH", "")])
+    return env
+
+
+def _resolve_bin(path: str, name: str) -> str | None:
+    if path and Path(path).exists():
+        return path
+    return shutil.which(name, path=_cli_env()["PATH"])
+
+
+def call_local_cli(system_msg: str, prompt: str) -> tuple[str, str]:
+    """用本機 CLI 做彙整：先 claude -p，失敗改 codex exec。回傳 (文字, 使用的 CLI)。不呼叫任何 API。"""
+    full_prompt = system_msg + "\n\n" + prompt
+    errors: list[str] = []
+    claude = _resolve_bin(CLAUDE_BIN, "claude")
+    if claude:
+        try:
+            r = subprocess.run(
+                [claude, "-p", "--output-format", "text", "--no-session-persistence", "--disallowedTools", "*"],
+                input=full_prompt, capture_output=True, text=True, timeout=CLI_TIMEOUT, env=_cli_env(),
+                cwd=tempfile.gettempdir(),
+            )
+            if r.returncode == 0 and r.stdout.strip():
+                return r.stdout.strip(), "claude"
+            errors.append(f"claude exit {r.returncode}: {(r.stderr or r.stdout)[:200]}")
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"claude {type(exc).__name__}: {exc}")
+    else:
+        errors.append("claude CLI not found")
+    codex = _resolve_bin(CODEX_BIN, "codex")
+    if codex:
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "last.txt"
+            try:
+                r = subprocess.run(
+                    [codex, "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only", "-o", str(out), "-"],
+                    input=full_prompt, capture_output=True, text=True, timeout=CLI_TIMEOUT, env=_cli_env(), cwd=td,
+                )
+                text = out.read_text(encoding="utf-8").strip() if out.exists() else ""
+                if r.returncode == 0 and text:
+                    return text, "codex"
+                errors.append(f"codex exit {r.returncode}: {(r.stderr or '')[-200:]}")
+            except Exception as exc:  # noqa: BLE001
+                errors.append(f"codex {type(exc).__name__}: {exc}")
+    else:
+        errors.append("codex CLI not found")
+    raise RuntimeError("; ".join(errors))
+
+
 def synthesize(
     raw_articles: dict[str, list[dict[str, str]]],
     brave_articles: list[dict[str, str]] | None = None,
@@ -109,11 +170,6 @@ def synthesize(
     today_str = format_tw_date(today)
     article_dump = format_articles_for_prompt(raw_articles)
 
-    api_key = os.getenv("OPENAI_API_KEY")
-    if openai is None or not api_key:
-        return build_fallback_briefing(raw_articles, today_str)
-
-    client = openai.OpenAI(api_key=api_key, timeout=60.0)
     watchlist_line = f"追蹤議題：{' / '.join(WATCHLIST)}\n\n" if WATCHLIST else ""
     brave_section = _format_brave_for_prompt(brave_articles) if brave_articles else ""
     retail_hospitality_section = (
@@ -147,36 +203,21 @@ def synthesize(
     )
 
     last_error: Exception | None = None
-    for attempt in range(3):
+    system_msg = SYSTEM_PROMPT + (
+        "\n\n請只輸出一個符合下列 schema 的 JSON 物件（不要有 markdown、不要說明文字）：\n"
+        + json.dumps(extract_schema(BRIEFING_TOOL), ensure_ascii=False, indent=2)
+    )
+    for attempt in range(2):
         try:
-            # GPT-5.6 Terra 支援 JSON 輸出模式（不支援 function calling + reasoning）。
-            # 用 system prompt 給 schema + response_format 強制 JSON。
-            system_msg = SYSTEM_PROMPT + (
-                "\n\n請只輸出一個符合下列 schema 的 JSON 物件（不要有 markdown、不要說明文字）：\n"
-                + json.dumps(extract_schema(BRIEFING_TOOL), ensure_ascii=False, indent=2)
-            )
-            message = client.chat.completions.create(
-                model="gpt-5.6-terra",
-                max_completion_tokens=8192,
-                response_format={"type": "json_object"},
-                messages=[
-                    {"role": "system", "content": system_msg},
-                    {"role": "user", "content": prompt},
-                ],
-            )
-            msg = message.choices[0].message if message.choices else None
-            raw_text = (getattr(msg, "content", None) or "").strip()
-            if not raw_text:
-                raise ValueError(
-                    f"Empty response from API (finish_reason={message.choices[0].finish_reason if message.choices else None})"
-                )
+            raw_text, used = call_local_cli(system_msg, prompt)
+            print(f"[synthesizer] synthesized via local CLI: {used}")
             return extract_json(raw_text)
         except Exception as exc:  # pragma: no cover
             last_error = exc
-            if attempt < 2:
-                time.sleep(2**attempt)
+            if attempt < 1:
+                time.sleep(5)
 
-    print(f"[synthesizer] Claude API failed after retries, falling back: {last_error}")
+    print(f"[synthesizer] local CLI failed after retries, falling back: {last_error}")
     return build_fallback_briefing(raw_articles, today_str)
 
 
