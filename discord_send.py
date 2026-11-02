@@ -52,19 +52,19 @@ MAX_EMBEDS = 10
 ACCENT_BLUE = 3447003
 
 # Per-category accent colors (see https://gist.github.com/thomasbnt/b6f455e2c7d743b796917fa3c637f3c7)
-SECTION_COLORS = {
-    "watchlist": 15844367,          # orange
-    "geo": 15548997,                # red
-    "finance": 3066993,             # green
-    "tech": 3447003,                # blue
-    "medical_imaging": 10181046,    # purple
-    "ai_tech": 1752220,             # teal
-    "ai_tools": 15105570,           # pink
-    "social": 15844367,             # yellow
-    "competitors": 15158332,        # gray
-    "retail_hospitality_ai": 15844367,  # orange
-    "pos_kiosk_dynamics": 15105570,     # pink
-    "retail_market_data": 3066993,      # green
+SECTION_COLORS = {  # same palette as templates/email.html so every topic is its own colour block
+    "watchlist": 16096779,  # #f59e0b
+    "retail_hospitality_ai": 16486972,  # #fb923c
+    "pos_kiosk_dynamics": 16020150,  # #f472b6
+    "retail_market_data": 3462041,  # #34d399
+    "geo": 6333946,  # #60a5fa
+    "finance": 4906624,  # #4ade80
+    "tech": 10980346,  # #a78bfa
+    "ai_tech": 16498468,  # #fbbf24
+    "ai_tools": 12616956,  # #c084fc
+    "social": 3003583,  # #2dd4bf
+    "competitors": 16281969,  # #f87171
+    "medical_imaging": 8490232,  # #818cf8
 }
 
 
@@ -77,7 +77,15 @@ def _extract_url(entry: str) -> str | None:
     return m.group(0).rstrip(".,;，。；)】") if m else None
 
 
-def _format_entry(entry: str, max_len: int = 520) -> str:
+def _format_entry(entry: str | dict, max_len: int = 520) -> str:
+    if isinstance(entry, dict):
+        title = str(entry.get("title") or "").strip()
+        summary = str(entry.get("summary") or "").strip()
+        url = str(entry.get("url") or "").strip() or None
+        clean = f"**{title}**：{summary}" if title and summary else (f"**{title}**" if title else summary)
+        if len(clean) > max_len:
+            clean = clean[: max_len - 1].rstrip() + "…"
+        return f"{clean}\n{url}" if url else clean
     text = entry.strip()
     text = re.sub(r"^\s*[•·]\s*", "", text)
     text = re.sub(r"\[([^\]]*)\]\((https?://[^)]+)\)", r"\1 \2", text)

@@ -8,6 +8,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from src.deduplicator import normalize_url
+from src.entries import ENTRY_SCHEMA, entry_text, normalize_entries, source_from_url
 from src.sources import SOURCES
 from src.watchlist import WATCHLIST
 
@@ -52,32 +54,32 @@ BRIEFING_TOOL: dict[str, Any] = {
             },
             "watchlist": {
                 "type": "array",
-                "items": {"type": "string"},
-                "description": "追蹤議題更新，每條「• **議題**：動向 [來源](URL)」",
+                "items": ENTRY_SCHEMA,
+                "description": "追蹤議題更新，依重要性排序，來源足夠時 3–6 則；title 為議題",
             },
             "retail_hospitality_ai": {
                 "type": "array",
-                "items": {"type": "string"},
-                "description": "重點版面：AI 在零售 / 餐飲 / Hotel 應用趨勢分析（self-checkout、AI kiosk、電腦視覺防損、AI 點餐、飯店自助入住、個人化行銷、無人商店、供應鏈 AI 等），聚焦趨勢解讀，至少 4-6 條，每條「• **主題**：趨勢說明 [來源](URL)」，無資料則輸出空陣列",
+                "items": ENTRY_SCHEMA,
+                "description": "重點版面：AI 在零售 / 餐飲 / Hotel 應用趨勢分析（self-checkout、AI kiosk、電腦視覺防損、AI 點餐、飯店自助入住、個人化行銷、無人商店、供應鏈 AI 等），聚焦趨勢解讀，依重要性排序，來源足夠時 5–8 則，無資料則輸出空陣列",
             },
             "pos_kiosk_dynamics": {
                 "type": "array",
-                "items": {"type": "string"},
-                "description": "POS / Kiosk / Self-checkout 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec 在 AI 應用上的更新），獨立版面，每條「• **公司**：動向 [來源](URL)」，無資料則輸出空陣列",
+                "items": ENTRY_SCHEMA,
+                "description": "POS / Kiosk / Self-checkout 競品動態（Partner Tech、Elo、Zebra、商米、Flytech、Posiflex、NCR、Toshiba Tec 在 AI 應用上的更新），獨立版面，依重要性排序，來源足夠時 5–8 則，title 以公司名開頭，無資料則輸出空陣列",
             },
             "retail_market_data": {
                 "type": "array",
-                "items": {"type": "string"},
-                "description": "零售市場研調數據（POS/Self-checkout/Kiosk/Retail Media 等市場規模、成長率、CAGR、滲透率，來自 IHL、RBR、ABI Research、Gartner、MarketsandMarkets、Grand View Research 等研調機構），獨立版面，每條「• **議題**：數字/研判 [來源](URL)」，無資料則輸出空陣列",
+                "items": ENTRY_SCHEMA,
+                "description": "零售市場研調數據（POS/Self-checkout/Kiosk/Retail Media 等市場規模、成長率、CAGR、滲透率，來自 IHL、RBR、ABI Research、Gartner、MarketsandMarkets、Grand View Research 等研調機構），獨立版面，依重要性排序，來源足夠時 5–8 則，summary 必須帶具體數字/研判，無資料則輸出空陣列",
             },
             "sections": {
                 "type": "object",
                 "properties": {
-                    "geo":         {"type": "array", "items": {"type": "string"}},
-                    "finance":     {"type": "array", "items": {"type": "string"}},
-                    "ai_tech":     {"type": "array", "items": {"type": "string"}},
-                    "ai_tools":    {"type": "array", "items": {"type": "string"}},
-                    "social":      {"type": "array", "items": {"type": "string"}},
+                    "geo":         {"type": "array", "items": ENTRY_SCHEMA, "description": "依重要性排序，來源足夠時 5–8 則，不足照實際數量"},
+                    "finance":     {"type": "array", "items": ENTRY_SCHEMA, "description": "依重要性排序，來源足夠時 5–8 則，不足照實際數量"},
+                    "ai_tech":     {"type": "array", "items": ENTRY_SCHEMA, "description": "依重要性排序，來源足夠時 5–8 則，不足照實際數量"},
+                    "ai_tools":    {"type": "array", "items": ENTRY_SCHEMA, "description": "依重要性排序，來源足夠時 5–8 則，不足照實際數量"},
+                    "social":      {"type": "array", "items": ENTRY_SCHEMA, "description": "依重要性排序，來源足夠時 5–8 則，不足照實際數量"},
                 },
                 "required": ["geo", "finance", "ai_tech", "ai_tools", "social"],
             },
@@ -211,7 +213,12 @@ def synthesize(
         try:
             raw_text, used = call_local_cli(system_msg, prompt)
             print(f"[synthesizer] synthesized via local CLI: {used}")
-            return extract_json(raw_text)
+            briefing = extract_json(raw_text)
+            known = collect_prompt_articles(
+                raw_articles, brave_articles, retail_hospitality_articles,
+                pos_competitor_articles, market_intel_articles,
+            )
+            return ground_briefing(briefing, known)
         except Exception as exc:  # pragma: no cover
             last_error = exc
             if attempt < 1:
@@ -232,21 +239,84 @@ def _is_fallback(briefing: dict[str, Any]) -> bool:
         return False
     for cat_items in (briefing.get("sections") or {}).values():
         for item in cat_items or []:
-            if "建議追蹤原文與後續市場反應" in str(item):
+            if "建議追蹤原文與後續市場反應" in entry_text(item):
                 return True
     return False
+
+
+SUMMARY_PROMPT_CHARS = 300
+
+
+def _article_line(item: dict[str, str]) -> str:
+    """title | url | [published] | summary — published/summary only when present."""
+    title = str(item.get("title") or "").strip()
+    url = str(item.get("url") or "").strip()
+    parts = [title, url]
+    published = str(item.get("published") or "").strip()
+    if published:
+        parts.append(f"發布:{published}")
+    summary = str(item.get("summary") or "").strip()
+    if summary:
+        parts.append(summary[:SUMMARY_PROMPT_CHARS])
+    return " | ".join(parts)
+
+
+def collect_prompt_articles(*groups: Any) -> dict[str, dict[str, str]]:
+    """normalized URL -> article, for every article the model was shown."""
+    known: dict[str, dict[str, str]] = {}
+
+    def add(items: Any) -> None:
+        for item in items or []:
+            url = str(item.get("url") or "").strip() if isinstance(item, dict) else ""
+            if url:
+                known.setdefault(normalize_url(url), item)
+
+    for group in groups:
+        if isinstance(group, dict):
+            for items in group.values():
+                add(items)
+        else:
+            add(group)
+    return known
+
+
+def ground_briefing(briefing: dict[str, Any], known: dict[str, dict[str, str]]) -> dict[str, Any]:
+    """Normalise entries to objects and drop any whose URL was not in the fetched articles.
+
+    published is taken from the fetched article, never from the model, so an
+    entry cannot carry an invented date or link.
+    """
+    dropped = 0
+
+    def ground(value: Any) -> list[dict[str, str]]:
+        nonlocal dropped
+        kept = []
+        for entry in normalize_entries(value):
+            article = known.get(normalize_url(entry["url"])) if entry["url"] else None
+            if article is None:
+                dropped += 1
+                continue
+            entry["published"] = str(article.get("published") or "").strip()
+            if not entry["source"]:
+                entry["source"] = source_from_url(entry["url"])
+            kept.append(entry)
+        return kept
+
+    for key in ("watchlist", "retail_hospitality_ai", "pos_kiosk_dynamics", "retail_market_data"):
+        briefing[key] = ground(briefing.get(key))
+    sections = briefing.get("sections")
+    if isinstance(sections, dict):
+        briefing["sections"] = {key: ground(value) for key, value in sections.items()}
+    if dropped:
+        print(f"[synthesizer] dropped {dropped} entries without a fetched-source URL")
+    return briefing
 
 
 def _format_topic_search_for_prompt(articles: list[dict[str, str]], header: str) -> str:
     lines = [header]
     for item in articles:
-        topic = item.get("source", "").replace("brave:", "")
-        title = item.get("title", "").strip()
-        url = item.get("url", "").strip()
-        summary = item.get("summary", "").strip()
-        line = f"- [{topic}] {title} | {url}"
-        if summary:
-            line += f" | {summary[:180]}"
+        topic = re.sub(r"^(brave|tavily|exa):", "", item.get("source", ""))
+        line = f"- [{topic}] {_article_line(item)}"
         lines.append(line)
     lines.append("")
     return "\n".join(lines) + "\n"
@@ -255,13 +325,8 @@ def _format_topic_search_for_prompt(articles: list[dict[str, str]], header: str)
 def _format_brave_for_prompt(brave_articles: list[dict[str, str]]) -> str:
     lines = ["【即時搜尋補充 - Watchlist 議題】"]
     for item in brave_articles:
-        topic = item.get("source", "").replace("brave:", "")
-        title = item.get("title", "").strip()
-        url = item.get("url", "").strip()
-        summary = item.get("summary", "").strip()
-        line = f"- [{topic}] {title} | {url}"
-        if summary:
-            line += f" | {summary[:180]}"
+        topic = re.sub(r"^(brave|tavily|exa):", "", item.get("source", ""))
+        line = f"- [{topic}] {_article_line(item)}"
         lines.append(line)
     lines.append("")
     return "\n".join(lines) + "\n"
@@ -277,13 +342,7 @@ def format_articles_for_prompt(raw_articles: dict[str, list[dict[str, str]]]) ->
             lines.append("- 無新資訊")
             continue
         for item in items[:20]:
-            title = item.get("title", "").strip()
-            url = item.get("url", "").strip()
-            summary = item.get("summary", "").strip()
-            if summary:
-                lines.append(f"- {title} | {url} | {summary[:180]}")
-            else:
-                lines.append(f"- {title} | {url}")
+            lines.append(f"- {_article_line(item)}")
         lines.append("")
     return "\n".join(lines).strip()
 

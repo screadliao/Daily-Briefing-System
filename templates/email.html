@@ -75,68 +75,74 @@
       }
     }
 
-    /* ── Section cards ── */
+    /* ── Section cards: each topic is its own colour block ── */
     .section {
-      background: #1e293b;
-      border: 1px solid #334155;
+      --accent: #64748b;
+      --tint: #1e293b;
+      --line: #334155;
+      background: var(--tint);
+      border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 20px 24px;
-      border-left: 4px solid var(--accent, #64748b);
+      padding: 0 0 16px;
+      border-left: 5px solid var(--accent);
+      overflow: hidden;
     }
 
     .section-title {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--accent, #64748b);
-      margin-bottom: 14px;
+      background: var(--accent);
+      color: #0f172a;
+      padding: 9px 24px;
+      margin-bottom: 8px;
     }
 
     /* ── Entries ── */
     .entry {
       font-size: 14px;
-      line-height: 1.75;
+      line-height: 1.7;
       color: #cbd5e1;
-      padding: 10px 0;
-      border-bottom: 1px solid #253047;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .entry:first-of-type { padding-top: 0; }
-    .entry:last-of-type  { border-bottom: none; padding-bottom: 0; }
+    .entry:last-of-type { border-bottom: none; padding-bottom: 0; }
 
-    .entry strong { color: #f1f5f9; font-weight: 600; }
+    .entry-title { font-size: 15px; font-weight: 600; color: #f1f5f9; }
+    .entry-title a { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--accent); }
+    .entry-title a:hover { color: var(--accent); }
 
-    .entry a {
-      display: inline-block;
-      color: #64748b;
-      font-size: 11px;
-      text-decoration: none;
-      border: 1px solid #334155;
-      padding: 1px 7px;
-      border-radius: 4px;
-      margin-left: 5px;
-      vertical-align: middle;
-      white-space: nowrap;
-      transition: color 0.15s, border-color 0.15s;
+    .entry-summary { margin-top: 4px; }
+
+    .entry-why {
+      margin-top: 6px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
     }
+    .entry-why b { color: var(--accent); font-weight: 600; }
 
-    .entry a:hover { color: #94a3b8; border-color: #475569; }
+    .entry-meta { margin-top: 6px; font-size: 11px; color: #64748b; }
+    .entry-meta a { color: #94a3b8; text-decoration: none; border: 1px solid var(--line); padding: 1px 7px; border-radius: 4px; margin-left: 4px; }
+    .entry-meta a:hover { color: #e2e8f0; border-color: var(--accent); }
 
-    /* ── Per-category accent colours ── */
-    .section--watchlist {
-      --accent: #f59e0b;
-      background: #1c1a0f;
-      border-color: #44380a;
-    }
+    /* ── Per-topic colour blocks (accent bar/header + tinted body) ── */
+    .section--watchlist             { --accent: #f59e0b; --tint: #1c1a0f; --line: #44380a; }
     .section--watchlist .section-title::before { content: "📌 "; }
-    .section--geo      { --accent: #60a5fa; }
-    .section--finance  { --accent: #34d399; }
-    .section--tech     { --accent: #a78bfa; }
-    .section--ai_tech  { --accent: #fbbf24; }
-    .section--ai_tools { --accent: #f472b6; }
-    .section--social   { --accent: #2dd4bf; }
-    .section--competitors { --accent: #fb923c; }
+    .section--retail_hospitality_ai { --accent: #fb923c; --tint: #201510; --line: #4a2c17; }
+    .section--pos_kiosk_dynamics    { --accent: #f472b6; --tint: #20121b; --line: #4a2038; }
+    .section--retail_market_data    { --accent: #34d399; --tint: #0f1f1a; --line: #1f4a3a; }
+    .section--geo                   { --accent: #60a5fa; --tint: #0f1a2a; --line: #1e3a5f; }
+    .section--finance               { --accent: #4ade80; --tint: #101c14; --line: #1f4a2c; }
+    .section--tech                  { --accent: #a78bfa; --tint: #17142a; --line: #3a2f6b; }
+    .section--ai_tech               { --accent: #fbbf24; --tint: #1f1a0c; --line: #4d3d0f; }
+    .section--ai_tools              { --accent: #c084fc; --tint: #1c1428; --line: #43285f; }
+    .section--social                { --accent: #2dd4bf; --tint: #0e1d1d; --line: #1d4a48; }
+    .section--competitors           { --accent: #f87171; --tint: #221213; --line: #5a2325; }
 
     /* ── Footer ── */
     .footer {
@@ -161,14 +167,20 @@
       </div>
     </div>
 
+{% macro render_entry(e) %}
+          <div class="entry">
+            <div class="entry-title">{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener"><strong>{{ e.title }}</strong></a>{% else %}<strong>{{ e.title }}</strong>{% endif %}</div>
+            {% if e.summary %}<div class="entry-summary">{{ e.summary }}</div>{% endif %}
+            {% if e.why_it_matters %}<div class="entry-why"><b>對 POS/Kiosk/SCO 的意涵</b>　{{ e.why_it_matters }}</div>{% endif %}
+            {% if e.source or e.published or e.url %}<div class="entry-meta">{{ e.source }}{% if e.source and e.published %} · {% endif %}{{ e.published }}{% if e.url %} <a href="{{ e.url }}" target="_blank" rel="noopener">來源連結</a>{% endif %}</div>{% endif %}
+          </div>
+{% endmacro %}
     {% for section in sections %}
-      {% if section.key == "watchlist" %}
+      {% if section.key == "watchlist" and section.entries %}
       <div class="watchlist-row">
         <div class="section section--watchlist">
           <div class="section-title">{{ section.label }}</div>
-          {% for item in section.entries %}
-          <div class="entry">{{ item | safe }}</div>
-          {% endfor %}
+          {% for item in section.entries %}{{ render_entry(item) }}{% endfor %}
         </div>
       </div>
       {% endif %}
@@ -176,12 +188,10 @@
 
     <div class="sections-grid">
       {% for section in sections %}
-        {% if section.key != "watchlist" %}
+        {% if section.key != "watchlist" and section.entries %}
         <div class="section section--{{ section.key }}">
           <div class="section-title">{{ section.label }}</div>
-          {% for item in section.entries %}
-          <div class="entry">{{ item | safe }}</div>
-          {% endfor %}
+          {% for item in section.entries %}{{ render_entry(item) }}{% endfor %}
         </div>
         {% endif %}
       {% endfor %}
