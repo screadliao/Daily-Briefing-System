@@ -210,6 +210,7 @@ def synthesize(
         + json.dumps(extract_schema(BRIEFING_TOOL), ensure_ascii=False, indent=2)
     )
     for attempt in range(2):
+        raw_text = ""
         try:
             raw_text, used = call_local_cli(system_msg, prompt)
             print(f"[synthesizer] synthesized via local CLI: {used}")
@@ -221,6 +222,12 @@ def synthesize(
             return ground_briefing(briefing, known)
         except Exception as exc:  # pragma: no cover
             last_error = exc
+            if raw_text:
+                # CLI 有回應但解析/落地失敗：留下原始輸出前後各 500 字，事後才能判斷是截斷還是拒答
+                print(
+                    f"[synthesizer] attempt {attempt + 1} failed ({type(exc).__name__}: {exc}); "
+                    f"raw_len={len(raw_text)} head={raw_text[:500]!r} tail={raw_text[-500:]!r}"
+                )
             if attempt < 1:
                 time.sleep(5)
 
