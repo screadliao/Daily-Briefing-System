@@ -15,11 +15,13 @@ from bs4 import BeautifulSoup
 from src.sources import SOURCES
 
 MAX_ITEMS_PER_SOURCE = 5
+MAX_ITEMS_PER_ISSUE_PAGE = 30
 MAX_TOTAL_ITEMS = 200
 DEFAULT_TIMEOUT = 15.0
 USER_AGENT = "DailyBriefingBot/1.0 (+https://github.com/screadliao)"
 MAX_WORKERS = 10
 TITLE_DEDUPE_THRESHOLD = 0.82
+SUMMARY_PROMPT_CHARS = 300
 
 
 @dataclass
@@ -64,6 +66,9 @@ def fetch_all(
                 for scrape_url in config.get("scrape", []):
                     future = executor.submit(scrape_page, client, scrape_url, category, MAX_ITEMS_PER_SOURCE)
                     task_specs.append((category, "scrape", future))
+                for feed_url in config.get("issue_pages", []):
+                    future = executor.submit(fetch_issue_page, client, feed_url, category, MAX_ITEMS_PER_ISSUE_PAGE)
+                    task_specs.append((category, "issue_page", future))
 
             for category, _task_type, future in task_specs:
                 if total >= MAX_TOTAL_ITEMS:
@@ -163,6 +168,72 @@ def scrape_page(
                 title=title,
                 url=url,
             )
+        )
+    return items
+
+
+def fetch_issue_page(
+    client: httpx.Client,
+    feed_url: str,
+    category: str,
+    limit: int = MAX_ITEMS_PER_ISSUE_PAGE,
+) -> list[RawArticle]:
+    fallback = fetch_feed(feed_url, category, 1)
+    if not fallback:
+        return []
+
+    issue_url = fallback[0].url
+    try:
+        response = client.get(issue_url)
+        response.raise_for_status()
+    except Exception:
+        return fallback
+
+    articles = parse_issue_page(response.text, issue_url, category, limit)
+    return articles or fallback
+
+
+def parse_issue_page(
+    html: str,
+    issue_url: str,
+    category: str,
+    limit: int = MAX_ITEMS_PER_ISSUE_PAGE,
+) -> list[RawArticle]:
+    soup = BeautifulSoup(html, "lxml")
+    stories = soup.select("article.p-story")
+    if not stories:
+        return []
+
+    items: list[RawArticle] = []
+    lead = soup.select_one("section#article")
+    if lead:
+        lead_title = lead.select_one("h2")
+        if lead_title:
+            kicker = lead_title.select_one(".p-kicker")
+            if kicker:
+                kicker.extract()
+        title = clean_text(lead_title.get_text(" ", strip=True) if lead_title else "")
+        lead_summary = lead.select_one(".p-article-lead")
+        summary = clean_text(lead_summary.get_text(" ", strip=True) if lead_summary else "")
+        if title and summary:
+            items.append(RawArticle(category, "FulyAI", title, issue_url, summary[:SUMMARY_PROMPT_CHARS]))
+
+    for story in stories[:limit]:
+        anchor = story.select_one("h3 a[href]")
+        if not anchor:
+            continue
+        title = clean_text(anchor.get_text(" ", strip=True))
+        url = urljoin(issue_url, anchor["href"].strip())
+        story_summary = story.select_one(".p-text")
+        story_source = story.select_one(".p-src")
+        summary = clean_text(story_summary.get_text(" ", strip=True) if story_summary else "")
+        source = clean_text(story_source.get_text(" ", strip=True) if story_source else "")
+        meta = story.select(".p-meta span")
+        published = clean_text(meta[-1].get_text(" ", strip=True)) if len(meta) > 1 else ""
+        if not title or not summary or not source or not urlparse(url).scheme.startswith("http"):
+            continue
+        items.append(
+            RawArticle(category, f"FulyAI / {source}", title, url, summary[:SUMMARY_PROMPT_CHARS], published)
         )
     return items
 

@@ -50,7 +50,10 @@
       "https://rss.arxiv.org/rss/cs.LG",
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg"
     ],
-    "scrape": []
+    "scrape": [],
+    "issue_pages": [
+      "https://news.fuly.ai/feed.xml"
+    ]
   },
   "ai_tools": {
     "label": "AI 應用實踐",
