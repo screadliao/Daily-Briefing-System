@@ -19,6 +19,7 @@ send a browser-like User-Agent header.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import logging
 import os
@@ -47,6 +48,9 @@ MAX_DESC = 4096
 MAX_NAME = 256
 MAX_FIELD_VALUE = 1024
 MAX_EMBEDS = 10
+MAX_EMBED_TOTAL_CHARS = 6000
+EMBED_TOTAL_SAFETY_MARGIN = 100
+MAX_EMBED_PAYLOAD_CHARS = MAX_EMBED_TOTAL_CHARS - EMBED_TOTAL_SAFETY_MARGIN
 
 # Default accent (used for the header embed and any uncategorized section).
 ACCENT_BLUE = 3447003
@@ -103,6 +107,54 @@ def _section_color(section: dict) -> int:
     return SECTION_COLORS.get(key or "", ACCENT_BLUE)
 
 
+def _embed_char_count(embeds: list[dict]) -> int:
+    total = 0
+    for embed in embeds:
+        footer = embed.get("footer") or {}
+        author = embed.get("author") or {}
+        values = [embed.get("title"), embed.get("description"), footer.get("text"), author.get("name")]
+        for field in embed.get("fields") or []:
+            values.extend((field.get("name"), field.get("value")))
+        total += sum(len(value) for value in values if isinstance(value, str))
+    return total
+
+
+def _fit_embed_payload(embeds: list[dict]) -> list[dict]:
+    """Trim descriptions first so an embed payload stays below Discord's total limit."""
+    excess = _embed_char_count(embeds) - MAX_EMBED_PAYLOAD_CHARS
+    if excess <= 0:
+        return embeds
+
+    # The header repeats its title, then later sections are trimmed first.
+    for embed in [*embeds[:1], *reversed(embeds[1:])]:
+        text = embed.get("description")
+        if not isinstance(text, str):
+            continue
+        keep = max(0, len(text) - excess)
+        replacement = text[: keep - 1].rstrip() + "…" if keep else ""
+        excess -= len(text) - len(replacement)
+        if replacement:
+            embed["description"] = replacement
+        else:
+            embed.pop("description", None)
+        if excess <= 0:
+            return embeds
+
+    # Build-time titles are capped, so this is only reachable for pathological footer input.
+    for embed in embeds:
+        footer = embed.get("footer", {})
+        text = footer.get("text")
+        if not isinstance(text, str):
+            continue
+        keep = max(0, len(text) - excess)
+        footer["text"] = text[:keep]
+        excess -= len(text) - len(footer["text"])
+        if excess <= 0:
+            return embeds
+
+    raise ValueError("Discord embed metadata exceeds the aggregate character limit")
+
+
 def build_embeds(briefing: dict) -> list[dict]:
     """Return one embed per section, each with its own accent color."""
     date = briefing.get("date") or ""
@@ -147,10 +199,11 @@ def build_embeds(briefing: dict) -> list[dict]:
             "footer": {"text": date},
         })
 
-    return embeds
+    return _fit_embed_payload(embeds)
 
 
 def send_embeds(url: str, embeds: list[dict]) -> dict[str, int | str | None]:
+    embeds = _fit_embed_payload(copy.deepcopy(embeds))
     parts = urllib.parse.urlsplit(url)
     query = [(key, value) for key, value in urllib.parse.parse_qsl(parts.query, keep_blank_values=True) if key != "wait"]
     url = urllib.parse.urlunsplit((*parts[:3], urllib.parse.urlencode([*query, ("wait", "true")]), parts.fragment))

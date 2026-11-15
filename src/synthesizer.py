@@ -129,7 +129,7 @@ def call_local_cli(system_msg: str, prompt: str) -> tuple[str, str]:
     if claude:
         try:
             r = subprocess.run(
-                [claude, "-p", "--output-format", "text", "--no-session-persistence", "--disallowedTools", "*"],
+                [claude, "-p", "--model", os.environ.get("BRIEFING_CLAUDE_MODEL", "claude-sonnet-5-5"), "--output-format", "text", "--no-session-persistence", "--disallowedTools", "*"],
                 input=full_prompt, capture_output=True, text=True, timeout=CLI_TIMEOUT, env=_cli_env(),
                 cwd=tempfile.gettempdir(),
             )
@@ -146,7 +146,7 @@ def call_local_cli(system_msg: str, prompt: str) -> tuple[str, str]:
             out = Path(td) / "last.txt"
             try:
                 r = subprocess.run(
-                    [codex, "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only", "-o", str(out), "-"],
+                    [codex, "exec", "-m", os.environ.get("BRIEFING_CODEX_MODEL", "gpt-6.1-terra"), "--skip-git-repo-check", "--ephemeral", "-s", "read-only", "-o", str(out), "-"],
                     input=full_prompt, capture_output=True, text=True, timeout=CLI_TIMEOUT, env=_cli_env(), cwd=td,
                 )
                 text = out.read_text(encoding="utf-8").strip() if out.exists() else ""

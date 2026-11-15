@@ -4,8 +4,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime
-from email.utils import parsedate_to_datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -15,6 +14,7 @@ from src.brave_search import search_watchlist
 from src.deduplicator import load_seen_urls, normalize_url, save_seen_urls
 from src.delivery import deliver
 from src.fetcher import fetch_all
+from src.freshness import filter_fresh_articles_with_audit, parse_published, utc_now
 from src.formatter import build_sections_for_plain_text, render_plain_text, to_html_email
 from src.synthesizer import _is_fallback, synthesize
 from src.watchlist import (
@@ -55,6 +55,22 @@ def main() -> int:
     retail_hospitality_articles = search_watchlist_with_fallback(RETAIL_HOSPITALITY_WATCHLIST)
     pos_competitor_articles = search_watchlist_with_fallback(POS_COMPETITOR_WATCHLIST)
     market_intel_articles = search_watchlist_with_fallback(MARKET_INTEL_WATCHLIST)
+    freshness_now = utc_now()
+    raw_articles, freshness_categories = _filter_fresh_article_groups(
+        raw_articles, timedelta(hours=48), freshness_now
+    )
+    brave_articles, freshness_categories["brave"] = filter_fresh_articles_with_audit(
+        brave_articles, timedelta(hours=48), "brave", freshness_now
+    )
+    retail_hospitality_articles, freshness_categories["retail_hospitality"] = filter_fresh_articles_with_audit(
+        retail_hospitality_articles, timedelta(days=14), "retail_hospitality", freshness_now
+    )
+    pos_competitor_articles, freshness_categories["pos_competitor"] = filter_fresh_articles_with_audit(
+        pos_competitor_articles, timedelta(days=30), "pos_competitor", freshness_now
+    )
+    market_intel_articles, freshness_categories["market_intel"] = filter_fresh_articles_with_audit(
+        market_intel_articles, timedelta(days=90), "market_intel", freshness_now
+    )
     seen_urls = load_seen_urls()
     raw_articles, raw_filtered, raw_total = _filter_article_groups(raw_articles, seen_urls)
     brave_articles, brave_filtered, brave_total = _filter_article_list(brave_articles, seen_urls)
@@ -98,6 +114,10 @@ def main() -> int:
         "headline": briefing["headline"],
         "keywords": briefing["keywords"],
         "sections": build_sections_for_plain_text(briefing),
+        "freshness_audit": {
+            "generated_at": freshness_now.isoformat().replace("+00:00", "Z"),
+            "categories": freshness_categories,
+        },
     }
     args.save_html.parent.joinpath("latest.json").write_text(
         json.dumps(latest_json, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -138,6 +158,18 @@ def _filter_article_groups(
         filtered_count += removed
         total_count += total
     return filtered_groups, filtered_count, total_count
+
+
+def _filter_fresh_article_groups(
+    article_groups: dict[str, list[dict]], max_age: timedelta, now: datetime
+) -> tuple[dict[str, list[dict]], dict[str, dict]]:
+    filtered_groups: dict[str, list[dict]] = {}
+    audits: dict[str, dict] = {}
+    for category, articles in article_groups.items():
+        filtered_groups[category], audits[category] = filter_fresh_articles_with_audit(
+            articles, max_age, category, now
+        )
+    return filtered_groups, audits
 
 
 def _filter_article_list(
@@ -187,18 +219,13 @@ def search_watchlist_with_fallback(
 def limit_articles(articles: list[dict], keywords: list[str], limit: int = PROMPT_ARTICLE_LIMIT) -> list[dict]:
     """Keep the most relevant, newest articles before they enter the LLM prompt."""
     normalized_keywords = [keyword.lower() for keyword in keywords if keyword.strip()]
+    now = utc_now()
 
     def score(article: dict) -> tuple[int, float]:
         text = " ".join(str(article.get(field, "")) for field in ("title", "summary")).lower()
         hits = sum(text.count(keyword) for keyword in normalized_keywords)
-        published = str(article.get("published", "")).replace("Z", "+00:00")
-        try:
-            freshness = datetime.fromisoformat(published).timestamp()
-        except ValueError:
-            try:
-                freshness = parsedate_to_datetime(published).timestamp()
-            except (TypeError, ValueError):
-                freshness = 0.0
+        published = parse_published(article.get("published"), now)
+        freshness = published.timestamp() if published else 0.0
         return hits, freshness
 
     return sorted(articles, key=score, reverse=True)[:limit]

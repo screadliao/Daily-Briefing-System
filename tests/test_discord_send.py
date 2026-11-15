@@ -7,7 +7,16 @@ from urllib.parse import parse_qs, urlsplit
 
 import pytest
 
-from discord_send import MAX_EMBEDS, SECTION_COLORS, _format_entry, build_embeds, send_embeds, write_result
+from discord_send import (
+    MAX_EMBED_PAYLOAD_CHARS,
+    MAX_EMBEDS,
+    SECTION_COLORS,
+    _embed_char_count,
+    _format_entry,
+    build_embeds,
+    send_embeds,
+    write_result,
+)
 
 
 def test_format_entry_flattens_markdown_link() -> None:
@@ -36,6 +45,35 @@ def test_build_embeds_logs_section_discarded_over_cap(caplog) -> None:
 
     assert len(embeds) == MAX_EMBEDS
     assert "Section 9" in caplog.text
+
+
+def test_build_embeds_keeps_ten_embeds_at_aggregate_safe_boundary() -> None:
+    sections = [
+        {"key": f"s{i}", "label": f"S{i}", "entries": ["x" * 180] * 4}
+        for i in range(8)
+    ]
+    sections.append({"key": "s8", "label": "S8", "entries": ["x" * 84]})
+
+    embeds = build_embeds({"sections": sections})
+
+    assert len(embeds) == MAX_EMBEDS
+    assert _embed_char_count(embeds) == MAX_EMBED_PAYLOAD_CHARS
+    assert embeds[-1]["description"] == "x" * 84
+
+
+def test_build_embeds_truncates_only_overflowing_content_at_aggregate_boundary() -> None:
+    sections = [
+        {"key": f"s{i}", "label": f"S{i}", "entries": ["x" * 180] * 4}
+        for i in range(8)
+    ]
+    sections.append({"key": "s8", "label": "S8", "entries": ["x" * 85]})
+
+    embeds = build_embeds({"sections": sections})
+
+    assert len(embeds) == MAX_EMBEDS
+    assert _embed_char_count(embeds) == MAX_EMBED_PAYLOAD_CHARS
+    assert embeds[-1]["description"] == "x" * 83 + "…"
+    assert embeds[-2]["description"] == ("x" * 180 + "\n") * 3 + "x" * 180
 
 
 def test_new_board_colors_are_explicit() -> None:

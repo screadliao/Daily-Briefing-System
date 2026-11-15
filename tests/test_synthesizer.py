@@ -24,3 +24,26 @@ def test_new_retail_and_pos_boards_are_required_and_fallback_compatible() -> Non
     assert fallback["retail_hospitality_ai"] == []
     assert fallback["pos_kiosk_dynamics"] == []
     assert fallback["retail_market_data"] == []
+
+
+def test_local_cli_model_arguments(monkeypatch):
+    from types import SimpleNamespace
+    from src import synthesizer
+
+    calls = []
+    monkeypatch.setattr(synthesizer, "_resolve_bin", lambda path, name: name)
+    monkeypatch.setenv("BRIEFING_CLAUDE_MODEL", "claude-test")
+    monkeypatch.setenv("BRIEFING_CODEX_MODEL", "codex-test")
+
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        if command[0] == "claude":
+            return SimpleNamespace(returncode=1, stdout="", stderr="failed")
+        from pathlib import Path
+        Path(command[command.index("-o") + 1]).write_text("ok")
+        return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+    monkeypatch.setattr(synthesizer.subprocess, "run", fake_run)
+    assert synthesizer.call_local_cli("system", "prompt") == ("ok", "codex")
+    assert calls[0][calls[0].index("--model") + 1] == "claude-test"
+    assert calls[1][calls[1].index("-m") + 1] == "codex-test"

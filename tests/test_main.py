@@ -1,5 +1,9 @@
 import json
+from datetime import datetime, timezone
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).parents[1]))
 
 import main
 from src.formatter import build_sections_for_plain_text
@@ -8,19 +12,20 @@ from src.formatter import build_sections_for_plain_text
 def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) -> None:
     raw_articles = {
         "geo": [
-            {"title": "Seen raw", "url": "https://seen.example/raw"},
-            {"title": "Fresh raw", "url": "https://fresh.example/raw"},
-            {"title": "No url raw"},
+            {"title": "Seen raw", "url": "https://seen.example/raw", "published": "1 hour ago"},
+            {"title": "Fresh raw", "url": "https://fresh.example/raw", "published": "1 hour ago"},
+            {"title": "No url raw", "published": "1 hour ago"},
         ],
         "finance": [],
     }
     brave_articles = [
-        {"title": "Seen brave", "url": "https://seen.example/brave"},
-        {"title": "Fresh brave", "url": "https://fresh.example/brave"},
+        {"title": "Seen brave", "url": "https://seen.example/brave", "published": "1 hour ago"},
+        {"title": "Fresh brave", "url": "https://fresh.example/brave", "published": "1 hour ago"},
     ]
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr("sys.argv", ["main.py", "--dry-run", "--save-html", "preview.html"])
     monkeypatch.setattr("main.fetch_all", lambda: raw_articles)
+    monkeypatch.setattr("main.utc_now", lambda: datetime(2026, 9, 15, 12, tzinfo=timezone.utc))
     monkeypatch.setattr("main.filter_articles", lambda articles, blocklist: articles)
     search_calls: list[list[str]] = []
 
@@ -74,12 +79,46 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
         "關鍵字：test"
     )
     latest_json = json.loads(Path("latest.json").read_text(encoding="utf-8"))
-    assert latest_json == {
+    assert {key: latest_json[key] for key in ("date", "headline", "keywords", "sections")} == {
         "date": briefing["date"],
         "headline": briefing["headline"],
         "keywords": briefing["keywords"],
         "sections": build_sections_for_plain_text(briefing),
     }
+    audit = latest_json["freshness_audit"]
+    assert audit["generated_at"].endswith("Z")
+    assert audit["categories"]["geo"] == {
+        "policy": {"max_age_hours": 48},
+        "input_count": 3,
+        "accepted_count": 3,
+        "dropped_count": 0,
+        "accepted_articles": [
+            {
+                "category": "geo",
+                "title": "Seen raw",
+                "url": "https://seen.example/raw",
+                "published": "1 hour ago",
+                "age_hours": 1,
+            },
+            {
+                "category": "geo",
+                "title": "Fresh raw",
+                "url": "https://fresh.example/raw",
+                "published": "1 hour ago",
+                "age_hours": 1,
+            },
+            {
+                "category": "geo",
+                "title": "No url raw",
+                "url": None,
+                "published": "1 hour ago",
+                "age_hours": 1,
+            },
+        ],
+    }
+    assert audit["categories"]["retail_hospitality"]["policy"] == {"max_age_hours": 336}
+    assert audit["categories"]["pos_competitor"]["policy"] == {"max_age_hours": 720}
+    assert audit["categories"]["market_intel"]["policy"] == {"max_age_hours": 2160}
     assert all(set(section) == {"key", "label", "entries"} for section in latest_json["sections"])
     assert any(section["entries"] == [] for section in latest_json["sections"])
 
@@ -94,9 +133,9 @@ def test_main_filters_seen_urls_and_writes_state(monkeypatch, tmp_path, capsys) 
                 "https://fresh.example/brave",
             },
             [
-                {"title": "Fresh raw", "url": "https://fresh.example/raw"},
-                {"title": "No url raw"},
-                {"title": "Fresh brave", "url": "https://fresh.example/brave"},
+                {"title": "Fresh raw", "url": "https://fresh.example/raw", "published": "1 hour ago"},
+                {"title": "No url raw", "published": "1 hour ago"},
+                {"title": "Fresh brave", "url": "https://fresh.example/brave", "published": "1 hour ago"},
             ],
             Path("_site"),
         )
